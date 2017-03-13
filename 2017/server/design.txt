@@ -1,0 +1,11 @@
+Routes
+------
+/events                     -- get all events
+/events/{id}                -- get individual event info
+/events/{id}/programs       -- get all programs for given event id
+
+/participants               -- get all participants
+/participants/{id}          -- get given participant
+
+/programs/{id}              -- get given programs
+/programs/{id}/participants -- get participant for given programs
