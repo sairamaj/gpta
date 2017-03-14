@@ -30,12 +30,13 @@ function addEvent(tableName, name, callback) {
 }
 
 function addProgram(tableName, eventId, name, callback) {
+  console.log("add progam event id:" + eventId)
   var data = {
     'eventid': eventId,
     'name': name,
     'id': uuidV4()
   }
-
+console.log('adding program ==>' + JSON.stringify(data,null,2))
   aws.writeDb(tableName, data, function (err, status) {
     callback(err, data)
   })
@@ -52,7 +53,7 @@ function addParticipant(tableName, name, callback) {
   })
 }
 
-function addParticipantToProgram(tableName, participantId, programId, callback){
+function addParticipantToProgram(tableName, participantId, programId, callback) {
   var data = {
     'participantId': participantId,
     'programId': programId
@@ -63,8 +64,24 @@ function addParticipantToProgram(tableName, participantId, programId, callback){
   })
 }
 
+function getPrograms(tableName, eventId, callback) {
+  aws.readDb(tableName, function (err, data) {
+    if (err) {
+      callback(err, null)
+    } else {
+      var programs = []
+      data.Items.forEach(function (program) {
+        programs.push(program)
+      })
+      callback(null, programs)
+    }
+  })
+
+}
+
 module.exports.addEvent = addEvent
 module.exports.getEvents = getEvents
 module.exports.addProgram = addProgram
 module.exports.addParticipant = addParticipant
 module.exports.addParticipantToProgram = addParticipantToProgram
+module.exports.getPrograms = getPrograms

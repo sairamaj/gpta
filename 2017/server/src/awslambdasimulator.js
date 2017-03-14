@@ -1,6 +1,7 @@
 var express = require('express')
 var app = express()
 var getEvents = require('./getEvents').handler
+var getPrograms = require('./getPrograms').handler
 
 function getContext(res) {
     var context = {}
@@ -40,6 +41,14 @@ app.get('/events/:id', function (req, res) {
     getEvents(e, getContext(res), null)
 })
 
-
-console.log('listening 3000...')
-app.listen(3000);
+app.get('/events/:id/programs', function(req,res){
+    console.log('=========================')
+    console.log(req.path)
+    console.log("param id:" + req.params.id)
+    var e = createEvent(req.params.id)
+    console.log(JSON.stringify(e, null, 2))
+    getPrograms(e, getContext(res), null)
+  
+})
+console.log('listening 4000...')
+app.listen(4000);

@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: GPTa Application
+Resources:
+  EventTable:
+    Properties:
+      PrimaryKey:
+        Name: name
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
+  GetEventsItemsFunction:
+    Properties:
+      CodeUri: s3://gpta2017/d20d49219fdf735e76e1e787205c9ed2
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: EventTable
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /events
+          Type: Api
+      Handler: getEvents.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

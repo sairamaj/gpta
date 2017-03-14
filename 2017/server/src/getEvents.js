@@ -26,8 +26,8 @@ function getPathParameter(o, name) {
 }
 
 exports.handler = function (event, context, callback) {
-
-    evt.getEventsAsync('Event')
+    const tableName = process.env.TABLE_NAME
+    evt.getEventsAsync(tableName)
         .then(events => {
             var eventId = getPathParameter(event,"id")
             console.log('>>>> eventId:' + eventId)
