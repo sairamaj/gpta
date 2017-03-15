@@ -36,7 +36,7 @@ function addProgram(tableName, eventId, name, callback) {
     'name': name,
     'id': uuidV4()
   }
-console.log('adding program ==>' + JSON.stringify(data,null,2))
+  console.log('adding program ==>' + JSON.stringify(data, null, 2))
   aws.writeDb(tableName, data, function (err, status) {
     callback(err, data)
   })
@@ -64,8 +64,20 @@ function addParticipantToProgram(tableName, participantId, programId, callback) 
   })
 }
 
-function getPrograms(tableName, eventId, callback) {
-  aws.readDb(tableName, function (err, data) {
+function getPrograms(tableName, eventid, callback) {
+  
+  var params = {
+    TableName: tableName,
+    KeyConditionExpression: "#eventid = :eventid",
+    ExpressionAttributeNames: {
+      "#eventid": "eventid"
+    },
+    ExpressionAttributeValues: {
+      ":eventid": eventid
+    }
+  }
+
+  aws.queryDb(tableName, params, function (err, data) {
     if (err) {
       callback(err, null)
     } else {

@@ -10,9 +10,9 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
     Type: AWS::Serverless::SimpleTable
-  GetEventsItemsFunction:
+  GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/d20d49219fdf735e76e1e787205c9ed2
+      CodeUri: s3://gpta2017/22f5eb0dfce935a5bbeca2e32d4ed308
       Environment:
         Variables:
           TABLE_NAME:
@@ -28,4 +28,49 @@ Resources:
       Runtime: nodejs4.3
       Timeout: 10
     Type: AWS::Serverless::Function
+  GetEventsById:
+    Properties:
+      CodeUri: s3://gpta2017/22f5eb0dfce935a5bbeca2e32d4ed308
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: EventTable
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /events/{id}
+          Type: Api
+      Handler: getEvents.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  GetPrograms:
+    Properties:
+      CodeUri: s3://gpta2017/22f5eb0dfce935a5bbeca2e32d4ed308
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: ProgramTable
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /events/{id}/programs
+          Type: Api
+      Handler: getPrograms.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  ProgramTable:
+    Properties:
+      PrimaryKey:
+        Name: eventid
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
 Transform: AWS::Serverless-2016-10-31

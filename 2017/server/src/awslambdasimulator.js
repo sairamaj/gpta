@@ -29,10 +29,12 @@ function createEvent(id) {
 }
 
 app.get('/events', function (req, res) {
+    process.env.TABLE_NAME = "Event"
     getEvents(null, getContext(res), null)
 })
 
 app.get('/events/:id', function (req, res) {
+    process.env.TABLE_NAME = "Event"
     console.log('=========================')
     console.log(req.path)
     console.log("param id:" + req.params.id)
@@ -42,6 +44,7 @@ app.get('/events/:id', function (req, res) {
 })
 
 app.get('/events/:id/programs', function(req,res){
+    process.env.TABLE_NAME = "Program"
     console.log('=========================')
     console.log(req.path)
     console.log("param id:" + req.params.id)

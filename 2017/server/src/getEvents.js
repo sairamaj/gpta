@@ -3,33 +3,12 @@ var util = require('./util')
 var Promise = require('bluebird')
 var evt = Promise.promisifyAll(require('./event'))
 
-function getPathParameter(o, name) {
-    console.log("getPathParameter:" + o)
-    if (o === null) {
-        return
-    }
-    console.log("getPathParameter:" + o.pathParameters)
-    if (o.pathParameters === undefined) {
-        return
-    }
-
-    console.log("getPathParameter2:" + o.pathParameters)
-    if (o.pathParameters === null) {
-        return
-    }
-    console.log("getPathParameter3:" + o.pathParameters)
-    if(o.pathParameters[name] === undefined){
-        return
-    }
-    console.log(JSON.stringify(o.pathParameters,null,2))
-    return o.pathParameters[name]
-}
-
 exports.handler = function (event, context, callback) {
     const tableName = process.env.TABLE_NAME
+    console.log('table name:' + tableName)
     evt.getEventsAsync(tableName)
         .then(events => {
-            var eventId = getPathParameter(event,"id")
+            var eventId = util.getPathParameter(event,"id")
             console.log('>>>> eventId:' + eventId)
             if (eventId === undefined) {
                 console.log(JSON.stringify(events,null,2))

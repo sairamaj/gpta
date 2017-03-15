@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: GPTa Application
 
 Resources:
-  GetEventsItemsFunction:
+  GetEvents:
     Type: AWS::Serverless::Function
     Properties:
       Handler: getEvents.handler
@@ -21,11 +21,57 @@ Resources:
             Path: /events
             Method: get
 
+  GetEventsById:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getEvents.handler
+      Runtime: nodejs4.3
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: server/src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref EventTable
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /events/{id}
+            Method: get
+
+  GetPrograms:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getPrograms.handler
+      Runtime: nodejs4.3
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: server/src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ProgramTable
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /events/{id}/programs
+            Method: get
+
   EventTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
          Name: name
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
+
+  ProgramTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: eventid
          Type: String
       ProvisionedThroughput:
          ReadCapacityUnits: 5

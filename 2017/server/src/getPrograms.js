@@ -4,7 +4,11 @@ var Promise = require('bluebird')
 var evt = Promise.promisifyAll(require('./event'))
 
 exports.handler = function (event, context, callback) {
-    evt.getProgramsAsync('Program', "a4a1acfe-d434-48cc-ae08-480e0949c98d")
+    const tableName = process.env.TABLE_NAME
+    console.log('table name:' + tableName)
+    var eventId = util.getPathParameter(event,"id")
+    console.log('getPrograms ->' + eventId)
+    evt.getProgramsAsync(tableName, eventId)
         .then(programs => {
             context.succeed(util.createResponse(200, programs))
         })

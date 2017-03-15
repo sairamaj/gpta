@@ -6,6 +6,7 @@ evt.addEventAsync('Event', '2017 GPTA Ugadi')
     .then(newEvent => {
         // add a program
         console.log('event added :' + JSON.stringify(newEvent))
+        evt.addProgramAsync('Program', newEvent.id, 'Program0')
         evt.addProgramAsync('Program', newEvent.id, 'Program1')
             .then(prog => {
                 console.log('program added:' + JSON.stringify(prog))

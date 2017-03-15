@@ -5,19 +5,19 @@
 var AWS = require('aws-sdk')
 AWS.config.update({
   region: 'us-west-2'
- // endpoint: "http://localhost:8000"
+  //endpoint: "http://localhost:8000"
 })
 
 var sns = new AWS.SNS()
 
-function readDb (table, callback) {
+function readDb(table, callback) {
   var docClient = new AWS.DynamoDB.DocumentClient()
   var params = {
     TableName: table
   }
 
   docClient.scan(params, onScan)
-  function onScan (err, data) {
+  function onScan(err, data) {
     if (err) {
       callback(err, null)
     } else {
@@ -26,7 +26,7 @@ function readDb (table, callback) {
   }
 }
 
-function writeDb (table, data, callback) {
+function writeDb(table, data, callback) {
   var docClient = new AWS.DynamoDB.DocumentClient()
 
   var params = {
@@ -37,7 +37,7 @@ function writeDb (table, data, callback) {
   docClient.put(params, callback)
 }
 
-function deleteDb (table, key, callback) {
+function deleteDb(table, key, callback) {
   var docClient = new AWS.DynamoDB.DocumentClient()
   var params = {
     TableName: table,
@@ -47,7 +47,12 @@ function deleteDb (table, key, callback) {
   docClient.delete(params, callback)
 }
 
-function sendNotification (data, topicArn, callback) {
+function queryDb(table, params, callback) {
+  var docClient = new AWS.DynamoDB.DocumentClient()
+  docClient.query(params, callback)
+}
+
+function sendNotification(data, topicArn, callback) {
   var payload = {
     default: data,
     APNS: {
@@ -59,7 +64,8 @@ function sendNotification (data, topicArn, callback) {
     }
   }
 
-    // first have to stringify the inner APNS object...
+
+  // first have to stringify the inner APNS object...
   payload.APNS = JSON.stringify(payload.APNS)
   // then have to stringify the entire message payload
   payload = JSON.stringify(payload)
@@ -71,7 +77,7 @@ function sendNotification (data, topicArn, callback) {
   }, callback)
 }
 
-function sendMenuItemAddedNotification (menuItem) {
+function sendMenuItemAddedNotification(menuItem) {
   sendNotification(menuItem + ' has been added', 'arn:aws:sns:us-west-2:034046765900:kidapp', function (err, response) {
     if (err) {
       console.log('error sending notification:' + err)
@@ -81,7 +87,7 @@ function sendMenuItemAddedNotification (menuItem) {
   })
 }
 
-function sendMenuItemRemovedNotification (menuItem) {
+function sendMenuItemRemovedNotification(menuItem) {
   sendNotification(menuItem + ' has been removed', 'arn:aws:sns:us-west-2:034046765900:kidapp', function (err, response) {
     if (err) {
       console.log('error sending notification:' + err)
@@ -91,7 +97,7 @@ function sendMenuItemRemovedNotification (menuItem) {
   })
 }
 
-function sendOrderNotification (menuItem) {
+function sendOrderNotification(menuItem) {
   sendNotification(menuItem + ' has been ordered', 'arn:aws:sns:us-west-2:034046765900:MomRestarant', function (err, response) {
     if (err) {
       console.log('error sending notification:' + err)
@@ -104,6 +110,7 @@ function sendOrderNotification (menuItem) {
 module.exports.readDb = readDb
 module.exports.writeDb = writeDb
 module.exports.deleteDb = deleteDb
+module.exports.queryDb = queryDb
 module.exports.sendMenuItemAddedNotification = sendMenuItemAddedNotification
 module.exports.sendMenuItemRemovedNotification = sendMenuItemRemovedNotification
 module.exports.sendOrderNotification = sendOrderNotification
