@@ -12,7 +12,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/22f5eb0dfce935a5bbeca2e32d4ed308
+      CodeUri: s3://gpta2017/f54c7413c87913f1b69a9514777b98dd
       Environment:
         Variables:
           TABLE_NAME:
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/22f5eb0dfce935a5bbeca2e32d4ed308
+      CodeUri: s3://gpta2017/f54c7413c87913f1b69a9514777b98dd
       Environment:
         Variables:
           TABLE_NAME:
@@ -48,7 +48,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/22f5eb0dfce935a5bbeca2e32d4ed308
+      CodeUri: s3://gpta2017/f54c7413c87913f1b69a9514777b98dd
       Environment:
         Variables:
           TABLE_NAME:
@@ -67,7 +67,7 @@ Resources:
   ProgramTable:
     Properties:
       PrimaryKey:
-        Name: eventid
+        Name: id
         Type: String
       ProvisionedThroughput:
         ReadCapacityUnits: 5

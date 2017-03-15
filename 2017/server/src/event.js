@@ -32,7 +32,7 @@ function addEvent(tableName, name, callback) {
 function addProgram(tableName, eventId, name, callback) {
   console.log("add progam event id:" + eventId)
   var data = {
-    'eventid': eventId,
+    'eventId': eventId,
     'name': name,
     'id': uuidV4()
   }
@@ -64,28 +64,18 @@ function addParticipantToProgram(tableName, participantId, programId, callback) 
   })
 }
 
-function getPrograms(tableName, eventid, callback) {
-  
-  var params = {
-    TableName: tableName,
-    KeyConditionExpression: "#eventid = :eventid",
-    ExpressionAttributeNames: {
-      "#eventid": "eventid"
-    },
-    ExpressionAttributeValues: {
-      ":eventid": eventid
-    }
-  }
-
-  aws.queryDb(tableName, params, function (err, data) {
+function getPrograms(tableName, eventId, callback) {
+  aws.readDb(tableName, function (err, data) {
     if (err) {
       callback(err, null)
     } else {
-      var programs = []
+      var events = []
       data.Items.forEach(function (program) {
-        programs.push(program)
+        if (program.eventId == eventId) {
+          events.push(program)
+        }
       })
-      callback(null, programs)
+      callback(null, events)
     }
   })
 

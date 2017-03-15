@@ -71,7 +71,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-         Name: eventid
+         Name: id
          Type: String
       ProvisionedThroughput:
          ReadCapacityUnits: 5
