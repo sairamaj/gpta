@@ -9,7 +9,7 @@ AWS.config.update({
 })
 
 console.log('dev:' + process.env.dev)
-if( process.env !== undefined && process.env.dev){
+if( process.env !== undefined && process.env.dev == 'true'){
   console.log('setting endpoint...')
   AWS.config.endpoint = 'http://localhost:8000'
 }

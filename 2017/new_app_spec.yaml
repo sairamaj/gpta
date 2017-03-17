@@ -12,7 +12,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/f54c7413c87913f1b69a9514777b98dd
+      CodeUri: s3://gpta2017/fb8f072ef3353670eae6587fbe6c33a2
       Environment:
         Variables:
           TABLE_NAME:
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/f54c7413c87913f1b69a9514777b98dd
+      CodeUri: s3://gpta2017/fb8f072ef3353670eae6587fbe6c33a2
       Environment:
         Variables:
           TABLE_NAME:
@@ -48,7 +48,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/f54c7413c87913f1b69a9514777b98dd
+      CodeUri: s3://gpta2017/fb8f072ef3353670eae6587fbe6c33a2
       Environment:
         Variables:
           TABLE_NAME:
@@ -64,6 +64,24 @@ Resources:
       Runtime: nodejs4.3
       Timeout: 10
     Type: AWS::Serverless::Function
+  Participant:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
+  ProgramParticipants:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
   ProgramTable:
     Properties:
       PrimaryKey:

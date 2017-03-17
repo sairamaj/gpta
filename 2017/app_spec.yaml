@@ -76,3 +76,23 @@ Resources:
       ProvisionedThroughput:
          ReadCapacityUnits: 5
          WriteCapacityUnits: 5
+
+  Participant:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: id
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
+
+  ProgramParticipants:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: id
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
