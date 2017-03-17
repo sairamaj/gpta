@@ -55,7 +55,7 @@ function addParticipant(tableName, name, callback) {
 
 function addParticipantToProgram(tableName, participantId, programId, callback) {
   var data = {
-    'participantId': participantId,
+    'id': participantId,
     'programId': programId
   }
 

@@ -8,6 +8,12 @@ AWS.config.update({
  // endpoint: "http://localhost:8000"
 })
 
+console.log('dev:' + process.env.dev)
+if( process.env !== undefined && process.env.dev){
+  console.log('setting endpoint...')
+  AWS.config.endpoint = 'http://localhost:8000'
+}
+
 var sns = new AWS.SNS()
 
 function readDb(table, callback) {

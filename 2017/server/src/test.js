@@ -1,4 +1,9 @@
 'use strict'
+console.log('setting env.dev')
+process.env.dev = true
+console.log('setting env.dev:' + process.env.dev)
+
+
 var Promise = require('bluebird')
 var evt = Promise.promisifyAll(require('./event'))
 
@@ -14,7 +19,7 @@ evt.addEventAsync('Event', '2017 GPTA Ugadi')
                 evt.addParticipantAsync('Participant','sai')
                 .then( p=>{
                     // adding participant to program
-                     evt.addParticipantToProgramAsync("ParticipantToProgram", p.id, prog.id)
+                     evt.addParticipantToProgramAsync("ProgramParticipants", p.id, prog.id)
                      .then( ptoP => console.log("successfully added participant to program"))
                      .catch(err => console.log("err in assigning a participan to program." + err))
                 })

@@ -1,7 +1,9 @@
+process.env.dev = true
 var express = require('express')
 var app = express()
 var getEvents = require('./getEvents').handler
 var getPrograms = require('./getPrograms').handler
+
 
 function getContext(res) {
     var context = {}
