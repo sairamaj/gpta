@@ -56,6 +56,26 @@ Resources:
           Properties:
             Path: /events/{id}/programs
             Method: get
+  
+  GetProgramParticipants:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getProgramParticipants.handler
+      Runtime: nodejs4.3
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: server/src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ProgramParticipants
+          TABLE_PARTICIPANTS: !Ref Participant
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /programs/{id}/participants
+            Method: get
+
 
   EventTable:
     Type: AWS::Serverless::SimpleTable

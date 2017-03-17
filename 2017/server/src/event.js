@@ -78,8 +78,40 @@ function getPrograms(tableName, eventId, callback) {
       callback(null, events)
     }
   })
-
 }
+
+function getParticipants(tableName, pids, callback) {
+  aws.readDb(tableName, function (err, data) {
+    if (err) {
+      callback(err, null)
+    } else {
+      var events = []
+      data.Items.forEach(function (participant) {
+        if (pids.find( p=> p.id === participant.id)) {
+            events.push(participant)
+        }
+      })
+      callback(null, events)
+    }
+  })
+}
+
+function getProgramParticipants(tableName, programId, callback) {
+  aws.readDb(tableName, function (err, data) {
+    if (err) {
+      callback(err, null)
+    } else {
+      var events = []
+      data.Items.forEach(function (programParticipant) {
+        if (programParticipant.programId == programId) {  // todo: use query here.
+          events.push(programParticipant)
+        }
+      })
+      callback(null, events)
+    }
+  })
+}
+
 
 module.exports.addEvent = addEvent
 module.exports.getEvents = getEvents
@@ -87,3 +119,5 @@ module.exports.addProgram = addProgram
 module.exports.addParticipant = addParticipant
 module.exports.addParticipantToProgram = addParticipantToProgram
 module.exports.getPrograms = getPrograms
+module.exports.getProgramParticipants = getProgramParticipants
+module.exports.getParticipants = getParticipants

@@ -12,7 +12,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/fb8f072ef3353670eae6587fbe6c33a2
+      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
       Environment:
         Variables:
           TABLE_NAME:
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/fb8f072ef3353670eae6587fbe6c33a2
+      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
       Environment:
         Variables:
           TABLE_NAME:
@@ -46,9 +46,29 @@ Resources:
       Runtime: nodejs4.3
       Timeout: 10
     Type: AWS::Serverless::Function
+  GetProgramParticipants:
+    Properties:
+      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: ProgramParticipants
+          TABLE_PARTICIPANTS:
+            Ref: Participant
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /programs/{id}/participants
+          Type: Api
+      Handler: getProgramParticipants.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/fb8f072ef3353670eae6587fbe6c33a2
+      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
       Environment:
         Variables:
           TABLE_NAME:
