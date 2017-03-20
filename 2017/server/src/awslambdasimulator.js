@@ -4,7 +4,7 @@ var app = express()
 var getEvents = require('./getEvents').handler
 var getPrograms = require('./getPrograms').handler
 var getProgramParticipants = require('./getProgramParticipants').handler
-
+var ddParticipantArrivalInfo  = require('./addParticipantArrivalInfo').handler
 
 function getContext(res) {
     var context = {}
@@ -18,10 +18,11 @@ function getContext(res) {
     return context
 }
 
-function createEvent(id) {
+function createEvent(id, status) {
     var event = {
         pathParameters: {
-            id: ""
+            id: "",
+            status: status
         }
     }
 
@@ -65,6 +66,15 @@ app.get('/programs/:id/participants', function (req, res) {
     var e = createEvent(req.params.id)
     console.log(JSON.stringify(e, null, 2))
     getProgramParticipants(e, getContext(res), null)
+})
+
+app.post('/participants/:id/arrivalinfo/:status', function(req,res){
+    process.env.TABLE_NAME = "ParticipantArrivalInfo"
+    console.log(req.path)
+    console.log("param id:" + req.params.id)
+    console.log("param status:" + req.params.status)
+    var e = createEvent(req.params.id, req.params.status)
+    ddParticipantArrivalInfo( e, getContext(res),null)
 })
 
 console.log('listening 4000...')
