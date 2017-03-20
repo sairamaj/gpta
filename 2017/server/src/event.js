@@ -64,6 +64,18 @@ function addParticipantToProgram(tableName, participantId, programId, callback) 
   })
 }
 
+function addArrivalInfoToParticipant(tableName, id, arrivalInfo, callback) {
+  var data = {
+    'id': participantId,
+    'isArrived': arrivalInfo.isArrived ? 1 : 0,
+    'Date': Date()
+  }
+
+  aws.writeDb(tableName, data, function (err, status) {
+    callback(err, status)
+  })
+}
+
 function getPrograms(tableName, eventId, callback) {
   aws.readDb(tableName, function (err, data) {
     if (err) {
@@ -87,8 +99,8 @@ function getParticipants(tableName, pids, callback) {
     } else {
       var events = []
       data.Items.forEach(function (participant) {
-        if (pids.find( p=> p.id === participant.id)) {
-            events.push(participant)
+        if (pids.find(p => p.id === participant.id)) {
+          events.push(participant)
         }
       })
       callback(null, events)
@@ -121,3 +133,4 @@ module.exports.addParticipantToProgram = addParticipantToProgram
 module.exports.getPrograms = getPrograms
 module.exports.getProgramParticipants = getProgramParticipants
 module.exports.getParticipants = getParticipants
+module.exports.addArrivalInfoToParticipant = addArrivalInfoToParticipant
