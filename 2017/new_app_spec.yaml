@@ -1,6 +1,26 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: GPTa Application
 Resources:
+  AddParticipantArrivalInfo:
+    Properties:
+      CodeUri: s3://gpta2017/8a37ea6e81eccc3b8c5b1e54f4f5dc12
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: ProgramParticipants
+          TABLE_PARTICIPANTS:
+            Ref: Participant
+      Events:
+        GetResource:
+          Properties:
+            Method: post
+            Path: /participant/{id}/arrivalinfo/{status}
+          Type: Api
+      Handler: addParticipantArrivalInfo.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
   EventTable:
     Properties:
       PrimaryKey:
@@ -12,7 +32,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
+      CodeUri: s3://gpta2017/8a37ea6e81eccc3b8c5b1e54f4f5dc12
       Environment:
         Variables:
           TABLE_NAME:
@@ -30,7 +50,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
+      CodeUri: s3://gpta2017/8a37ea6e81eccc3b8c5b1e54f4f5dc12
       Environment:
         Variables:
           TABLE_NAME:
@@ -48,7 +68,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetProgramParticipants:
     Properties:
-      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
+      CodeUri: s3://gpta2017/8a37ea6e81eccc3b8c5b1e54f4f5dc12
       Environment:
         Variables:
           TABLE_NAME:
@@ -68,7 +88,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/09275f6cdeb8e2398796f372a3fd33b4
+      CodeUri: s3://gpta2017/8a37ea6e81eccc3b8c5b1e54f4f5dc12
       Environment:
         Variables:
           TABLE_NAME:
@@ -85,6 +105,15 @@ Resources:
       Timeout: 10
     Type: AWS::Serverless::Function
   Participant:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
+  ParticipantArrivalInfo:
     Properties:
       PrimaryKey:
         Name: id

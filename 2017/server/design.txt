@@ -9,3 +9,6 @@ Routes
 
 /programs/{id}              -- get given programs
 /programs/{id}/participants -- get participant for given programs
+
+/participants/{id}/arrivalInfo/{status}  -- post the status
+
