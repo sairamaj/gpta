@@ -10,9 +10,18 @@ import Foundation
 
 class Program{
     var name: String!
+    internal var Participants:[Participant] = []
     
     init(name:String ){
         self.name = name
-
+ 
+    }
+    
+    func getParticipants()->[Participant]{
+        return self.Participants
+    }
+    
+    func addParticipant(participant: Participant) -> Void{
+        self.Participants.append(participant)
     }
 }
