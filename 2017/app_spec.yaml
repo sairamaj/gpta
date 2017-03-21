@@ -42,14 +42,16 @@ Resources:
   GetPrograms:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: getPrograms.handler
+      Handler: getEventProgramsWithDetails.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBReadOnlyAccess
       CodeUri: server/src
       Timeout: 10
       Environment:
         Variables:
-          TABLE_NAME: !Ref ProgramTable
+          TABLE_NAME_PROGRAM: !Ref ProgramTable
+          TABLE_NAME_PARTICIPANTS: !Ref Participant
+          TABLE_NAME_PROGRAMPARTICIPANTS: !Ref ProgramParticipants
       Events:
         GetResource:
           Type: Api

@@ -9,7 +9,7 @@ if (process.argv.length > 2) {
         dev = false
     }
 }
-process.env.dev = false
+//process.env.dev = false
 var Promise = require('bluebird')
 var evt = Promise.promisifyAll(require('./event'))
 var yaml = require('js-yaml');

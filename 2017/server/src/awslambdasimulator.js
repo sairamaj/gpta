@@ -5,6 +5,7 @@ var getEvents = require('./getEvents').handler
 var getPrograms = require('./getPrograms').handler
 var getProgramParticipants = require('./getProgramParticipants').handler
 var ddParticipantArrivalInfo  = require('./addParticipantArrivalInfo').handler
+var getEventProgramsWithDetails = require('./getEventProgramsWithDetails').handler
 
 function getContext(res) {
     var context = {}
@@ -55,6 +56,19 @@ app.get('/events/:id/programs', function (req, res) {
     var e = createEvent(req.params.id)
     console.log(JSON.stringify(e, null, 2))
     getPrograms(e, getContext(res), null)
+})
+
+app.get('/events/:id/programwithdetails', function (req, res) {
+    process.env.TABLE_NAME_PROGRAM = "Program"
+    process.env.TABLE_NAME_PARTICIPANTS = "Participant"
+    process.env.TABLE_NAME_PROGRAMPARTICIPANTS = "ProgramParticipants"
+
+    console.log('=========================')
+    console.log(req.path)
+    console.log("param id:" + req.params.id)
+    var e = createEvent(req.params.id)
+    console.log(JSON.stringify(e, null, 2))
+    getEventProgramsWithDetails(e, getContext(res), null)
 })
 
 app.get('/programs/:id/participants', function (req, res) {
