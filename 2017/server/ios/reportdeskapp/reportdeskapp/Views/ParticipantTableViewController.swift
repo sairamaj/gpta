@@ -33,21 +33,25 @@ class ParticipantTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return self.participants.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "participantcellidentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "participantcellidentifier", for: indexPath) as! ParticipantTableViewCell
 
-        var participant = self.participants[indexPath.row]
-        cell.textLabel?.text =  participant.name
+        let participant = self.participants[indexPath.row]
+        cell.CurrentParticipant = participant
+        cell.nameLabel?.text =  participant.name
+        if participant.arrived {
+            cell.arrivedSwitch.isOn = true
+        }
 
         return cell
     }

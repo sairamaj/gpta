@@ -17,6 +17,7 @@
 		C80E64131E7F702B001AE5FD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E64121E7F702B001AE5FD /* Repository.swift */; };
 		C8CD28F81E817E290052B69B /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CD28F71E817E290052B69B /* Participant.swift */; };
 		C8CD28FA1E817FF40052B69B /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */; };
+		C8E582BF1E82D08000496EB5 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C80E64121E7F702B001AE5FD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = Repository/Repository.swift; sourceTree = "<group>"; };
 		C8CD28F71E817E290052B69B /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewController.swift; path = Views/ParticipantTableViewController.swift; sourceTree = "<group>"; };
+		C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewCell.swift; path = Views/ParticipantTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				C80E640C1E7F6F38001AE5FD /* ProgramTableViewController.swift */,
 				C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */,
+				C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				C80E64111E7F6F96001AE5FD /* Program.swift in Sources */,
 				C80E640D1E7F6F38001AE5FD /* ProgramTableViewController.swift in Sources */,
 				C80E64131E7F702B001AE5FD /* Repository.swift in Sources */,
+				C8E582BF1E82D08000496EB5 /* ParticipantTableViewCell.swift in Sources */,
 				C80E63FC1E7F6EE7001AE5FD /* ViewController.swift in Sources */,
 				C8CD28FA1E817FF40052B69B /* ParticipantTableViewController.swift in Sources */,
 				C80E63FA1E7F6EE7001AE5FD /* AppDelegate.swift in Sources */,
