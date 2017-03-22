@@ -4,8 +4,9 @@ var app = express()
 var getEvents = require('./getEvents').handler
 var getPrograms = require('./getPrograms').handler
 var getProgramParticipants = require('./getProgramParticipants').handler
-var ddParticipantArrivalInfo  = require('./addParticipantArrivalInfo').handler
+var addParticipantArrivalInfo  = require('./addParticipantArrivalInfo').handler
 var getEventProgramsWithDetails = require('./getEventProgramsWithDetails').handler
+var getParticipantsArrivalInfo  = require('./getParticipantsArrivalInfo').handler
 
 function getContext(res) {
     var context = {}
@@ -58,7 +59,7 @@ app.get('/events/:id/programs', function (req, res) {
     getPrograms(e, getContext(res), null)
 })
 
-app.get('/events/:id/programwithdetails', function (req, res) {
+app.get('/events/:id/programdetails', function (req, res) {
     process.env.TABLE_NAME_PROGRAM = "Program"
     process.env.TABLE_NAME_PARTICIPANTS = "Participant"
     process.env.TABLE_NAME_PROGRAMPARTICIPANTS = "ProgramParticipants"
@@ -82,13 +83,18 @@ app.get('/programs/:id/participants', function (req, res) {
     getProgramParticipants(e, getContext(res), null)
 })
 
+app.get('/participants/arrivalinfo', function(req,res){
+    process.env.TABLEPARTCIPANTARRIVALINFO = "ParticipantArrivalInfo"
+    getParticipantsArrivalInfo({}, getContext(res), null)
+})
+
 app.post('/participants/:id/arrivalinfo/:status', function(req,res){
-    process.env.TABLE_NAME = "ParticipantArrivalInfo"
+    process.env.TABLEPARTCIPANTARRIVALINFO = "ParticipantArrivalInfo"
     console.log(req.path)
     console.log("param id:" + req.params.id)
     console.log("param status:" + req.params.status)
     var e = createEvent(req.params.id, req.params.status)
-    ddParticipantArrivalInfo( e, getContext(res),null)
+    addParticipantArrivalInfo( e, getContext(res),null)
 })
 
 console.log('listening 4000...')

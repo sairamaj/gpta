@@ -6,11 +6,9 @@ var evt = Promise.promisifyAll(require('./event'))
 exports.handler = function (event, context, callback) {
     const tableName = process.env.TABLEPARTCIPANTARRIVALINFO
     console.log('table name:' + tableName)
-    var participantId = util.getPathParameter(event, "id")
-    var arrivalStatus = util.getPathParameter(event, "status")
-    evt.addParticipantArrivalInfoAsync(tableName, participantId, arrivalStatus )
-        .then(status => {
-            context.succeed(util.createResponse(200, status))
+    evt.getParticipantArrivalInfoAsync(tableName)
+        .then(data => {
+            context.succeed(util.createResponse(200, data))
         })
         .catch(err => {
             console.log(err)

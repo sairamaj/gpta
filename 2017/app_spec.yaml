@@ -78,6 +78,24 @@ Resources:
             Path: /programs/{id}/participants
             Method: get
 
+  GetParticipantsArrivalInfo:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getParticipantsArrivalInfo.handler
+      Runtime: nodejs4.3
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: server/src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLEPARTCIPANTARRIVALINFO: !Ref ParticipantArrivalInfo
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /participants/arrivalinfo
+            Method: get
+
   AddParticipantArrivalInfo:
     Type: AWS::Serverless::Function
     Properties:
@@ -88,13 +106,12 @@ Resources:
       Timeout: 10
       Environment:
         Variables:
-          TABLE_NAME: !Ref ProgramParticipants
-          TABLE_PARTICIPANTS: !Ref Participant
+          TABLEPARTCIPANTARRIVALINFO: !Ref ParticipantArrivalInfo
       Events:
         GetResource:
           Type: Api
           Properties:
-            Path: /participant/{id}/arrivalinfo/{status}
+            Path: /participants/{id}/arrivalinfo/{status}
             Method: post
 
 
