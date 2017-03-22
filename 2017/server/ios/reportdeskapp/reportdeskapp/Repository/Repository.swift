@@ -41,12 +41,22 @@ class Repository{
                     let program = Program(name: name)
                     programs.append(program )
                     
+                    if let participants = dictionary["participants"] as? [Any] {
+                        for participant in participants{
+                            if let participantsInfo = participant as? [String:Any]{
+                                print(participantsInfo["name"] as! String)
+                                program.addParticipant(participant: Participant(name: participantsInfo["name"] as! String) )
+                            }
+                        }
+
+                        
+                    }
+         
                 }
+                
             }
             
             callback(programs)
-            
-            
         })
     }
     

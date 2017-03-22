@@ -1,43 +1,28 @@
 //
-//  ProgramTableViewController.swift
+//  ParticipantTableViewController.swift
 //  reportdeskapp
 //
-//  Created by Sourabh Jamlapuram on 3/19/17.
+//  Created by Sourabh Jamlapuram on 3/21/17.
 //  Copyright © 2017 gpta. All rights reserved.
 //
 
 import UIKit
 
-class ProgramTableViewController: UITableViewController {
+class ParticipantTableViewController: UITableViewController {
 
-     var programs:[Program] = []
-    
+    var CurrentProgram:Program!
+    var participants:[Participant] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
-        Repository.shared.getPrograms( callback:    {
-            (objects) -> Void in
-            
-            
-            for object in objects{
-                self.programs.append(object)
-            }
-            
-            self.sortMenuItems()
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()    // reload in UI thread.
-            }
-            
-        })
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.participants = CurrentProgram.getParticipants()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,23 +39,19 @@ class ProgramTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return programs.count
+        return self.participants.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "participantcellidentifier", for: indexPath)
 
-        cell.textLabel?.text = programs[indexPath.row].name
+        var participant = self.participants[indexPath.row]
+        cell.textLabel?.text =  participant.name
 
         return cell
     }
  
-    func sortMenuItems() -> Void{
-        self.programs = self.programs.sorted(by: { (p1, p2) -> Bool in
-            p1.name.localizedCompare(p2.name)  == ComparisonResult.orderedAscending      })
-        
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -108,19 +89,8 @@ class ProgramTableViewController: UITableViewController {
     */
 
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        var participantController = segue.destination as! ParticipantTableViewController
-        
-        if let selectedRowPath  = self.tableView.indexPathForSelectedRow{
-            var currentProgram = self.programs[selectedRowPath.row]
-           // participantController.Participants = self.Programs[selectedRowPath.row].getParticipants()
-            participantController.CurrentProgram = currentProgram
-            
-        }
-        
-    }
+    // MARK: - Navigation
+
+    
 
 }
