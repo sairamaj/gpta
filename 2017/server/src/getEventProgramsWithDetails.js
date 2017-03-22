@@ -35,8 +35,10 @@ exports.handler = function (event, context, callback) {
                                 programDetail.id = p.id
                                 programDetail.participants = programParticipants.filter(pp => pp.programId === p.id)
                                 programDetail.participants = programDetail.participants.map( pp =>{
+                                    var p = participants.filter( pt1 => pt1.id == pp.id).first()
                                     return {
-                                        name : participants.filter( pt1 => pt1.id == pp.id).first().name
+                                        name : p.name,
+                                        id: p.id
                                     }
                                     
                                 })

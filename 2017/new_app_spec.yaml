@@ -3,18 +3,16 @@ Description: GPTa Application
 Resources:
   AddParticipantArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2017/c3dd7adb3044ce6a35ae51c39864d76e
+      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
       Environment:
         Variables:
-          TABLE_NAME:
-            Ref: ProgramParticipants
-          TABLE_PARTICIPANTS:
-            Ref: Participant
+          TABLEPARTCIPANTARRIVALINFO:
+            Ref: ParticipantArrivalInfo
       Events:
         GetResource:
           Properties:
             Method: post
-            Path: /participant/{id}/arrivalinfo/{status}
+            Path: /participants/{id}/arrivalinfo/{status}
           Type: Api
       Handler: addParticipantArrivalInfo.handler
       Policies: AmazonDynamoDBReadOnlyAccess
@@ -32,7 +30,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/c3dd7adb3044ce6a35ae51c39864d76e
+      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
       Environment:
         Variables:
           TABLE_NAME:
@@ -50,7 +48,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/c3dd7adb3044ce6a35ae51c39864d76e
+      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
       Environment:
         Variables:
           TABLE_NAME:
@@ -66,9 +64,27 @@ Resources:
       Runtime: nodejs4.3
       Timeout: 10
     Type: AWS::Serverless::Function
+  GetParticipantsArrivalInfo:
+    Properties:
+      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      Environment:
+        Variables:
+          TABLEPARTCIPANTARRIVALINFO:
+            Ref: ParticipantArrivalInfo
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /participants/arrivalinfo
+          Type: Api
+      Handler: getParticipantsArrivalInfo.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
   GetProgramParticipants:
     Properties:
-      CodeUri: s3://gpta2017/c3dd7adb3044ce6a35ae51c39864d76e
+      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
       Environment:
         Variables:
           TABLE_NAME:
@@ -88,7 +104,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/c3dd7adb3044ce6a35ae51c39864d76e
+      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
       Environment:
         Variables:
           TABLE_NAME_PARTICIPANTS:

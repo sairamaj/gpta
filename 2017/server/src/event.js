@@ -64,17 +64,32 @@ function addParticipantToProgram(tableName, participantId, programId, callback) 
   })
 }
 
-function addArrivalInfoToParticipant(tableName, id, arrivalInfo, callback) {
+function addParticipantArrivalInfo(tableName, id, isArrived, callback) {
   var data = {
-    'id': participantId,
-    'isArrived': arrivalInfo.isArrived ? 1 : 0,
-    'Date': Date()
+    'id': id,
+    'isArrived': isArrived ? 1: 0
   }
 
   aws.writeDb(tableName, data, function (err, status) {
     callback(err, status)
   })
 }
+
+function getParticipantArrivalInfo(tableName, callback) {
+  aws.readDb(tableName, function (err, data) {
+    if (err) {
+      callback(err, null)
+    } else {
+      var events = []
+      data.Items.forEach(function (event) {
+        events.push(event)
+      })
+      callback(null, events)
+    }
+  })
+}
+
+
 
 function getPrograms(tableName, eventId, callback) {
   aws.readDb(tableName, function (err, data) {
@@ -166,6 +181,7 @@ module.exports.addParticipantToProgram = addParticipantToProgram
 module.exports.getPrograms = getPrograms
 module.exports.getProgramParticipants = getProgramParticipants
 module.exports.getParticipants = getParticipants
-module.exports.addArrivalInfoToParticipant = addArrivalInfoToParticipant
+module.exports.addParticipantArrivalInfo = addParticipantArrivalInfo
 module.exports.getAllParticipants = getAllParticipants
 module.exports.getAllProgramParticipants = getAllProgramParticipants
+module.exports.getParticipantArrivalInfo = getParticipantArrivalInfo
