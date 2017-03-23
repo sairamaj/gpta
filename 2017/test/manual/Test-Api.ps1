@@ -22,12 +22,16 @@ $participant = $programDetails | select -first 1 | select participants
 $firstParticipant = ($participant.participants | select -first 1)
 $firstParticipant.id
 
-# post arrival info ( POST /participants/{id}/arrivalinfo/{status}
-$arrivalinfourl = "$url/participants/$($firstParticipant.id)/arrivalinfo/1"
+$arrivalinfourl = "$url/participants/arrivalinfo"
 $arrivalinfourl
-Invoke-RestMethod -Method POST $arrivalinfourl
+$postData = @"
+{ "id": "$participantId", "status" : "1"}
+"@
 
-return
+$postData
+Invoke-RestMethod -Method POST -Uri $arrivalinfourl -Body $postData
+
+
 # get participants arrival info ( GET /participants/arrivalinfo )
 $arrivalInfoUrl = "$url/participants/arrivalinfo"
 Invoke-RestMethod  $arrivalInfoUrl

@@ -1,12 +1,15 @@
 process.env.dev = true
 var express = require('express')
+var bodyParser = require('body-parser')
 var app = express()
 var getEvents = require('./getEvents').handler
 var getPrograms = require('./getPrograms').handler
 var getProgramParticipants = require('./getProgramParticipants').handler
-var addParticipantArrivalInfo  = require('./addParticipantArrivalInfo').handler
+var addParticipantArrivalInfo = require('./addParticipantArrivalInfo').handler
 var getEventProgramsWithDetails = require('./getEventProgramsWithDetails').handler
-var getParticipantsArrivalInfo  = require('./getParticipantsArrivalInfo').handler
+var getParticipantsArrivalInfo = require('./getParticipantsArrivalInfo').handler
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 function getContext(res) {
     var context = {}
@@ -20,15 +23,15 @@ function getContext(res) {
     return context
 }
 
-function createEvent(id, status) {
+function createEvent(id, body) {
     var event = {
         pathParameters: {
-            id: "",
-            status: status
+            id: ""
         }
     }
 
     event.pathParameters.id = id
+    event.body = JSON.stringify({ id:"abc", "status": "2"})
     console.log(event)
     console.log(JSON.stringify(event, null, 2))
     return event
@@ -83,18 +86,17 @@ app.get('/programs/:id/participants', function (req, res) {
     getProgramParticipants(e, getContext(res), null)
 })
 
-app.get('/participants/arrivalinfo', function(req,res){
+app.get('/participants/arrivalinfo', function (req, res) {
     process.env.TABLEPARTCIPANTARRIVALINFO = "ParticipantArrivalInfo"
     getParticipantsArrivalInfo({}, getContext(res), null)
 })
 
-app.post('/participants/:id/arrivalinfo/:status', function(req,res){
+app.post('/participants/arrivalinfo', function (req, res) {
     process.env.TABLEPARTCIPANTARRIVALINFO = "ParticipantArrivalInfo"
     console.log(req.path)
-    console.log("param id:" + req.params.id)
-    console.log("param status:" + req.params.status)
-    var e = createEvent(req.params.id, req.params.status)
-    addParticipantArrivalInfo( e, getContext(res),null)
+    console.log("param id:" + req.body)
+    var e = createEvent(req.params.id, req.body)
+    addParticipantArrivalInfo(e, getContext(res), null)
 })
 
 console.log('listening 4000...')

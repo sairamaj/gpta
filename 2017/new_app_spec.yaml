@@ -3,7 +3,7 @@ Description: GPTa Application
 Resources:
   AddParticipantArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
       Environment:
         Variables:
           TABLEPARTCIPANTARRIVALINFO:
@@ -12,10 +12,10 @@ Resources:
         GetResource:
           Properties:
             Method: post
-            Path: /participants/{id}/arrivalinfo/{status}
+            Path: /participants/arrivalinfo
           Type: Api
       Handler: addParticipantArrivalInfo.handler
-      Policies: AmazonDynamoDBReadOnlyAccess
+      Policies: AmazonDynamoDBFullAccess
       Runtime: nodejs4.3
       Timeout: 10
     Type: AWS::Serverless::Function
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
       Environment:
         Variables:
           TABLE_NAME:
@@ -48,7 +48,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
       Environment:
         Variables:
           TABLE_NAME:
@@ -66,7 +66,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetParticipantsArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
       Environment:
         Variables:
           TABLEPARTCIPANTARRIVALINFO:
@@ -84,7 +84,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetProgramParticipants:
     Properties:
-      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
       Environment:
         Variables:
           TABLE_NAME:
@@ -104,7 +104,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/9bfce7e60fc33e77c6cb4fd10fe34afe
+      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
       Environment:
         Variables:
           TABLE_NAME_PARTICIPANTS:
