@@ -9,9 +9,21 @@
 import Foundation
 
 class Participant{
+    var id:String!
     var name: String!
+    var arrived: Bool
     
-    init(name:String ){
+    init(id:String, name:String){
+        self.id = id
         self.name = name
+        self.arrived = false
+    }
+    
+    func setArrivalInfo(arrived:Bool) -> Void{
+        self.arrived = arrived
+    }
+    
+    func getId()->String{
+        return self.id
     }
 }

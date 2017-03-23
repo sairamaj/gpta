@@ -45,7 +45,7 @@ class Repository{
                         for participant in participants{
                             if let participantsInfo = participant as? [String:Any]{
                                 print(participantsInfo["name"] as! String)
-                                program.addParticipant(participant: Participant(name: participantsInfo["name"] as! String) )
+                                program.addParticipant(participant: Participant(id: participantsInfo["id"] as! String, name: participantsInfo["name"] as! String) )
                             }
                         }
 
@@ -57,9 +57,52 @@ class Repository{
             }
             
             callback(programs)
+            Repository.shared.getParticipantArrivalInfo(programs: programs)
         })
     }
     
+    func getParticipantArrivalInfo(programs:[Program]){
+        get( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, callback: {
+            (json) -> Void in
+            
+            print(json)
+            for m in json{
+                if let dictionary = m as? [String: Any] {
+                    let id = dictionary["id"] as! String
+                    let arrived = dictionary["arrived"] as! Int
+
+                    print("id:" + id)
+                    print(arrived)
+                    
+                    for program in programs{
+                        for participant in program.getParticipants(){
+                            if( participant.getId() == id){
+                                participant.setArrivalInfo(arrived: arrived==1 ? true: false)
+                            }
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+            //callback(programs)
+        })
+
+    }
+    
+    func updateParticipantArrivalInf(id:String, isArrived:Bool){
+        
+        let participantArrivalInfo = String(format:"{\"id\": \"\(id)\" , \"arrived\": \"\(isArrived)\"}")
+        print(participantArrivalInfo)
+        
+   /*     post( url: URL(string: getApiUrl(resource: "menuitems"))!, input:saveMenuItem, callback: {
+            (json) -> Void in
+            
+            print("menuitem was saved successfully")
+        })
+ */
+    }
     /*
      http get utility function
      */
