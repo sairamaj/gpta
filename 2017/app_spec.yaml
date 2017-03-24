@@ -101,7 +101,7 @@ Resources:
     Properties:
       Handler: addParticipantArrivalInfo.handler
       Runtime: nodejs4.3
-      Policies: AmazonDynamoDBReadOnlyAccess
+      Policies: AmazonDynamoDBFullAccess
       CodeUri: server/src
       Timeout: 10
       Environment:
@@ -111,7 +111,7 @@ Resources:
         GetResource:
           Type: Api
           Properties:
-            Path: /participants/{id}/arrivalinfo/{status}
+            Path: /participants/arrivalinfo
             Method: post
 
 
