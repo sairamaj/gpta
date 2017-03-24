@@ -69,7 +69,7 @@ class Repository{
             for m in json{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
-                    let arrived = dictionary["arrived"] as! Int
+                    let arrived = (Int)(dictionary["arrived"] as! String)
 
                     print("id:" + id)
                     print(arrived)
@@ -93,15 +93,16 @@ class Repository{
     
     func updateParticipantArrivalInf(id:String, isArrived:Bool){
         
-        let participantArrivalInfo = String(format:"{\"id\": \"\(id)\" , \"arrived\": \"\(isArrived)\"}")
+        let arrived = isArrived ? 1: 0
+        let participantArrivalInfo = String(format:"{\"id\": \"\(id)\" , \"arrived\": \"\(arrived)\"}")
         print(participantArrivalInfo)
         
-   /*     post( url: URL(string: getApiUrl(resource: "menuitems"))!, input:saveMenuItem, callback: {
+        post( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, input:participantArrivalInfo, callback: {
             (json) -> Void in
             
             print("menuitem was saved successfully")
         })
- */
+ 
     }
     /*
      http get utility function
@@ -141,6 +142,49 @@ class Repository{
         task.resume()
     }
     
+    /*
+     http post utility function.
+     */
+    func post(url:URL, input:String, callback : @escaping ([Any]) -> Void){
+        
+        //var input:String = ""
+        print(input)
+        let config = URLSessionConfiguration.default // Session Configuration
+        let session = URLSession(configuration: config) // Load configuration into Session
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = input.data(using: .utf8)
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) in
+            
+            if error != nil {
+                
+                print(error!.localizedDescription)
+                
+            } else {
+                
+                do {
+                    print(data as Any)
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [Any]
+                    {
+                        print(json)
+                        callback(json)
+                        
+                    }else{
+                        print("unable to deserialize.")
+                    }
+                } catch {
+                    
+                    print("error in JSONSerialization")
+                    
+                }
+            }
+            
+        })
+        task.resume()
+        
+    }
     func getApiUrl(resource:String) ->String{
         return "https://rzkowjvkb0.execute-api.us-west-2.amazonaws.com/Prod" + resource
     }
