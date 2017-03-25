@@ -11,7 +11,7 @@ exports.handler = function (event, context, callback) {
     console.log('-------------------')
     var arrivalInfo = JSON.parse(event.body)
     console.log('arrivalInfo:' + JSON.stringify(arrivalInfo, null, 2))
-    evt.addParticipantArrivalInfoAsync(tableName, arrivalInfo.id, arrivalInfo.status)
+    evt.addParticipantArrivalInfoAsync(tableName, arrivalInfo.id, arrivalInfo.arrived)
         .then(status => {
             context.succeed(util.createResponse(200, status))
         })
