@@ -1,0 +1,316 @@
+#program|Opening & Prayer Song|Kiran Ivaturi|2:30:00|1:30:00|2:00:00|05:00
+
+Anusha Mudigonda
+
+#program|Bethany's Rockers|Falguni|2:37:00|1:30:00|2:00:00|05:00
+
+Viraj Akula
+Sri Harsha Padigi
+Srivatsa Tadikonda
+Jeeva Moorthy
+Pranya Batchu
+Siddhi Prajapati
+Kavya Ashok
+Anavi Gautam
+
+#program|Rockstar Angels|Kirthana Chamarthi|2:44:00|1:40:00|2:05:00|04:00
+
+Sreeprada Konduru
+Eesha Paruvada
+Anvi Kaludindi
+Kavya Veeredhi
+Riya Kona
+Sreenidhi Kandru
+
+#program|Anjana Thanayudaina|Nartana School of Dance|2:50:00|1:45:00|2:15:00|05:00
+
+Uma Nair
+Hasini Annamaneni
+Mona Akuthota
+Dhatri Dinavahi
+Niyathi Vallabhu
+Sai Archisha Annavajjala
+Raaga Mandala
+Sarvagna Sangaraju
+Srinidhi Inam
+
+#program|Telugu Manabadi - Baathu Story|Jyothy Vemuri|2:57:00|1:45:00|2:25:00|09:00
+
+Raaga Mandala
+Jay Kodithyala
+Tanvi Sri Kuram
+Shruti Prudvi
+Anushka Kandula
+Shreeya Bukka
+Akhil Mothukuri
+Shreyans Reddy Purumandla
+Shreyes Injeti
+Hrithik Ketineni
+
+#program|Telugu Manabadi - Ramayanam|Jyothy Vemuri|3:14:00|1:45:00|2:45:00|08:00
+
+Siddesh Mangipudi
+Aditya Ivaturi
+Aarya Aluru
+Sriya Tallapragada
+Aneesh Saripalli
+Keertana Sattiraju
+Mahathi Sattiraju
+Sri Dhriti Kuram
+Dinesh Saripalli
+Anvitha Mahankali
+Santosh Ramesh
+Tanvi Sri Kuram
+Tanya Krishna Harathi
+Raaga Mandala
+Abhishek Prolavarapu
+
+#program|Solo Song by Hitesh Vavilapalli|Hitesh V / Sharada Mangipudi|3:08:00|1:50:00|2:38:00|04:00
+
+Hitesh Vavilapalli
+
+#program|Nartana Ganapathim Hindolam Thillana|Chitra Sridhar|3:24:00|2:30:00|2:55:00|12:00
+
+Adithi Mahankali
+Rucha
+Anvitha Mahankali
+Anvitha Bavineni
+Ananya Pandit
+Trishna Nisha Kumar
+Ria Majumdar
+Aarushi Pagidi
+
+#program|Solo Song by Ananya Lanka|Ananya L /Sharada Mangipudi|3:38:00|1:50:00|3:05:00|03:00
+
+Ananya Lanka
+
+#program|Guvvah Toh Gorinka|Kirthana Chamarthi|3:43:00|2:00:00|3:15:00|06:00
+
+Laasya Reddy Kanamatha
+Kundana Addala
+Shreyans Purumandla
+Shaurya Badiganti
+Lakshmi Sri Reddy V
+Sai Siddhartha Kommineni
+Ruchita Bonagiri
+Suhaas Pinnamaneni
+
+#program|Mani Noopura Dhari|Nartana School of Dance|3:51:00|2:00:00|3:20:00|05:00
+
+Neha Vimal
+Geetha Sri Badam
+Shaivi Nangunoori
+Praseeda Ravuri
+Souparnika Munukutla
+Mahathi Sattiraju
+Meghan Elise Clement
+Leelavati Raghuraman
+Kajal Gollamudi Lewis
+Avantika Yellepeddy
+Manasvi Yelakanti
+
+#program|Kiran Emcee's Performance|Kiran Ivaturi|3:58:00|2:00:00|3:30:00|02:00
+
+Kiran
+
+#program|Tollywood Hungama|Harika Yarlagadda|4:02:00|2:15:00|3:30:00|05:00
+
+Aarush Bathula
+Pujith Kondapa
+Ritvik Sharma
+Shreshta Chalicham
+Gouri Soukya Pattibandala
+Nitisha Bangaru
+Medhansh Gubbala
+Ainesh Yarlagadda
+
+#program|Ugadi Kavithalu|Padma Susarla|4:09:00|12:00:00|12:00:00|03:00
+
+Padma Susarla
+
+#program|Thodaimangalam|Jayanthi Raman|4:14:00|2:15:00|3:40:00|10:00
+
+Shreya Veeredhi
+Trisha Shetty
+Janani Maheswaran
+Autri Das
+Monisha Prasad
+Diya Saha
+Shreya Kaushik
+Nilani Maheswaran
+Avni Gulrajani
+Shankari Kokori
+
+#program|Songs by Eswara Music School|Malavi Mudigonda|4:26:00|2:15:00|3:50:00|10:00
+
+Shreyas Kotamraju
+Anusha Mudigonda
+Swara Kotamraju
+Bhavika Pasuparthi
+Upasya Swarna
+
+#program|Satyabhama - Narakasura|Sharada Mangipudi|4:38:00|2:15:00|4:00:00|06:00
+
+Srikruthi Neralla
+
+#program|Rhythmic Stars - Tollywood Medley|Sudeshna Ganguly|4:46:00|2:30:00|4:10:00|07:00
+
+Abhishek Polavarapu
+Sriraghav Bavineni
+Sahith Chandra
+Shoni Jain
+Karthik Anumandla
+Yesaswani Jupudi
+Jayant Sunkara
+Shefali Dontula
+Saanvi Telkar
+Pranavi Sammdi
+
+#program|Solo Song by Anusha Mudigonda|Anusha Mudigonda|4:55:00|2:30:00|4:20:00|04:00
+
+Anusha Mudigonda
+
+#program|Nataraja|Prashanthi Harathi|5:01:00|2:30:00|4:25:00|08:00
+
+Alekhya Bhupalam
+Sahasra Chamarthi
+Chandrshriya Myneni
+Tanya Krishna Harathi
+Vedika Sunehari Sheth
+Sridhriti Kuram
+Devika Nirali Sheth
+Swara Kottamraju	
+Anushka Kandula	
+Aarya Aluru
+Aashritha Tubati
+Mahalakshmi Chamarthi
+Aditi Vijay
+
+#program|Vasudhika Kutumbam|Sharada Mangipudi|5:11:00|2:15:00|4:35:00|15:00
+
+Likhila Vavilapalli
+Harshith Kodali
+Tanisha Sorangavi
+Sharadha Mangipudi
+Vishali Ambula
+Uthkarsh Kottali
+Ananya Sorangavi
+Srihitha Neralla
+Adhira Malladi
+Prabhaas Nakkala
+Goutha Beesetti
+Dhruthi Kodali
+Tejaswani Datla
+Mahika Pulla
+Piyush Beesetti
+Simra Bawa
+Bhavnish Tarigopula
+Sai Datla
+Ashitha Pulla
+Haasini Godavarthi
+Praneeth
+
+#program|Dolayam - Annamayya|Nartana School of Dance|5:28:00|2:30:00|4:45:00|05:00
+
+Prameela Upadhyayula
+Kalaiarasi Kauppaiyan
+Aishwarya Karumanchi
+Swapna Adluru
+Lalitha Dinavahi
+Gunashree Ratnakara
+Rashmi Gottipati
+
+#program|Super Machi on the Floor|Jahnavi Kolli|5:35:00|2:30:00|5:00:00|05:00
+
+Tanvi Akula
+Archana Venigalla
+Akshaya Sakala
+Vibha Addala
+Trisha Janappareddi
+Manasvi Meka
+Nicole Damahe
+Manika Nunna
+
+#program|Solo Song by Snigdha Malladi|Snigdha Malladi|5:42:00|5:05:00|12:00:00|04:00
+
+Snigdha Malladi
+
+#program|Mamavatu Sri Saraswati|Nartana School of Dance|5:48:00|2:30:00|5:10:00|04:00
+
+Shruthi Prudvi
+Shrika Ganta
+Shreeya Bukka
+Srihitha Kotturi
+Krishi Santhoshi Padala
+Samhitha Thatikonda
+Ria Kamineni
+Neha Thodupunuri
+
+#program|Song Medley by PSU Students|Ajay Krishna & Sindhuja|5:54:00|5:15:00|12:00:00|05:00
+
+AjayKrishna Uyyala
+Sindhuja Gillela
+
+#program|Mooga Manasulu|Prem Gandhamaneni|6:01:00|1:00:00|5:30:00|06:00
+
+No Names
+
+#program|Raasaleela - Fusion|Prashanthi Harathi|6:09:00|2:30:00|5:35:00|08:00
+
+Harilakshmi Bhupalam
+Jaya Yannam
+Thejaswi Nallan Chakravartula
+Swati Reddy
+Rohini Kottamraju	
+Anjana Manjari Penumarti
+Padmavalli Chamarthi
+Devika Gandey
+Yagna Jyothy Vemuri	
+Nirmala Pulakanti
+
+#program|Sivoham|Sirisha Malladi|6:19:00|2:30:00|5:45:00|08:00
+
+Snigdha Malladi
+Anya Anand
+Rhusha Arramreddy
+Sanaah Arramreddy
+Archita Harathi
+Arshia Rajeshnarayan
+
+#program|Fusion Divas|Kirtana Chamarthi|6:29:00|2:45:00|5:55:00|08:00
+
+Kirthana Chamarthi
+Sushma Chennu
+Mythili Jaggavarapu
+Samatha Padala
+Raajitha Dasari
+
+#program|Song medley by Rajeev|Rajeev Kattekola|6:39:00|2:30:00|6:00:00|10:00
+
+Rajeev Kattekola
+
+#program|Vote of Thanks|Surya Petluri|6:51:00|6:15:00|12:00:00|10:00
+
+Surya Petluri
+
+#program|Brahmam Okkate|Nartana School of Dance|7:03:00|3:00:00|6:25:00|13:00
+
+Mallika Chennupaty
+Meghana Narahari
+Ruhika Prasad
+Harini Ganesh
+Sowmya Jujjuri
+Bhavani Ganesh
+Ratna Bhupalam
+Mini Jairaj
+Janaki Kolady
+
+#program|Just Dance - Dancing Trio|Divya Yellapragada|7:18:00|3:00:00|6:40:00|10:00
+
+Madhavi Nukala
+Tripura Mulukutla
+Praveen Peri
+Divya Yellapragada
+
+#program|Chupulu Kalasina Subhavela (Movie)|Fab 8 Productions|7:30:00|3:30:00|12:00:00|20:00
+

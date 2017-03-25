@@ -29,14 +29,19 @@ function addEvent(tableName, name, callback) {
   })
 }
 
-function addProgram(tableName, eventId, name, callback) {
+function addProgram(tableName, eventId, program, callback) {
   console.log("add progam event id:" + eventId)
   var data = {
     'eventId': eventId,
-    'name': name,
-    'id': uuidV4()
-  }
-  console.log('adding program ==>' + JSON.stringify(data, null, 2))
+    'name': program.name,
+    'id': uuidV4(),
+    'choreographer': program.choreographer,
+    'programtime': program.programtime,
+    'greenroomtime': program.greenroomtime,
+    'reporttime': program.reporttime,
+    'duration': program.duration
+ }
+//  console.log('adding program ==>' + JSON.stringify(data, null, 2))
   aws.writeDb(tableName, data, function (err, status) {
     callback(err, data)
   })
@@ -64,10 +69,10 @@ function addParticipantToProgram(tableName, participantId, programId, callback) 
   })
 }
 
-function addParticipantArrivalInfo(tableName, id, isArrived, callback) {
+function addParticipantArrivalInfo(tableName, id, arrivalStatus, callback) {
   var data = {
     'id': id,
-    'isArrived': isArrived ? 1: 0
+    'arrived': arrivalStatus
   }
 
   aws.writeDb(tableName, data, function (err, status) {
