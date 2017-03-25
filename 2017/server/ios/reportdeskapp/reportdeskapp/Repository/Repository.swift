@@ -29,7 +29,8 @@ class Repository{
     }
     
     func getPrograms(callback : @escaping ( [Program]) -> Void){
-        get( url: URL(string: getApiUrl(resource: "/events/54e0016a-fda3-4e35-86e1-5e17022627d4/programs"))!, callback: {
+        let apiPath: String = "/events/" + getEventId() + "/programs"
+        get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
             (json) -> Void in
             
             var programs = [Program]()
@@ -61,6 +62,11 @@ class Repository{
         })
     }
     
+    func getEventId() -> String{
+        return "1d01a2de-d0d0-4829-bb0b-5d4b09a70e15"
+        
+    }
+    
     func getParticipantArrivalInfo(programs:[Program]){
         get( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, callback: {
             (json) -> Void in
@@ -72,8 +78,7 @@ class Repository{
                     let arrived = (Int)(dictionary["arrived"] as! String)
 
                     print("id:" + id)
-                    print(arrived)
-                    
+                                    
                     for program in programs{
                         for participant in program.getParticipants(){
                             if( participant.getId() == id){
