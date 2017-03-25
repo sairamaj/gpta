@@ -9,11 +9,16 @@
 import Foundation
 
 class Program{
-    var name: String!
+    var Name: String!
+    internal var ProgramTime:String!
+    internal var ReportTime:String!
+    internal var GreenroomTime:String!
+    internal var Duration:String!
+    internal var Choreographer:String!
     internal var Participants:[Participant] = []
     
     init(name:String ){
-        self.name = name
+        self.Name = name
  
     }
     
@@ -23,5 +28,15 @@ class Program{
     
     func addParticipant(participant: Participant) -> Void{
         self.Participants.append(participant)
+    }
+    
+    func areAllParticipantsArrived()->Bool{
+        for p in self.Participants{
+            if(!p.arrived){
+                return false
+            }
+        }
+        
+        return true
     }
 }

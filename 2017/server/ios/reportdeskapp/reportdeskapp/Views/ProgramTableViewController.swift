@@ -59,16 +59,16 @@ class ProgramTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath) as! ProgramTableViewCell
 
-        cell.textLabel?.text = programs[indexPath.row].name
+        cell.CurrentProgram = self.programs[indexPath.row]
 
         return cell
     }
  
     func sortMenuItems() -> Void{
         self.programs = self.programs.sorted(by: { (p1, p2) -> Bool in
-            p1.name.localizedCompare(p2.name)  == ComparisonResult.orderedAscending      })
+            p1.Name.localizedCompare(p2.Name)  == ComparisonResult.orderedAscending      })
         
     }
 

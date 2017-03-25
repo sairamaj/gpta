@@ -37,9 +37,15 @@ class Repository{
             print(json)
             for m in json{
                 if let dictionary = m as? [String: Any] {
-                                        let name = dictionary["name"] as! String
+                    let name = dictionary["name"] as! String
+ 
                     
                     let program = Program(name: name)
+                    program.Choreographer = dictionary["choreographer"] as! String
+                    program.ProgramTime = dictionary["programtime"] as! String
+                    program.ReportTime = dictionary["reporttime"] as! String
+                    program.GreenroomTime = dictionary["greenroomtime"] as! String
+                    program.Duration = dictionary["duration"] as! String
                     programs.append(program )
                     
                     if let participants = dictionary["participants"] as? [Any] {

@@ -15,6 +15,8 @@
 		C80E640D1E7F6F38001AE5FD /* ProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E640C1E7F6F38001AE5FD /* ProgramTableViewController.swift */; };
 		C80E64111E7F6F96001AE5FD /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E64101E7F6F96001AE5FD /* Program.swift */; };
 		C80E64131E7F702B001AE5FD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E64121E7F702B001AE5FD /* Repository.swift */; };
+		C84D84981E86048C00B33BB3 /* ProgramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */; };
+		C84D849A1E860FC300B33BB3 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84D84991E860FC300B33BB3 /* ArrayExtension.swift */; };
 		C8CD28F81E817E290052B69B /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CD28F71E817E290052B69B /* Participant.swift */; };
 		C8CD28FA1E817FF40052B69B /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */; };
 		C8E582BF1E82D08000496EB5 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */; };
@@ -31,6 +33,8 @@
 		C80E640C1E7F6F38001AE5FD /* ProgramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgramTableViewController.swift; path = Views/ProgramTableViewController.swift; sourceTree = "<group>"; };
 		C80E64101E7F6F96001AE5FD /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		C80E64121E7F702B001AE5FD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = Repository/Repository.swift; sourceTree = "<group>"; };
+		C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgramTableViewCell.swift; path = Views/ProgramTableViewCell.swift; sourceTree = "<group>"; };
+		C84D84991E860FC300B33BB3 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Extensions/ArrayExtension.swift; sourceTree = "<group>"; };
 		C8CD28F71E817E290052B69B /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewController.swift; path = Views/ParticipantTableViewController.swift; sourceTree = "<group>"; };
 		C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewCell.swift; path = Views/ParticipantTableViewCell.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 		C80E63F81E7F6EE7001AE5FD /* reportdeskapp */ = {
 			isa = PBXGroup;
 			children = (
+				C84D849B1E860FCB00B33BB3 /* Extensions */,
 				C80E640F1E7F6F86001AE5FD /* Model */,
 				C80E640E1E7F6F7B001AE5FD /* Repository */,
 				C80E640B1E7F6F1D001AE5FD /* Views */,
@@ -85,6 +90,7 @@
 				C80E640C1E7F6F38001AE5FD /* ProgramTableViewController.swift */,
 				C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */,
 				C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */,
+				C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -104,6 +110,14 @@
 				C8CD28F71E817E290052B69B /* Participant.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		C84D849B1E860FCB00B33BB3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C84D84991E860FC300B33BB3 /* ArrayExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +195,10 @@
 			files = (
 				C80E64111E7F6F96001AE5FD /* Program.swift in Sources */,
 				C80E640D1E7F6F38001AE5FD /* ProgramTableViewController.swift in Sources */,
+				C84D84981E86048C00B33BB3 /* ProgramTableViewCell.swift in Sources */,
 				C80E64131E7F702B001AE5FD /* Repository.swift in Sources */,
 				C8E582BF1E82D08000496EB5 /* ParticipantTableViewCell.swift in Sources */,
+				C84D849A1E860FC300B33BB3 /* ArrayExtension.swift in Sources */,
 				C80E63FC1E7F6EE7001AE5FD /* ViewController.swift in Sources */,
 				C8CD28FA1E817FF40052B69B /* ParticipantTableViewController.swift in Sources */,
 				C80E63FA1E7F6EE7001AE5FD /* AppDelegate.swift in Sources */,
