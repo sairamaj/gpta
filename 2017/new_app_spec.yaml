@@ -3,13 +3,13 @@ Description: GPTa Application
 Resources:
   AddParticipantArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
+      CodeUri: s3://gpta2017/f82eeea7a2d1e714e1e6c6942b8f4ce4
       Environment:
         Variables:
           TABLEPARTCIPANTARRIVALINFO:
             Ref: ParticipantArrivalInfo
       Events:
-        GetResource:
+        PostResource:
           Properties:
             Method: post
             Path: /participants/arrivalinfo
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
+      CodeUri: s3://gpta2017/f82eeea7a2d1e714e1e6c6942b8f4ce4
       Environment:
         Variables:
           TABLE_NAME:
@@ -48,7 +48,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
+      CodeUri: s3://gpta2017/f82eeea7a2d1e714e1e6c6942b8f4ce4
       Environment:
         Variables:
           TABLE_NAME:
@@ -66,7 +66,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetParticipantsArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
+      CodeUri: s3://gpta2017/f82eeea7a2d1e714e1e6c6942b8f4ce4
       Environment:
         Variables:
           TABLEPARTCIPANTARRIVALINFO:
@@ -84,7 +84,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetProgramParticipants:
     Properties:
-      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
+      CodeUri: s3://gpta2017/f82eeea7a2d1e714e1e6c6942b8f4ce4
       Environment:
         Variables:
           TABLE_NAME:
@@ -104,7 +104,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2017/5d57a09daf2ff65fa7691e5be73ea53e
+      CodeUri: s3://gpta2017/f82eeea7a2d1e714e1e6c6942b8f4ce4
       Environment:
         Variables:
           TABLE_NAME_PARTICIPANTS:

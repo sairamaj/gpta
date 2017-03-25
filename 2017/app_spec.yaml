@@ -108,7 +108,7 @@ Resources:
         Variables:
           TABLEPARTCIPANTARRIVALINFO: !Ref ParticipantArrivalInfo
       Events:
-        GetResource:
+        PostResource:
           Type: Api
           Properties:
             Path: /participants/arrivalinfo
