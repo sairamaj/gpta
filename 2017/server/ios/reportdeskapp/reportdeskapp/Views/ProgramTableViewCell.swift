@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailButtonPressedDelegate{
+    func OnClicked(program:Program, currentCell:ProgramTableViewCell,isHide:Bool)
+}
+
 class ProgramTableViewCell: UITableViewCell {
 
     @IBOutlet weak var arrivalIndicatorView: UIView!
@@ -18,6 +22,8 @@ class ProgramTableViewCell: UITableViewCell {
     @IBOutlet weak var choreographerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     var CurrentProgram: Program!
+    var showDetailDelegate:DetailButtonPressedDelegate!
+     var CurrentRow:Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +50,13 @@ class ProgramTableViewCell: UITableViewCell {
         self.greenroomTimeLabel.text = self.CurrentProgram!.GreenroomTime
         self.durationLabel.text = self.CurrentProgram!.Duration
      
+    }
+    
+    
+    @IBAction func onShowHideDetails(_ sender: Any) {
+        if let delegate = self.showDetailDelegate{
+            delegate.OnClicked(program: self.CurrentProgram, currentCell: self, isHide:true)
+        }
     }
 
 }

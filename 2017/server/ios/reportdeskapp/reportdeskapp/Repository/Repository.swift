@@ -28,6 +28,19 @@ class Repository{
         
     }
     
+    var programs:[Program] = []
+    
+    func getAllParticipants() -> [Participant]{
+        var allParticipants = [Participant]()
+        for p in programs{
+            for pp in p.Participants{
+                allParticipants.append(pp)
+            }
+        }
+        
+        return allParticipants
+    }
+    
     func getPrograms(callback : @escaping ( [Program]) -> Void){
         let apiPath: String = "/events/" + getEventId() + "/programs"
         get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
@@ -65,6 +78,8 @@ class Repository{
             
             callback(programs)
             Repository.shared.getParticipantArrivalInfo(programs: programs)
+            // set programs
+            self.programs = programs
         })
     }
     

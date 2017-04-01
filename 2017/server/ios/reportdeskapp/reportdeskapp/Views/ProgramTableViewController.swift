@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ProgramTableViewController: UITableViewController {
+class ProgramTableViewController: UITableViewController ,DetailButtonPressedDelegate{
 
      var programs:[Program] = []
+     var selectedRow:Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
+
         Repository.shared.getPrograms( callback:    {
             (objects) -> Void in
             
@@ -25,7 +25,7 @@ class ProgramTableViewController: UITableViewController {
                 self.programs.append(object)
             }
             
-            self.sortMenuItems()
+            self.sortPrograms()
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
@@ -38,6 +38,8 @@ class ProgramTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,16 +64,28 @@ class ProgramTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath) as! ProgramTableViewCell
 
         cell.CurrentProgram = self.programs[indexPath.row]
-
+        cell.CurrentRow = indexPath.row
+        cell.showDetailDelegate = self
         return cell
     }
  
-    func sortMenuItems() -> Void{
+    func sortPrograms() -> Void{
         self.programs = self.programs.sorted(by: { (p1, p2) -> Bool in
             p1.Name.localizedCompare(p2.Name)  == ComparisonResult.orderedAscending      })
         
     }
 
+    /*
+     Only one program will be shown with details
+ */
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if( indexPath.row == self.selectedRow){
+            return CGFloat(250)
+        }
+        
+        return CGFloat(40)
+}
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -112,15 +126,26 @@ class ProgramTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        var participantController = segue.destination as! ParticipantTableViewController
+        let participantController = segue.destination as! ParticipantTableViewController
         
         if let selectedRowPath  = self.tableView.indexPathForSelectedRow{
-            var currentProgram = self.programs[selectedRowPath.row]
+            let currentProgram = self.programs[selectedRowPath.row]
            // participantController.Participants = self.Programs[selectedRowPath.row].getParticipants()
             participantController.CurrentProgram = currentProgram
             
         }
         
+    }
+    
+    func OnClicked(program:Program, currentCell:ProgramTableViewCell, isHide:Bool){
+        if( self.selectedRow == currentCell.CurrentRow){
+            // already details shown. hide it.
+            self.selectedRow = -1
+        }else{
+            self.selectedRow = currentCell.CurrentRow
+        }
+        
+        self.tableView.reloadData()
     }
 
 }

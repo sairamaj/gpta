@@ -22,7 +22,14 @@ class ParticipantTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.participants = CurrentProgram.getParticipants()
+        if( CurrentProgram == nil){
+            self.participants = Repository.shared.getAllParticipants()
+        }else{
+            self.participants = CurrentProgram.getParticipants()
+        }
+        
+        self.sortParticipants()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +63,10 @@ class ParticipantTableViewController: UITableViewController {
         return cell
     }
  
+    func sortParticipants() -> Void{
+        self.participants = self.participants.sorted(by: { (p1, p2) -> Bool in
+            p1.name.localizedCompare(p2.name)  == ComparisonResult.orderedAscending      })
+    }
 
     /*
     // Override to support conditional editing of the table view.
