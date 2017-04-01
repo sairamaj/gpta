@@ -10,12 +10,13 @@ $eventId = $events.id
 
 
 # get programs with details ( GET /events/{id}/programdetails/
-$programDetailsUrl = "$url/events/$eventId/programdetails"
+$programDetailsUrl = "$url/events/$eventId/programs"
 $programDetailsUrl
-#$programDetails = (Invoke-RestMethod $programDetailsUrl)
+$programDetails = (Invoke-RestMethod $programDetailsUrl)
 '------------------'
 $programDetails
 '-------------------'
+return
 
 
 $participant = $programDetails | select -first 1 | select participants
