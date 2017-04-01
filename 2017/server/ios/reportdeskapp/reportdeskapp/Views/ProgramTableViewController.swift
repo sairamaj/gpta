@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ProgramTableViewController: UITableViewController ,DetailButtonPressedDelegate{
+class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate, DetailButtonPressedDelegate{
 
      var programs:[Program] = []
+     var filteredPrograms:[Program] = []
      var selectedRow:Int = -1
+     var shouldShowSearchResults = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
-        Repository.shared.getPrograms( callback:    {
+       Repository.shared.getPrograms( callback:    {
             (objects) -> Void in
             
             
@@ -40,6 +42,7 @@ class ProgramTableViewController: UITableViewController ,DetailButtonPressedDele
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         tableView.separatorStyle = .none
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,23 +58,58 @@ class ProgramTableViewController: UITableViewController ,DetailButtonPressedDele
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return programs.count
+        
+        if shouldShowSearchResults {
+            return self.filteredPrograms.count
+        } else {
+            return self.programs.count
+        }
+
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath) as! ProgramTableViewCell
+        // Note: self.tableView is important rather than just tableView. ( tableView. works good and once searchbar is introduced we get exception )
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath) as! ProgramTableViewCell
 
-        cell.CurrentProgram = self.programs[indexPath.row]
+        if shouldShowSearchResults {
+            cell.CurrentProgram = self.filteredPrograms[indexPath.row]
+        }else{
+            cell.CurrentProgram = self.programs[indexPath.row]
+        }
+       
         cell.CurrentRow = indexPath.row
         cell.showDetailDelegate = self
+        
         return cell
     }
- 
+    
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        shouldShowSearchResults = true
+        self.filterContentForSearchText(searchText: searchText)
+
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        self.tableView.reloadData()
+    }
+    
     func sortPrograms() -> Void{
         self.programs = self.programs.sorted(by: { (p1, p2) -> Bool in
             p1.Name.localizedCompare(p2.Name)  == ComparisonResult.orderedAscending      })
+        
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+       self.filteredPrograms = self.programs.filter({( program: Program) -> Bool in
+        if (program.Name.lowercased().range(of: searchText.lowercased()) != nil){
+                return true
+            }
+            return false
+        })
         
     }
 
@@ -128,13 +166,18 @@ class ProgramTableViewController: UITableViewController ,DetailButtonPressedDele
         // Pass the selected object to the new view controller.
         let participantController = segue.destination as! ParticipantTableViewController
         
-        if let selectedRowPath  = self.tableView.indexPathForSelectedRow{
-            let currentProgram = self.programs[selectedRowPath.row]
-           // participantController.Participants = self.Programs[selectedRowPath.row].getParticipants()
-            participantController.CurrentProgram = currentProgram
-            
+        var currentProgram:Program!
+        if self.searchDisplayController!.isActive{
+            if let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow{
+                currentProgram = self.filteredPrograms[indexPath.row]
+            }
+        }else{
+            if let selectedRowPath  = self.tableView.indexPathForSelectedRow{
+                currentProgram = self.programs[selectedRowPath.row]
+            }
         }
         
+        participantController.CurrentProgram = currentProgram
     }
     
     func OnClicked(program:Program, currentCell:ProgramTableViewCell, isHide:Bool){

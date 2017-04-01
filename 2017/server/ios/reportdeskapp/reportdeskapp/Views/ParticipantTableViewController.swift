@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ParticipantTableViewController: UITableViewController {
+class ParticipantTableViewController: UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate{
 
     var CurrentProgram:Program!
     var participants:[Participant] = []
+    var filteredParticipants:[Participant] = []    
+    var shouldShowSearchResults = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,7 @@ class ParticipantTableViewController: UITableViewController {
         }
         
         self.sortParticipants()
+        tableView.separatorStyle = .none
         
     }
 
@@ -45,15 +48,26 @@ class ParticipantTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.participants.count
+        if shouldShowSearchResults {
+            return self.filteredParticipants.count
+        } else {
+            return self.participants.count
+        }
+
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "participantcellidentifier", for: indexPath) as! ParticipantTableViewCell
+        // Note: self.tableView is important rather than just tableView. ( tableView. works good and once searchbar is introduced we get exception )
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "participantcellidentifier", for: indexPath) as! ParticipantTableViewCell
 
-        let participant = self.participants[indexPath.row]
+        var participant:Participant
+        if shouldShowSearchResults {
+            participant = self.filteredParticipants[indexPath.row]
+        }else{
+            participant = self.participants[indexPath.row]
+        }
+        
         cell.CurrentParticipant = participant
         cell.nameLabel?.text =  participant.name
         if participant.arrived {
@@ -63,11 +77,32 @@ class ParticipantTableViewController: UITableViewController {
         return cell
     }
  
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        shouldShowSearchResults = true
+        self.filterContentForSearchText(searchText: searchText)
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        self.tableView.reloadData()
+    }
+    
     func sortParticipants() -> Void{
         self.participants = self.participants.sorted(by: { (p1, p2) -> Bool in
             p1.name.localizedCompare(p2.name)  == ComparisonResult.orderedAscending      })
     }
 
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        self.filteredParticipants = self.participants.filter({( participant: Participant) -> Bool in
+            if (participant.name.lowercased().range(of: searchText.lowercased()) != nil){
+                return true
+            }
+            return false
+        })
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
