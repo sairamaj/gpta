@@ -184,7 +184,9 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     }
     
     func refreshParticipantArrivalInfo(){
-        Slim.info("refreshing participant arrivals")
+        for i in 1...60{
+            Slim.info("refreshing participant arrivals")
+        }
         Repository.shared.refreshParticipantArrivalInfo( programs: self.programs, callback:    {
             (objects) -> Void in
             Slim.info("refreshing participant arrivals done.")

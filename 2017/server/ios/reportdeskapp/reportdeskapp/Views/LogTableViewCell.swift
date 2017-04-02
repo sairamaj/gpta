@@ -24,6 +24,7 @@ class LogTableViewCell: UITableViewCell {
     @IBOutlet weak var fileLabel: UILabel!
     @IBOutlet weak var lineLabel: UILabel!
     
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var logTypeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
@@ -41,6 +42,7 @@ class LogTableViewCell: UITableViewCell {
         self.lineLabel.text = String(self.Log.Line)
         self.messageLabel.text = self.Log.Message
         self.logTypeLabel.text = self.Log.LogType
+        self.idLabel.text = String(self.Log.Id)
        
     }
 

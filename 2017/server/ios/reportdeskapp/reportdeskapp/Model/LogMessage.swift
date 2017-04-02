@@ -9,6 +9,7 @@
 import Foundation
 
 class LogMessage{
+    var Id:Int
     var DateTime: Date
     var FileName:String
     var Line:Int
@@ -16,7 +17,8 @@ class LogMessage{
     var LogType:String
 
     
-    init( dateTime:Date, fileName: String, line:Int, logType:String, message:String){
+    init( id:Int, dateTime:Date, fileName: String, line:Int, logType:String, message:String){
+        self.Id = id
         self.DateTime = dateTime
         self.FileName = fileName
         self.Line = line

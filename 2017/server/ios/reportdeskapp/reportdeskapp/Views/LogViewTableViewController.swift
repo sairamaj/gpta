@@ -10,12 +10,15 @@ import UIKit
 
 class LogViewTableViewController: UITableViewController ,LogDetailButtonPressedDelegate, LogDestination{
 
+    let MAXMESSAGECOUNT:Int = 100
+    let REDUCEMESSAGEBYAFTERLIMIT:Int = 20
+    var messageCountId:Int = 0
     var messages : Array<LogMessage> = Array()
     var selectedRow:Int = -1
     
     override func viewDidLoad() {
         
-        Slim.addLogDestination(self as! LogDestination)
+        Slim.addLogDestination(self as LogDestination)
         
         super.viewDidLoad()
 
@@ -119,8 +122,13 @@ class LogViewTableViewController: UITableViewController ,LogDetailButtonPressedD
             let msg = message()
             self.serialLogQueue.async {
                 //  self.messages.append(String(format:"\(self.dateFormatter.string(from: Date() as Date)):\(level.string):\(filename):\(line) - \(msg)"))
-                let logMessage = LogMessage( dateTime: Date() , fileName: filename, line: line,  logType: level.string, message: msg as! String)
-                self.messages.append(logMessage)
+                self.messageCountId += 1
+                let logMessage = LogMessage( id: self.messageCountId, dateTime: Date() , fileName: filename, line: line,  logType: level.string, message: msg as! String)
+                self.messages.insert(logMessage, at: 0)
+                if self.messages.count > self.MAXMESSAGECOUNT{
+                    let range = self.messages.endIndex.advanced(by: -self.REDUCEMESSAGEBYAFTERLIMIT)..<self.messages.endIndex
+                    self.messages.removeSubrange(range)
+                }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()    // reload in UI thread.
                 }
