@@ -22,6 +22,7 @@
 		C8C356A01E90936E009EEDD8 /* LogViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3569F1E90936E009EEDD8 /* LogViewTableViewController.swift */; };
 		C8C356A21E909CB8009EEDD8 /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356A11E909CB8009EEDD8 /* LogMessage.swift */; };
 		C8C356A41E909ECE009EEDD8 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356A31E909ECE009EEDD8 /* LogTableViewCell.swift */; };
+		C8C356A61E915B2A009EEDD8 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356A51E915B2A009EEDD8 /* ReportViewController.swift */; };
 		C8CD28F81E817E290052B69B /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CD28F71E817E290052B69B /* Participant.swift */; };
 		C8CD28FA1E817FF40052B69B /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */; };
 		C8E582BF1E82D08000496EB5 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */; };
@@ -45,6 +46,7 @@
 		C8C3569F1E90936E009EEDD8 /* LogViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogViewTableViewController.swift; path = Views/LogViewTableViewController.swift; sourceTree = "<group>"; };
 		C8C356A11E909CB8009EEDD8 /* LogMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogMessage.swift; path = Model/LogMessage.swift; sourceTree = "<group>"; };
 		C8C356A31E909ECE009EEDD8 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogTableViewCell.swift; path = Views/LogTableViewCell.swift; sourceTree = "<group>"; };
+		C8C356A51E915B2A009EEDD8 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportViewController.swift; path = Views/ReportViewController.swift; sourceTree = "<group>"; };
 		C8CD28F71E817E290052B69B /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		C8CD28F91E817FF40052B69B /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewController.swift; path = Views/ParticipantTableViewController.swift; sourceTree = "<group>"; };
 		C8E582BE1E82D08000496EB5 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewCell.swift; path = Views/ParticipantTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */,
 				C8C3569F1E90936E009EEDD8 /* LogViewTableViewController.swift */,
 				C8C356A31E909ECE009EEDD8 /* LogTableViewCell.swift */,
+				C8C356A51E915B2A009EEDD8 /* ReportViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C356A61E915B2A009EEDD8 /* ReportViewController.swift in Sources */,
 				C8C3569C1E908FD3009EEDD8 /* SlimLogger.swift in Sources */,
 				C80E64111E7F6F96001AE5FD /* Program.swift in Sources */,
 				C80E640D1E7F6F38001AE5FD /* ProgramTableViewController.swift in Sources */,
