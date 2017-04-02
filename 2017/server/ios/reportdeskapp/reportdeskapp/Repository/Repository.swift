@@ -77,9 +77,12 @@ class Repository{
             }
             
             callback(programs)
-            Repository.shared.getParticipantArrivalInfo(programs: programs)
+            
+            Repository.shared.refreshParticipantArrivalInfo(programs: programs, callback:    {
+                (objects) -> Void in
+            })
             // set programs
-            self.programs = programs
+            self.programs = programs        // side effect. todo: need to set this explict call.
         })
     }
     
@@ -88,7 +91,8 @@ class Repository{
         
     }
     
-    func getParticipantArrivalInfo(programs:[Program]){
+    
+    func refreshParticipantArrivalInfo(programs:[Program], callback : @escaping ( [Program]) -> Void){
         get( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, callback: {
             (json) -> Void in
             
@@ -103,7 +107,9 @@ class Repository{
                     for program in programs{
                         for participant in program.getParticipants(){
                             if( participant.getId() == id){
-                                participant.setArrivalInfo(arrived: arrived==1 ? true: false)
+                                if( !participant.arrived ){ // update only if not arrived in local ( local arrived is up to date. todo: need to add time stamp so that we can take the latest.
+                                    participant.setArrivalInfo(arrived: arrived==1 ? true: false)
+                                }
                             }
                         }
                     }
@@ -112,9 +118,9 @@ class Repository{
                 
             }
             
-            //callback(programs)
+            callback(programs)
+            
         })
-
     }
     
     func updateParticipantArrivalInf(id:String, isArrived:Bool){

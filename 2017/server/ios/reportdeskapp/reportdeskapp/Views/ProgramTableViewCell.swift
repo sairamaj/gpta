@@ -14,6 +14,7 @@ protocol DetailButtonPressedDelegate{
 
 class ProgramTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var arrivedCountLabel: UILabel!
     @IBOutlet weak var arrivalIndicatorView: UIView!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var greenroomTimeLabel: UILabel!
@@ -49,6 +50,7 @@ class ProgramTableViewCell: UITableViewCell {
         self.reportTimeLabel.text = self.CurrentProgram!.ReportTime
         self.greenroomTimeLabel.text = self.CurrentProgram!.GreenroomTime
         self.durationLabel.text = self.CurrentProgram!.Duration
+        self.arrivedCountLabel.text = String(self.CurrentProgram!.getArrivedCount()) + "/" + String(self.CurrentProgram!.getParticipantsCount())
      
     }
     

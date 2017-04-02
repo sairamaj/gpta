@@ -18,22 +18,8 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.loadPrograms()
 
-       Repository.shared.getPrograms( callback:    {
-            (objects) -> Void in
-            
-            
-            for object in objects{
-                self.programs.append(object)
-            }
-            
-            self.sortPrograms()
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()    // reload in UI thread.
-            }
-            
-        })
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -118,7 +104,7 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
  */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if( indexPath.row == self.selectedRow){
-            return CGFloat(250)
+            return CGFloat(220)
         }
         
         return CGFloat(40)
@@ -191,4 +177,37 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
         self.tableView.reloadData()
     }
 
+    @IBAction func onRefresh(_ sender: Any) {
+        print("refreshing...")
+        self.refreshParticipantArrivalInfo()
+    }
+    
+    func refreshParticipantArrivalInfo(){
+                Repository.shared.refreshParticipantArrivalInfo( programs: self.programs, callback:    {
+            (objects) -> Void in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()    // reload in UI thread.
+            }
+        })
+
+    }
+    
+    func loadPrograms() -> Void{
+        Repository.shared.getPrograms( callback:    {
+            (objects) -> Void in
+            
+            
+            for object in objects{
+                self.programs.append(object)
+            }
+            
+            self.sortPrograms()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()    // reload in UI thread.
+            }
+            
+            self.refreshParticipantArrivalInfo()
+        })
+    }
 }

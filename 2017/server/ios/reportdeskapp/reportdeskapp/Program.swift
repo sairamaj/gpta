@@ -39,4 +39,18 @@ class Program{
         
         return true
     }
+    
+    func getArrivedCount() -> Int{
+        var count:Int = 0
+        for p in self.Participants{
+            if(p.arrived){
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    func getParticipantsCount() -> Int{
+        return self.Participants.count
+    }
 }
