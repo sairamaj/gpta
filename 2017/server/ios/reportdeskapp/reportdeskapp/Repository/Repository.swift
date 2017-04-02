@@ -47,7 +47,7 @@ class Repository{
             (json) -> Void in
             
             var programs = [Program]()
-            print(json)
+            Slim.trace(json)
             for m in json{
                 if let dictionary = m as? [String: Any] {
                     let name = dictionary["name"] as! String
@@ -64,7 +64,7 @@ class Repository{
                     if let participants = dictionary["participants"] as? [Any] {
                         for participant in participants{
                             if let participantsInfo = participant as? [String:Any]{
-                                print(participantsInfo["name"] as! String)
+                                Slim.trace(participantsInfo["name"] as! String)
                                 program.addParticipant(participant: Participant(id: participantsInfo["id"] as! String, name: participantsInfo["name"] as! String) )
                             }
                         }
@@ -96,14 +96,13 @@ class Repository{
         get( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, callback: {
             (json) -> Void in
             
-            print(json)
+            Slim.trace(json)
             for m in json{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
                     let arrived = (Int)(dictionary["arrived"] as! String)
 
-                    print("id:" + id)
-                                    
+                    
                     for program in programs{
                         for participant in program.getParticipants(){
                             if( participant.getId() == id){
@@ -127,12 +126,12 @@ class Repository{
         
         let arrived = isArrived ? 1: 0
         let participantArrivalInfo = String(format:"{\"id\": \"\(id)\" , \"arrived\": \"\(arrived)\"}")
-        print(participantArrivalInfo)
+        Slim.trace(participantArrivalInfo)
         
         post( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, input:participantArrivalInfo, callback: {
             (json) -> Void in
             
-            print("menuitem was saved successfully")
+            Slim.info("menuitem was saved successfully")
         })
  
     }
@@ -149,7 +148,7 @@ class Repository{
             
             if error != nil {
                 
-                print(error!.localizedDescription)
+                Slim.error(error!.localizedDescription)
                 
             } else {
                 
@@ -163,7 +162,7 @@ class Repository{
                     
                 } catch {
                     
-                    print("error in JSONSerialization")
+                    Slim.trace("Repository.get error in JSONSerialization...")
                     
                 }
                 
@@ -180,7 +179,7 @@ class Repository{
     func post(url:URL, input:String, callback : @escaping ([Any]) -> Void){
         
         //var input:String = ""
-        print(input)
+        Slim.trace(input)
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
         var request = URLRequest(url: url)
@@ -192,23 +191,23 @@ class Repository{
             
             if error != nil {
                 
-                print(error!.localizedDescription)
+                Slim.error(error!.localizedDescription)
                 
             } else {
                 
                 do {
-                    print(data as Any)
+                    Slim.trace(data as Any)
                     if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [Any]
                     {
-                        print(json)
+                        Slim.trace(json)
                         callback(json)
                         
                     }else{
-                        print("unable to deserialize.")
+                        Slim.error("unable to deserialize.")
                     }
                 } catch {
                     
-                    print("error in JSONSerialization")
+                    Slim.error("error in JSONSerialization")
                     
                 }
             }

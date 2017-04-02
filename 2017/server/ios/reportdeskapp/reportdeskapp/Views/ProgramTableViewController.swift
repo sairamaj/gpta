@@ -18,6 +18,7 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
         self.loadPrograms()
 
         
@@ -108,7 +109,7 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
         }
         
         return CGFloat(40)
-}
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -178,13 +179,16 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     }
 
     @IBAction func onRefresh(_ sender: Any) {
-        print("refreshing...")
+        
         self.refreshParticipantArrivalInfo()
     }
     
     func refreshParticipantArrivalInfo(){
-                Repository.shared.refreshParticipantArrivalInfo( programs: self.programs, callback:    {
+        Slim.info("refreshing participant arrivals")
+        Repository.shared.refreshParticipantArrivalInfo( programs: self.programs, callback:    {
             (objects) -> Void in
+            Slim.info("refreshing participant arrivals done.")
+
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
             }
@@ -193,10 +197,12 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     }
     
     func loadPrograms() -> Void{
+        Slim.info("loadPrograms starting.")
+
         Repository.shared.getPrograms( callback:    {
             (objects) -> Void in
             
-            
+            Slim.info("loadPrograms done.")
             for object in objects{
                 self.programs.append(object)
             }

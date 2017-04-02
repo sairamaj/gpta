@@ -24,7 +24,7 @@ class ProgramTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     var CurrentProgram: Program!
     var showDetailDelegate:DetailButtonPressedDelegate!
-     var CurrentRow:Int = 0
+    var CurrentRow:Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
