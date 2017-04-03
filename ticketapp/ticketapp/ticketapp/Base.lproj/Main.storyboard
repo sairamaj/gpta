@@ -33,9 +33,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="6Fv-wM-jv4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="pMw-ir-cuv" id="VIv-PK-t5m"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ticketholdercell" rowHeight="242" id="Ghe-IP-CJc" customClass="TicketHolderCell" customModule="ticketapp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="22" width="375" height="242"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="242"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ghe-IP-CJc" id="nAM-LY-cBL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="241"/>
@@ -56,6 +64,9 @@
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fYM-mc-gB9">
                                             <rect key="frame" x="216" y="61" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="onAllArrivedSwitch:" destination="Ghe-IP-CJc" eventType="valueChanged" id="5Hl-Vs-9p1"/>
+                                            </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adults" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdM-0y-00A">
                                             <rect key="frame" x="61" y="103" width="49" height="21"/>
@@ -81,10 +92,16 @@
                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZIy-5T-2Ku">
                                             <rect key="frame" x="171" y="103" width="94" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="onAdultStepper:" destination="Ghe-IP-CJc" eventType="valueChanged" id="Q6Y-OI-VXG"/>
+                                            </connections>
                                         </stepper>
                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bey-yo-sWH">
                                             <rect key="frame" x="171" y="135" width="94" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="onKidStepper:" destination="Ghe-IP-CJc" eventType="valueChanged" id="Ecu-2B-b6b"/>
+                                            </connections>
                                         </stepper>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdx-pX-Ff1">
                                             <rect key="frame" x="134" y="102" width="36" height="30"/>
@@ -132,6 +149,9 @@
                                             <state key="normal" title="Done">
                                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="onDone:" destination="Ghe-IP-CJc" eventType="touchUpInside" id="Xod-SJ-O38"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A/T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tm-NG-ZCc">
                                             <rect key="frame" x="325" y="10" width="27" height="21"/>
@@ -169,8 +189,20 @@
                     <navigationItem key="navigationItem" id="xV8-aA-zzz">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="s9s-ly-2tY"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="3kd-Fj-V6A" id="Vcs-bJ-G0i"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAY-R7-GrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="3kd-Fj-V6A">
+                    <connections>
+                        <outlet property="delegate" destination="pMw-ir-cuv" id="Ehc-aZ-738"/>
+                        <outlet property="searchBar" destination="6Fv-wM-jv4" id="uFs-NX-Izo"/>
+                        <outlet property="searchContentsController" destination="pMw-ir-cuv" id="elU-oP-Ryw"/>
+                        <outlet property="searchResultsDataSource" destination="pMw-ir-cuv" id="dqt-QE-dSt"/>
+                        <outlet property="searchResultsDelegate" destination="pMw-ir-cuv" id="LJg-lq-Yog"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="348" y="293"/>
         </scene>

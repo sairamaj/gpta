@@ -8,9 +8,17 @@
 
 import UIKit
 
-class TicketHolderTableViewController: UITableViewController {
+extension TicketHolderTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
+class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate,TaskChangedDelegate{
     var selectedRow:Int = -1
     var ticketHolders:[TicketHolder] = []
+    var filteredTicketHolders:[TicketHolder] = []
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +30,13 @@ class TicketHolderTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         load()
+        
+       searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchBar.sizeToFit()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,19 +52,28 @@ class TicketHolderTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+
+        if self.searchController.isActive {
+            return self.filteredTicketHolders.count
+        }
         return self.ticketHolders.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ticketholdercell", for: indexPath) as! TicketHolderCell
+       
         
-        cell.CurrentTicketHolder = self.ticketHolders[indexPath.row]
+        if self.searchController.isActive {
+            cell.CurrentTicketHolder = self.filteredTicketHolders[indexPath.row]
+        }else{
+            cell.CurrentTicketHolder = self.ticketHolders[indexPath.row]
+        }
+
+
         cell.tableView = self.tableView
         cell.CurrentCellRow = indexPath.row
-        // Configure the cell...
-        //cell.taskChangeDelegate = self
+        cell.taskChangeDelegate = self
 
         
         return cell
@@ -61,6 +85,31 @@ class TicketHolderTableViewController: UITableViewController {
         }
         
         return CGFloat(50)
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        self.filteredTicketHolders   = self.ticketHolders.filter({( ticketHolder: TicketHolder) -> Bool in
+            if (ticketHolder.Name.lowercased().range(of: searchText.lowercased()) != nil){
+                return true
+            }
+            if (ticketHolder.ConfirmationNumber.lowercased().range(of: searchText.lowercased()) != nil){
+                return true
+            }
+            return false
+        })
+        
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("select row\n")
+
+        self.selectedRow = indexPath.row
+        self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print("de select row\n")
     }
     
     /*
@@ -124,5 +173,30 @@ class TicketHolderTableViewController: UITableViewController {
             
             //self.refreshParticipantArrivalInfo()
         })
+    }
+    
+    func TaskChanged(_ ticketHolder:TicketHolder, currentCell:TicketHolderCell,isDone:Bool){
+        
+        if( isDone )
+        {
+            self.selectedRow = -1
+            let indexPath = IndexPath(row: currentCell.CurrentCellRow, section: 0)
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
+            Repository.shared.updateTicketHolder( ticketHolder )
+        }
+        
+        self.updateTitle()
+    }
+    
+    func updateTitle() {
+        var totalTickets:Int = 0
+        var totalArrived:Int = 0
+        
+        for ticketHolder in self.ticketHolders{
+            totalTickets += ticketHolder.AdultCount + ticketHolder.KidCount
+            totalArrived += ticketHolder.AdultsArrived + ticketHolder.KidsArrived
+        }
+        
+        self.title = String(totalArrived) + "/" + String(totalTickets)
     }
 }

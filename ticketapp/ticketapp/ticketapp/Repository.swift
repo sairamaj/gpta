@@ -34,6 +34,10 @@ class Repository{
 
     }
     
+    func updateTicketHolder( _ ticketHolder : TicketHolder){
+        
+    }
+    
     func loadTicketHolders() ->[TicketHolder]{
         
         var ticketHolders:[TicketHolder] = []
