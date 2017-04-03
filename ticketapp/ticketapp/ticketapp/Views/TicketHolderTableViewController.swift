@@ -11,6 +11,7 @@ import UIKit
 extension TicketHolderTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
+        tableView.reloadData()
     }
 }
 
@@ -31,7 +32,7 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
         
         load()
         
-       searchController.searchResultsUpdater = self
+        searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         self.tableView.tableHeaderView = self.searchController.searchBar
@@ -52,7 +53,7 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if self.searchController.isActive {
             return self.filteredTicketHolders.count
         }
@@ -62,19 +63,19 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ticketholdercell", for: indexPath) as! TicketHolderCell
-       
+        
         
         if self.searchController.isActive {
             cell.CurrentTicketHolder = self.filteredTicketHolders[indexPath.row]
         }else{
             cell.CurrentTicketHolder = self.ticketHolders[indexPath.row]
         }
-
-
+        
+        
         cell.tableView = self.tableView
         cell.CurrentCellRow = indexPath.row
         cell.taskChangeDelegate = self
-
+        
         
         return cell
     }
@@ -98,12 +99,12 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
             return false
         })
         
-        tableView.reloadData()
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("select row\n")
-
+        
         self.selectedRow = indexPath.row
         self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
     }

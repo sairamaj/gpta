@@ -8,83 +8,75 @@
 
 import UIKit
 
-class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate, DetailButtonPressedDelegate{
+extension ProgramTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+}
 
-     var programs:[Program] = []
-     var filteredPrograms:[Program] = []
-     var selectedRow:Int = -1
-     var shouldShowSearchResults = false
+class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate, DetailButtonPressedDelegate{
+    
+    var programs:[Program] = []
+    var filteredPrograms:[Program] = []
+    var selectedRow:Int = -1
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        
         self.loadPrograms()
-
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchBar.sizeToFit()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         tableView.separatorStyle = .none
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.tableView.reloadData()    // reload in UI thread.
         }
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if shouldShowSearchResults {
-            return self.filteredPrograms.count
-        } else {
-            return self.programs.count
-        }
-
+        return getDataSource().count
+        
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Note: self.tableView is important rather than just tableView. ( tableView. works good and once searchbar is introduced we get exception )
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "programcellidentifier", for: indexPath) as! ProgramTableViewCell
-
-        if shouldShowSearchResults {
-            cell.CurrentProgram = self.filteredPrograms[indexPath.row]
-        }else{
-            cell.CurrentProgram = self.programs[indexPath.row]
-        }
-       
+        
+        cell.CurrentProgram = getDataSource()[indexPath.row]
         cell.CurrentRow = indexPath.row
         cell.showDetailDelegate = self
         
         return cell
-    }
-    
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        shouldShowSearchResults = true
-        self.filterContentForSearchText(searchText: searchText)
-
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        shouldShowSearchResults = false
-        self.tableView.reloadData()
     }
     
     func sortPrograms() -> Void{
@@ -95,18 +87,18 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
-       self.filteredPrograms = self.programs.filter({( program: Program) -> Bool in
-        if (program.Name.lowercased().range(of: searchText.lowercased()) != nil){
+        self.filteredPrograms = self.programs.filter({( program: Program) -> Bool in
+            if (program.Name.lowercased().range(of: searchText.lowercased()) != nil){
                 return true
             }
             return false
         })
         
     }
-
+    
     /*
      Only one program will be shown with details
- */
+     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if( indexPath.row == self.selectedRow){
             return CGFloat(220)
@@ -116,40 +108,40 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     }
     
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -158,16 +150,10 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
         let participantController = segue.destination as! ParticipantTableViewController
         
         var currentProgram:Program!
-        if self.searchDisplayController!.isActive{
-            if let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow{
-                currentProgram = self.filteredPrograms[indexPath.row]
-            }
-        }else{
-            if let selectedRowPath  = self.tableView.indexPathForSelectedRow{
-                currentProgram = self.programs[selectedRowPath.row]
-            }
-        }
         
+        if let selectedRowPath  = self.tableView.indexPathForSelectedRow{
+            currentProgram = self.getDataSource()[selectedRowPath.row]
+        }
         participantController.CurrentProgram = currentProgram
     }
     
@@ -181,30 +167,29 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
         
         self.tableView.reloadData()
     }
-
+    
     @IBAction func onRefresh(_ sender: Any) {
         
         self.refreshParticipantArrivalInfo()
     }
     
     func refreshParticipantArrivalInfo(){
-        for i in 1...60{
-            Slim.info("refreshing participant arrivals")
-        }
+        Slim.info("refreshing participant arrivals")
+        
         Repository.shared.refreshParticipantArrivalInfo( programs: self.programs, callback:    {
             (objects) -> Void in
             Slim.info("refreshing participant arrivals done.")
-
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
             }
         })
-
+        
     }
     
     func loadPrograms() -> Void{
         Slim.info("loadPrograms starting.")
-
+        
         Repository.shared.getPrograms( callback:    {
             (objects) -> Void in
             
@@ -221,5 +206,13 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
             
             self.refreshParticipantArrivalInfo()
         })
+    }
+    
+    func getDataSource() ->[Program]{
+        if self.searchController.isActive{
+            return self.filteredPrograms
+        }else{
+            return self.programs
+        }
     }
 }
