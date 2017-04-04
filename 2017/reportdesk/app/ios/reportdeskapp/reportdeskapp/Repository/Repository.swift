@@ -87,7 +87,7 @@ class Repository{
     }
     
     func getEventId() -> String{
-        return "1d01a2de-d0d0-4829-bb0b-5d4b09a70e15"
+        return "f44056ec-5c8f-4d33-ae11-447697319fec"
         
     }
     
@@ -216,7 +216,8 @@ class Repository{
         task.resume()
         
     }
+    
     func getApiUrl(resource:String) ->String{
-        return "https://rzkowjvkb0.execute-api.us-west-2.amazonaws.com/Prod" + resource
+        return "https://nw4ujycnxb.execute-api.us-west-2.amazonaws.com/Prod" + resource
     }
 }
