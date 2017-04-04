@@ -1,7 +1,7 @@
 'use strict'
 
-var dev = true
-process.env.dev = true
+var dev = false
+process.env.dev = dev
 if (process.argv.length > 2) {
     console.log('setting dev')
     if (process.argv[2] === 'aws') {
@@ -15,9 +15,9 @@ var ticket = Promise.promisifyAll(require('./ticket'))
 var fs = require('fs');
 var tableNames = require('./tablenames')(dev)
 var colors = require('colors')
-var debug = require('debug')
+var debug = require('debug')('import')
 
-//console.log(tableNames)
+debug(JSON.stringify(tableNames))
 var lastProgram
 var programs = []
 var data = fs.readFileSync(__dirname + '../../UgadiTickets.csv', 'utf8')

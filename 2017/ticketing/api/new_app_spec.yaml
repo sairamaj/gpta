@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: GPTA Ticket Application
+Resources:
+  GetEvents:
+    Properties:
+      CodeUri: s3://gpta2017/7a5a9d306f78b94cd2cac495f709f7f1
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /tickets
+          Type: Api
+      Handler: getTickets.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  TicketTable:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
+Transform: AWS::Serverless-2016-10-31
