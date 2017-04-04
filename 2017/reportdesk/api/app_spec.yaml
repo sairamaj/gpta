@@ -9,7 +9,7 @@ Resources:
       Handler: getEvents.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBReadOnlyAccess
-      CodeUri: server/src
+      CodeUri: src
       Timeout: 10
       Environment:
         Variables:
@@ -27,7 +27,7 @@ Resources:
       Handler: getEvents.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBReadOnlyAccess
-      CodeUri: server/src
+      CodeUri: src
       Timeout: 10
       Environment:
         Variables:
@@ -45,7 +45,7 @@ Resources:
       Handler: getEventProgramsWithDetails.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBReadOnlyAccess
-      CodeUri: server/src
+      CodeUri: src
       Timeout: 10
       Environment:
         Variables:
@@ -65,7 +65,7 @@ Resources:
       Handler: getProgramParticipants.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBReadOnlyAccess
-      CodeUri: server/src
+      CodeUri: src
       Timeout: 10
       Environment:
         Variables:
@@ -84,7 +84,7 @@ Resources:
       Handler: getParticipantsArrivalInfo.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBReadOnlyAccess
-      CodeUri: server/src
+      CodeUri: src
       Timeout: 10
       Environment:
         Variables:
@@ -102,7 +102,7 @@ Resources:
       Handler: addParticipantArrivalInfo.handler
       Runtime: nodejs4.3
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: server/src
+      CodeUri: src
       Timeout: 10
       Environment:
         Variables:
