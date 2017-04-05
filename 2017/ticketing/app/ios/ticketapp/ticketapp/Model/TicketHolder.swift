@@ -16,9 +16,9 @@ class TicketHolder{
     var KidCount:Int
     var AdultsArrived:Int
     var KidsArrived:Int
-    var Id:Int
+    var SerialNumber:Int
     
-    init(id:Int, name:String , confirmationNumber:String, adultCount:Int, kidCount:Int){
+    init(serialNumber:Int, name:String , confirmationNumber:String, adultCount:Int, kidCount:Int){
         
         self.Name = name
         self.ConfirmationNumber = confirmationNumber
@@ -26,7 +26,7 @@ class TicketHolder{
         self.KidCount = kidCount
         self.AdultsArrived = 0
         self.KidsArrived = 0
-        self.Id = id
+        self.SerialNumber = serialNumber
     }
     
     

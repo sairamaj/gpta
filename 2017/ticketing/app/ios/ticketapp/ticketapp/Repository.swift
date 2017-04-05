@@ -32,7 +32,7 @@ class Repository{
         get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
             (json) -> Void in
             
-            var idCounter:Int = 1
+            var serialNumber:Int = 1
             var ticketHolders = [TicketHolder]()
             for m in json{
                 if let dictionary = m as? [String: Any] {
@@ -40,9 +40,9 @@ class Repository{
                     let confirmationNumber = dictionary["id"] as! String
                     let adultCount = Int(dictionary["adults"] as! String)
                     let kidsCount = Int(dictionary["kids"] as! String)
-                    let ticketHolder = TicketHolder(id:idCounter, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount!, kidCount: kidsCount!)
+                    let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount!, kidCount: kidsCount!)
                     ticketHolders.append(ticketHolder)
-                    idCounter += 1
+                    serialNumber += 1
                 }
                 
             }

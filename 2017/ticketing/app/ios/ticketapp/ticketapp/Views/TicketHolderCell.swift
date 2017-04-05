@@ -53,7 +53,7 @@ class TicketHolderCell: UITableViewCell {
         self.confirmationNumberLabel.text = self.CurrentTicketHolder.ConfirmationNumber
         self.aduitArrivedTextField.isEnabled = false
         self.kidsArrivedTextField.isEnabled = false
-        self.ticketHolderIdLabel.text = String(self.CurrentTicketHolder.Id)
+        self.ticketHolderIdLabel.text = String(self.CurrentTicketHolder.SerialNumber)
         
         self.setStepperValues()
         self.UpdateArrivedStatuses()
