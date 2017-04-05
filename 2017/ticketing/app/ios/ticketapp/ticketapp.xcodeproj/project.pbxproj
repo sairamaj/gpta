@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C87C92D61E95A1910084F61D /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C92D51E95A1910084F61D /* SlimLogger.swift */; };
+		C87C92D81E95A1B40084F61D /* SlimLoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C92D71E95A1B40084F61D /* SlimLoggerConfig.swift */; };
 		C8C356B41E91C8B4009EEDD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356B31E91C8B4009EEDD8 /* AppDelegate.swift */; };
 		C8C356B61E91C8B4009EEDD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356B51E91C8B4009EEDD8 /* ViewController.swift */; };
 		C8C356B91E91C8B4009EEDD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C356B71E91C8B4009EEDD8 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C87C92D51E95A1910084F61D /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlimLogger.swift; path = Logging/SlimLogger.swift; sourceTree = "<group>"; };
+		C87C92D71E95A1B40084F61D /* SlimLoggerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLoggerConfig.swift; sourceTree = "<group>"; };
 		C8C356B01E91C8B4009EEDD8 /* ticketapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ticketapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C356B31E91C8B4009EEDD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8C356B51E91C8B4009EEDD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C87C92D41E95A1670084F61D /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				C87C92D51E95A1910084F61D /* SlimLogger.swift */,
+				C87C92D71E95A1B40084F61D /* SlimLoggerConfig.swift */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
 		C8C356A71E91C8B4009EEDD8 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +81,7 @@
 		C8C356B21E91C8B4009EEDD8 /* ticketapp */ = {
 			isa = PBXGroup;
 			children = (
+				C87C92D41E95A1670084F61D /* Logging */,
 				C8C356D61E91D444009EEDD8 /* Extensions */,
 				C8C356D41E91CFEF009EEDD8 /* TicketHolderData.txt */,
 				C8C356CF1E91CC95009EEDD8 /* Model */,
@@ -194,10 +208,12 @@
 				C8C356B61E91C8B4009EEDD8 /* ViewController.swift in Sources */,
 				C8C356B41E91C8B4009EEDD8 /* AppDelegate.swift in Sources */,
 				C8C356CE1E91CC29009EEDD8 /* Repository.swift in Sources */,
+				C87C92D61E95A1910084F61D /* SlimLogger.swift in Sources */,
 				C8C356D11E91CCC1009EEDD8 /* TicketHolder.swift in Sources */,
 				C8C356D81E91D45B009EEDD8 /* StringExtension.swift in Sources */,
 				C8C356C91E91C9CE009EEDD8 /* TicketHolderTableViewController.swift in Sources */,
 				C8C356D31E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift in Sources */,
+				C87C92D81E95A1B40084F61D /* SlimLoggerConfig.swift in Sources */,
 				C8C356CB1E91CA83009EEDD8 /* TicketHolderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +378,7 @@
 				C8C356C41E91C8B4009EEDD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

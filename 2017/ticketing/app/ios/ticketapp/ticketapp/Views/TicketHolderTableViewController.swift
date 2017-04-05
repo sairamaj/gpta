@@ -172,7 +172,7 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
                 self.tableView.reloadData()    // reload in UI thread.
             }
             
-            //self.refreshParticipantArrivalInfo()
+            self.refreshTicketHolderInfo()
         })
     }
     
@@ -199,5 +199,19 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
         }
         
         self.title = String(totalArrived) + "/" + String(totalTickets)
+    }
+    
+    func refreshTicketHolderInfo(){
+        Slim.info("refreshing ticket holders arrivals")
+        
+        Repository.shared.refreshTicketHolderInfo( ticketHolders: self.ticketHolders, callback:    {
+            (objects) -> Void in
+            Slim.info("refreshing ticket holders arrivals done.")
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()    // reload in UI thread.
+            }
+        })
+        
     }
 }

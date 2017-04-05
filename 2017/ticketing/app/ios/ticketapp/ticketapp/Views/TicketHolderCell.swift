@@ -100,7 +100,7 @@ class TicketHolderCell: UITableViewCell {
         case .noneArrived:
             self.arrivalIndicatorView.backgroundColor = UIColor.red
         case .partialArrived:
-            self.arrivalIndicatorView.backgroundColor = UIColor.purple
+            self.arrivalIndicatorView.backgroundColor = UIColor.yellow
         case .allArrived:
             self.arrivalIndicatorView.backgroundColor = UIColor.green
             self.allArrivedSwitch.setOn(true, animated: false)
