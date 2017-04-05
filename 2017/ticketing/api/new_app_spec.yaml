@@ -1,9 +1,45 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: GPTA Ticket Application
 Resources:
-  GetEvents:
+  CheckIn:
     Properties:
-      CodeUri: s3://gpta2017/7a5a9d306f78b94cd2cac495f709f7f1
+      CodeUri: s3://gpta2017/7dfa4e5bfb9c43fc5269f6e1cca7fd14
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Properties:
+            Method: post
+            Path: /tickets/checkins
+          Type: Api
+      Handler: checkIn.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  GetCheckIns:
+    Properties:
+      CodeUri: s3://gpta2017/7dfa4e5bfb9c43fc5269f6e1cca7fd14
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Properties:
+            Method: get
+            Path: /tickets/checkins
+          Type: Api
+      Handler: getCheckIns.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  GetTickets:
+    Properties:
+      CodeUri: s3://gpta2017/7dfa4e5bfb9c43fc5269f6e1cca7fd14
       Environment:
         Variables:
           TABLE_NAME:
@@ -19,6 +55,15 @@ Resources:
       Runtime: nodejs4.3
       Timeout: 10
     Type: AWS::Serverless::Function
+  TicketCheckIn:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
   TicketTable:
     Properties:
       PrimaryKey:

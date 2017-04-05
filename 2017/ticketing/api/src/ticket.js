@@ -26,6 +26,27 @@ function getTickets(tableName, callback) {
   })
 }
 
+function checkIn(tableName, checkinInfo, callback) {
+  aws.writeDb(tableName, checkinInfo, function (err, status) {
+    callback(err, status)
+  })
+}
+
+function getCheckIns(tableName, callback) {
+  aws.readDb(tableName, function (err, data) {
+    if (err) {
+      callback(err, null)
+    } else {
+      var checkIns = []
+      data.Items.forEach(function (checkIn) {
+        checkIns.push(checkIn)
+      })
+      callback(null, checkIns)
+    }
+  })
+}
 
 module.exports.addTicket = addTicket
 module.exports.getTickets = getTickets
+module.exports.checkIn = checkIn
+module.exports.getCheckIns = getCheckIns
