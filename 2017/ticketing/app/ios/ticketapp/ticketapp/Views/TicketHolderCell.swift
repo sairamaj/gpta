@@ -53,7 +53,7 @@ class TicketHolderCell: UITableViewCell {
         self.confirmationNumberLabel.text = self.CurrentTicketHolder.ConfirmationNumber
         self.aduitArrivedTextField.isEnabled = false
         self.kidsArrivedTextField.isEnabled = false
-        self.ticketHolderIdLabel.text = String(self.CurrentTicketHolder.Id)
+        self.ticketHolderIdLabel.text = String(self.CurrentTicketHolder.SerialNumber)
         
         self.setStepperValues()
         self.UpdateArrivedStatuses()
@@ -100,7 +100,7 @@ class TicketHolderCell: UITableViewCell {
         case .noneArrived:
             self.arrivalIndicatorView.backgroundColor = UIColor.red
         case .partialArrived:
-            self.arrivalIndicatorView.backgroundColor = UIColor.purple
+            self.arrivalIndicatorView.backgroundColor = UIColor.yellow
         case .allArrived:
             self.arrivalIndicatorView.backgroundColor = UIColor.green
             self.allArrivedSwitch.setOn(true, animated: false)

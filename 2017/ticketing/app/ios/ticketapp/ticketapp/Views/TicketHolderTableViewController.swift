@@ -167,13 +167,20 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
             for object in objects{
                 self.ticketHolders.append(object)
             }
+            
+            self.sortTicketHolders()
             //  Slim.info("loadPrograms done.")
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
             }
             
-            //self.refreshParticipantArrivalInfo()
+            self.refreshTicketHolderInfo()
         })
+    }
+    
+    
+    @IBAction func onRefresh(_ sender: Any) {
+        self.refreshTicketHolderInfo()
     }
     
     func TaskChanged(_ ticketHolder:TicketHolder, currentCell:TicketHolderCell,isDone:Bool){
@@ -199,5 +206,32 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
         }
         
         self.title = String(totalArrived) + "/" + String(totalTickets)
+    }
+    
+    func refreshTicketHolderInfo(){
+        Slim.info("refreshing ticket holders arrivals")
+        
+        Repository.shared.refreshTicketHolderInfo( ticketHolders: self.ticketHolders, callback:    {
+            (objects) -> Void in
+            Slim.info("refreshing ticket holders arrivals done.")
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()    // reload in UI thread.
+            }
+        })
+        
+    }
+    
+    func sortTicketHolders() -> Void{
+        self.ticketHolders = self.ticketHolders.sorted(by: { (p1, p2) -> Bool in
+            p1.Name.localizedCompare(p2.Name)  == ComparisonResult.orderedAscending      })
+        
+        // reset serlial numbers
+        var serialNumber = 1
+        for ticketHolder in self.ticketHolders{
+            ticketHolder.SerialNumber = serialNumber
+            serialNumber += 1
+        }
+        
     }
 }

@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="242"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ghe-IP-CJc" id="nAM-LY-cBL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="241"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7D-4i-Q66">
@@ -57,7 +57,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be5-NP-vnY">
-                                            <rect key="frame" x="8" y="15" width="23" height="14"/>
+                                            <rect key="frame" x="8" y="15" width="13" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="0.1668096946" blue="0.083244298059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
@@ -161,7 +161,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-H4-GsN">
-                                            <rect key="frame" x="35" y="11" width="35" height="21"/>
+                                            <rect key="frame" x="33" y="11" width="35" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -187,7 +187,11 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="xV8-aA-zzz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="s9s-ly-2tY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="s9s-ly-2tY">
+                            <connections>
+                                <action selector="onRefresh:" destination="pMw-ir-cuv" id="6aY-O6-ln3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="3kd-Fj-V6A" id="Vcs-bJ-G0i"/>
@@ -204,7 +208,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="348" y="293"/>
+            <point key="canvasLocation" x="348" y="292.80359820089956"/>
         </scene>
     </scenes>
 </document>
