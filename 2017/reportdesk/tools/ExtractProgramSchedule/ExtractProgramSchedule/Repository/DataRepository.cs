@@ -34,7 +34,19 @@ namespace ExtractProgramSchedule.Repository
 					var serialNumber = programSheet.Cells[row, dataMapInfo.SequenceNumberCellIndex].Value ;
 					if (serialNumber != null)
 					{
-						yield return new Program(name, Convert.ToInt32(serialNumber.ToString()));
+						var choreographerName = programSheet.Cells[row, dataMapInfo.ChoreographerNameCellIndex].Value as string;
+						var duration = (DateTime)programSheet.Cells[row, dataMapInfo.DurationCellIndex].Value;
+						var startTime = (DateTime)programSheet.Cells[row, dataMapInfo.StartTimeCellIndex].Value;
+						var reportTime = (DateTime)programSheet.Cells[row, dataMapInfo.ReportTimeCellIndex].Value;
+						var durationSpan = new TimeSpan(0, duration.Minute, duration.Second);
+						var program = new Program(Convert.ToInt32(serialNumber.ToString()), name, choreographerName,reportTime, startTime, durationSpan);
+						var participants = programSheet.Cells[row, dataMapInfo.ParticipantsCellIndex].Value as string;
+						foreach (var participant in participants.Split(new string[] { "\r\n" }, StringSplitOptions.None))
+						{
+							program.AddParticipant(new Participant(participant));
+						}
+
+						yield return program;
 					}
 				}
 				
