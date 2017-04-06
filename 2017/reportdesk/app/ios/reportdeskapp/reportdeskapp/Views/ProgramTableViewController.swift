@@ -81,7 +81,7 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     
     func sortPrograms() -> Void{
         self.programs = self.programs.sorted(by: { (p1, p2) -> Bool in
-            p1.Name.localizedCompare(p2.Name)  == ComparisonResult.orderedAscending      })
+            p1.Sequence < p2.Sequence      })
         
     }
     
@@ -101,7 +101,7 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
      */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if( indexPath.row == self.selectedRow){
-            return CGFloat(220)
+            return CGFloat(180)
         }
         
         return CGFloat(40)

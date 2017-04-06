@@ -42,53 +42,71 @@ class Repository{
     }
     
     func getPrograms(callback : @escaping ( [Program]) -> Void){
-        let apiPath: String = "/events/" + getEventId() + "/programs"
-        get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
-            (json) -> Void in
-            
-            var programs = [Program]()
-            Slim.trace(json)
-            for m in json{
-                if let dictionary = m as? [String: Any] {
-                    let name = dictionary["name"] as! String
- 
+        
+        getEventId(callback:
+            { (id) -> Void  in
+                print(id)
+                
+                let apiPath: String = "/events/" + id + "/programs"
+                self.get( url: URL(string: self.getApiUrl(resource: apiPath))!, callback: {
+                    (json) -> Void in
                     
-                    let program = Program(name: name)
-                    program.Choreographer = dictionary["choreographer"] as! String
-                    program.ProgramTime = dictionary["programtime"] as! String
-                    program.ReportTime = dictionary["reporttime"] as! String
-                    program.GreenroomTime = dictionary["greenroomtime"] as! String
-                    program.Duration = dictionary["duration"] as! String
-                    programs.append(program )
-                    
-                    if let participants = dictionary["participants"] as? [Any] {
-                        for participant in participants{
-                            if let participantsInfo = participant as? [String:Any]{
-                                Slim.trace(participantsInfo["name"] as! String)
-                                program.addParticipant(participant: Participant(id: participantsInfo["id"] as! String, name: participantsInfo["name"] as! String) )
+                    var programs = [Program]()
+                    Slim.trace(json)
+                    for m in json{
+                        if let dictionary = m as? [String: Any] {
+                            let name = dictionary["name"] as! String
+                            
+                            
+                            let program = Program(name: name)
+                            program.Choreographer = dictionary["choreographer"] as! String
+                            program.ProgramTime = dictionary["programtime"] as! String
+                            program.ReportTime = dictionary["reporttime"] as! String
+                            program.GreenroomTime = dictionary["greenroomtime"] as! String
+                            program.Duration = dictionary["duration"] as! String
+                            program.Sequence = Int(dictionary["sequence"] as! String)
+                            programs.append(program )
+                            
+                            if let participants = dictionary["participants"] as? [Any] {
+                                for participant in participants{
+                                    if let participantsInfo = participant as? [String:Any]{
+                                        Slim.trace(participantsInfo["name"] as! String)
+                                        program.addParticipant(participant: Participant(id: participantsInfo["id"] as! String, name: participantsInfo["name"] as! String) )
+                                    }
+                                }
+                                
+                                
                             }
+                            
                         }
-
                         
                     }
-         
-                }
+                    
+                    callback(programs)
+                    
+                    Repository.shared.refreshParticipantArrivalInfo(programs: programs, callback:    {
+                        (objects) -> Void in
+                    })
+                    // set programs
+                    self.programs = programs        // side effect. todo: need to set this explict call.
+                })
                 
-            }
-            
-            callback(programs)
-            
-            Repository.shared.refreshParticipantArrivalInfo(programs: programs, callback:    {
-                (objects) -> Void in
-            })
-            // set programs
-            self.programs = programs        // side effect. todo: need to set this explict call.
         })
     }
     
-    func getEventId() -> String{
-        return "f44056ec-5c8f-4d33-ae11-447697319fec"
+    
+    func getEventId(callback : @escaping (String) -> Void){
         
+        let apiPath: String = "/events/"
+        get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
+            (json) -> Void in
+            for m in json{
+                if let dictionary = m as? [String: Any] {
+                    let firstEventId = dictionary["id"] as! String
+                    callback(firstEventId)
+                }
+            }
+        })
     }
     
     
@@ -101,7 +119,7 @@ class Repository{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
                     let arrived = (Int)(dictionary["arrived"] as! String)
-
+                    
                     
                     for program in programs{
                         for participant in program.getParticipants(){
@@ -131,9 +149,9 @@ class Repository{
         post( url: URL(string: getApiUrl(resource: "/participants/arrivalinfo"))!, input:participantArrivalInfo, callback: {
             (json) -> Void in
             
-            Slim.info("menuitem was saved successfully")
+            Slim.info("participant was saved successfully")
         })
- 
+        
     }
     /*
      http get utility function

@@ -17,11 +17,11 @@ class ProgramTableViewCell: UITableViewCell {
     @IBOutlet weak var arrivedCountLabel: UILabel!
     @IBOutlet weak var arrivalIndicatorView: UIView!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var greenroomTimeLabel: UILabel!
     @IBOutlet weak var reportTimeLabel: UILabel!
     @IBOutlet weak var programTimeLabel: UILabel!
     @IBOutlet weak var choreographerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var sequenceLabel: UILabel!
     var CurrentProgram: Program!
     var showDetailDelegate:DetailButtonPressedDelegate!
     var CurrentRow:Int = 0
@@ -45,10 +45,10 @@ class ProgramTableViewCell: UITableViewCell {
             self.arrivalIndicatorView.backgroundColor = UIColor.red
         }
         self.nameLabel.text = self.CurrentProgram!.Name
+        self.sequenceLabel.text = String(self.CurrentProgram!.Sequence)
         self.choreographerLabel.text = self.CurrentProgram!.Choreographer
         self.programTimeLabel.text = self.CurrentProgram!.ProgramTime
         self.reportTimeLabel.text = self.CurrentProgram!.ReportTime
-        self.greenroomTimeLabel.text = self.CurrentProgram!.GreenroomTime
         self.durationLabel.text = self.CurrentProgram!.Duration
         self.arrivedCountLabel.text = String(self.CurrentProgram!.getArrivedCount()) + "/" + String(self.CurrentProgram!.getParticipantsCount())
      

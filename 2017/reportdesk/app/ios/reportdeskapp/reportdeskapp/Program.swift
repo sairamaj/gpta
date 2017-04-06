@@ -11,6 +11,7 @@ import Foundation
 class Program{
     var Name: String!
     internal var ProgramTime:String!
+    internal var Sequence:Int!
     internal var ReportTime:String!
     internal var GreenroomTime:String!
     internal var Duration:String!
