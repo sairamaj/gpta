@@ -28,7 +28,8 @@ function createEvent(id, body) {
     }
 
     event.pathParameters.id = id
-    event.body = JSON.stringify({ id:"abc", "adults": "1", "kids": "2"})
+    console.log('before filling updateat.')
+    event.body = JSON.stringify({ id:"abc", "adults": "1", "kids": "2", "updatedat": Date()})
     console.log(event)
     console.log(JSON.stringify(event, null, 2))
     return event
@@ -45,6 +46,7 @@ app.get('/tickets/checkins', function (req, res) {
 })
 
 app.post('/tickets/checkins', function (req, res) {
+    console.log('in /tickets/checkins')
     process.env.TABLETICKETCHECKIN = "TicketCheckIn"
     console.log(req.path)
     console.log("param id:" + req.body)
