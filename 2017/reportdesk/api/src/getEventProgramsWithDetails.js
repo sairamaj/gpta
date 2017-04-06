@@ -33,6 +33,7 @@ exports.handler = function (event, context, callback) {
                                 var programDetail = {}
                                 programDetail.name = p.name
                                 programDetail.id = p.id
+                                programDetail.sequence = p.sequence
                                 programDetail.choreographer = p.choreographer
                                 programDetail.duration = p.duration
                                 programDetail.greenroomtime = p.greenroomtime

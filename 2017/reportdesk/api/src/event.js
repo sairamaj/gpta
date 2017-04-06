@@ -34,6 +34,7 @@ function addProgram(tableName, eventId, program, callback) {
   var data = {
     'eventId': eventId,
     'name': program.name,
+    'sequence' : program.sequence,
     'id': uuidV4(),
     'choreographer': program.choreographer,
     'programtime': program.programtime,
