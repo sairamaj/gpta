@@ -12,7 +12,9 @@ $eventId
 
 # get programs with details ( GET /events/{id}/programdetails/
 $programDetails = (Invoke-RestMethod "$url/events/$eventId/programdetails" ).body | ConvertFrom-JSON
-#$programDetails
+$programDetails
+return
+
 $participant = $programDetails | select -first 1 | select participants
 $firstParticipant = ($participant.participants | select -first 1)
 $participantId =  $firstParticipant.id

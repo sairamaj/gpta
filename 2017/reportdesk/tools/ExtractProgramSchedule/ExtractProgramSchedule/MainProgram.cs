@@ -16,8 +16,9 @@ namespace ExtractProgramSchedule
 			var repository = ServiceLocator.Resolve<IDataRepository>();
 			foreach (var program in repository.Load(args[0]))
 			{
-				System.Console.WriteLine("#program|{0}|{1}|{2}|{3}|{4}|{5}",
+				System.Console.WriteLine("#program|{0}|{1}|{2}|{3}|{4}|{5}|{6}",
 					program.Name, 
+					program.SequenceNumber,
 					program.ChoreographerName, 
 					program.StartTime.ToString("HH:mm:ss"),
 					program.GreenRoomTime.ToString("HH:mm:ss"),

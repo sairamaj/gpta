@@ -1,7 +1,7 @@
 'use strict'
 
 var dev = false
-process.env.dev = false
+process.env.dev = dev
 if (process.argv.length > 2) {
     console.log('setting dev')
     if (process.argv[2] === 'aws') {
@@ -25,17 +25,18 @@ data.split('\r\n').forEach(line => {
     //console.log('----------------')
     if (line.startsWith('#program')) {   // program
         var parts = line.split('|')
-        if (parts.length < 7) {
-            throw Error(line + " does not contain all the information expected : 7 but found:" + parts.length)
+        if (parts.length < 8) {
+            throw Error(line + " does not contain all the information expected : 8 but found:" + parts.length)
         }
         //console.log(parts[2])
         var program = {
             name: parts[1],
-            choreographer: parts[2],
-            programtime: parts[3],
-            greenroomtime: parts[4],
-            reporttime: parts[5],
-            duration: parts[6],
+            sequence: parts[2],
+            choreographer: parts[3],
+            programtime: parts[4],
+            greenroomtime: parts[5],
+            reporttime: parts[6],
+            duration: parts[7],
             participants: []
         }
         lastProgram = program

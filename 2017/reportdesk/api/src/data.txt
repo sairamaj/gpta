@@ -1,0 +1,294 @@
+#program|Opening prayer|1|Greeshma Pisharody|13:30:00|00:00:00|13:00:00|00:04:00
+
+     Bhavika Pisharody
+
+#program|Nannaku Prematho' title song - Filler|2|Aravinda Kypu/Mallikarjuna Reddy Kypu|13:36:00|00:00:00|13:00:00|00:04:00
+
+     Rohit Reddy Kypu
+
+#program|Little Rock Stars|3|Ranjani Rohit|13:42:00|00:00:00|13:00:00|00:04:00
+
+     Krithi Ketineni
+     Lakshya Suryapalem
+     Vivek Pollavarapu
+     Sreeram Singam
+     Anushi Mittal
+     Ishaan Ananth Sharma
+     Divija Anumandla
+      Parnika sai Mangineni
+
+#program|Baahubali Skit|4|Jyothi Murala/Director|13:48:00|00:00:00|13:00:00|00:08:00
+
+     Ainesh Yarlagadda
+     Varun Papidippu
+     Abhi Vemuri
+     Himanvitha Kayam
+     Anya Shaik
+     Anish Gali
+     
+
+#program|Little Stars|5|Varsha/ Harita Palam|13:58:00|00:00:00|13:00:00|00:04:00
+
+     Viraj Akula
+     Gagan Kankara
+     SriHarsha Padigi
+     Siddharth Subbareddy
+     Arush Lagudu
+     Pranya Batchu
+     Siddhi Prajapati
+      Shreeka Gayam
+
+#program|Gananayaka Song - Filler|6|Lalitha Chittila|14:04:00|00:00:00|13:00:00|00:07:00
+
+     Srihita Kotturi
+     Sumedh Kotturi
+     Shashank Mahavrathayajula
+     Shasreek Mahavrathayajula
+     
+
+#program|Thaaralu Digi Vacchina Vela|7|Snigdha Malladi|14:13:00|00:00:00|13:00:00|00:06:00
+
+     Ritvik Chandra Sharma
+     Ritesh Grandhe
+     Shreyans Reddy Purumandla
+     Medhansh Ram Gubbala
+     Advay Kunchakuri
+     Saahil Krishna Sudunagunta
+     Lohith Reddy Pappula
+     Ishan Thota  
+
+#program|Manabadi Pillala Telugu Vikaasam|8|Jyothy Vemuri|14:21:00|00:00:00|13:00:00|00:15:00
+
+     Raaga Mandala
+     Sri Dhriti Kuram
+     Tanvi Sri Kuram
+     Tanya Krishna Harathi
+     Shruthi Prudvi
+     Sriya Tallapragada
+     Upasya Swarna 
+     Aarya Aluru
+     Anvitha Mahankali
+     Sushil Vemuri 
+     Aarush Chimakurthi
+     Harsha Narne
+     Adithi Mahankali
+     Lohith Pappula
+     Samhitha Thatikonda
+     Sahasra Pendurti
+     Ananya Dasaka
+     Anika Malyavantam
+     Kriti Guthikonda
+     Navya Kolavennu
+     
+     
+
+#program|Naradamuni Bhooloka Samcharam - Filler|9|Sharada Mangipudi|14:38:00|00:00:00|13:30:00|00:08:00
+
+     Srikruthi Neralla
+
+#program|Boss is Back!!|10|Varsha Akula/Participant Self Choreo|14:48:00|00:00:00|13:30:00|00:05:00
+
+     Tanvi Akula
+     Vibha Addala
+     Srinidhi Gubba
+     Bhavika Buddi
+     Archana Venigalla
+     Manika Nunna
+
+#program|Kavithalu - Filler|11|Padma Susarla|14:55:00|00:00:00|13:30:00|00:05:00
+
+     Padma Susarla
+
+#program|Song Medley - Filler|12|Ananya|15:02:00|00:00:00|13:30:00|00:04:00
+
+     Ananya Lanka
+
+#program|Pallavi Shabdam|13|Prashanthi Harathi|15:08:00|00:00:00|13:30:00|00:11:00
+
+     Tanya Krishna Harathi
+     Sridhriti Kuram
+     Aarya Aluru 
+     Mahalakshmi Chamarthi 
+     Sahasra Chamarthi 
+     Sahasra Chamarthi 
+     Vedika Sunehari Sheth
+     Devika Nirali Sheth
+     Anushka Kandula
+     Aashritha Tubati
+     Aditi Vijay
+     Tanushka Kommoju
+     Aarshi
+     Tanvi Kuram
+     Shakthi
+     
+
+#program|Poem Reading - Filler|14|Revathi Aditham|16:08:00|00:00:00|13:30:00|00:05:00
+
+     Revathi Aditham
+
+#program|Sambaraalo Sambaraalu|15|Snigdha Malladi|16:15:00|00:00:00|13:30:00|00:05:00
+
+     Akshaya Sakala
+     Isha Ravuri
+     Ria Kamineni
+     Nitisha Bangaru
+     Gauri Saukhyada Patibandla
+     Samiksha Shivakumar
+     Sanjana Thatikonda
+     Raaga Mandala
+     Aanya Arunkumar 
+      Arushi Mitra
+     Bhavika Pasuparthi
+
+#program|RuthuRaagalu|16|Thejaswi|16:22:00|00:00:00|14:00:00|00:20:00
+
+     Thejaswi Nallan Chakravartula
+     Sravan Matlapudi
+     Sharada Mangipudi
+     Rajiv Kattekola
+     
+
+#program|Dancing Butterflies|17|Madhuri Dokuparthi|16:44:00|00:00:00|14:00:00|00:05:00
+
+     Madhuri Dokuparthi
+     Varsha Govardhanam
+     Chaitanya pesaru
+     Vidya M.S
+     Lavanya Reddi
+     
+
+#program|Dance Drama|18|Sharada Mangipudi|16:51:00|00:00:00|14:00:00|00:20:00
+
+     Madhavi Vavilapalli
+     Uthkarsh Kottali
+     Bala Jitendra
+     Vidya Selvaraj
+     Likhila Vavilapalli
+     Aditi Ramkumar
+     Tejaswini Datla
+     Simra Bawa
+     Bhoomi Jain
+     Pranavi Yadiki
+     Tanisha Soraganvi
+     Haasini Godavarthi
+     Sai Saharsh Kolli
+     Gautham Beesetti
+     Aarush Allene
+     Mohit Sai Datla
+     Krishna Chaitanya Chintalapati
+     Siddhartha Kommineni
+     Praneeth Varma Kalidindi
+     Prasad Neralla
+     Hema SureshBabu
+     Vani Kommineni
+     Gomathi Parasuram
+     Sai Satya Mounika Kotha 
+     Sarayu Kommineni
+     Srihitha Neralla
+     Vanshika Kura
+     Ananya Soraganvi
+     Sahasra Kalidindi
+     Peeyush Beesetti
+     Kartikeya Omkumar
+     Jagannath Babu
+     Vijval Sai Jupudi
+     
+     
+
+#program|Telugu Veera Gaadha|19|Vasuki Chilukuri|17:13:00|00:00:00|14:00:00|00:06:00
+
+     Abhishek Polavarapu
+     Sahith Chandra
+     Jayant Sunkara
+     Karthik Anumandla
+     Sriraghav Bavineni
+     Nikhil Yannam
+
+#program|Retro to Metro Divas|21|Kirthana Chamarthi|17:21:00|00:00:00|14:00:00|00:05:00
+
+     Anvi Kalidindi
+     Sreeprada Konduru
+     Riya Kona
+     Eesha Paruvada
+     Lasya Reddy Kanamartha
+     Kundana Addala
+
+#program|Telugu Paatalu - 2 Filler Songs|22|Sirisha Malladi|17:28:00|00:00:00|14:00:00|00:07:00
+
+     Snighda Malladi
+
+#program|Dancing Jewels|23|Rekha Garlapati/Sumana Talakola|17:44:00|00:00:00|14:00:00|00:06:00
+
+     Anish Lagudu
+     Shrika Ganta
+     Anvitha Mahankali
+     Prabhas Vemula
+     Aarushi Pagidi
+     Prabhas Reddy Nakkala
+     Shrihan Ganta
+     Suhas Vemula
+     
+
+#program|Paatha Bangaaram|24|Siri & Snigdha Malladi|17:52:00|00:00:00|14:30:00|00:05:00
+
+     Yagna Jyothy Vemuri
+     Sirisha Kothuri
+     Praveena Bandi
+     Manjari Chirravuri
+     Deepthi Devi Reddy
+     
+
+#program|Dancing girls|25|Sreenija Muduganti/Participant self choreo|17:59:00|00:00:00|14:30:00|00:07:00
+
+     Sreenija Muduganti
+     Navyatha Buddi
+     Rishitha Chandra
+     Adithi Mahankali
+     Mythili Ramineni
+     Srija Padala
+     Rithika Karpy
+      Vinisha Surayapalem
+      Sree Adusumilli
+      Aishwarya Grandhe
+      Esha Nagul
+
+#program|Shiva Thandavam|26|Prashanthi Harathi|18:20:00|00:00:00|14:30:00|00:11:00
+
+     Ramya Ajjarapu 
+     Ritwika Petluri 
+     Devika Gandhey
+     Preethi Devulapally 
+     Viti Jaiswal 
+     Alekhya Bhupalam 
+     
+
+#program|Desi Mirchi|27|Shakti Chaganty|18:33:00|00:00:00|14:30:00|00:05:00
+
+     Shakti Chaganty
+     Sridutt Tummalapalli
+     Samantha  Gavva
+     Kavya Raveendranath
+     Sai Prashant
+     Sneha Pedarla
+     Priya darshini Muddana
+     Gautham Sunkara
+     Anup Reddy Pati
+
+#program|ARahman songs|28|Gauri/Kritana|18:40:00|00:00:00|14:30:00|00:08:00
+
+     Gauri Nagul
+     Kirthana chamarthi
+     Kalyani Botla
+     Padma Chamarthi
+     Rupali Kadgi
+     
+
+#program|AURA - A MARS AGE DANCE|29|Vijay Ilavarasan/Viji Vaithi|18:50:00|00:00:00|14:30:00|00:05:00
+
+     Viji Vaithi
+     Shalini Prabhu
+     Dinesh Masilamani
+     Raghav Ramasubramanian 
+     Suganya Somu
+     Subha Singaram
+
