@@ -52,6 +52,7 @@ namespace ExtractProgramSchedule.Model
 		public TimeSpan Duration { get; set; }
 		public DateTime ReportTime { get; set; }
 		public DateTime StartTime { get; set; }
+		public DateTime GreenRoomTime { get; set; }
 
 		public IEnumerable<Participant> Participants
 		{
