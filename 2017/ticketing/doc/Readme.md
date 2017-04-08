@@ -35,3 +35,4 @@
   __Note__ : 2 minutes is the lowest value and even if you set below 2 the app will  make it 2 minutes ( to save the cost of my __aws__ account)
 
 
+[[https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Settings.png]]
