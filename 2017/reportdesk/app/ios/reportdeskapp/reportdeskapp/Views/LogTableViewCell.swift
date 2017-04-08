@@ -43,6 +43,12 @@ class LogTableViewCell: UITableViewCell {
         self.messageLabel.text = self.Log.Message
         self.logTypeLabel.text = self.Log.LogType
         self.idLabel.text = String(self.Log.Id)
+        
+        if self.Log.LogType.localizedCompare("ERROR") == ComparisonResult.orderedSame{
+            self.messageLabel.textColor = UIColor.red
+        }else{
+            self.messageLabel.textColor = UIColor.black
+        }
        
     }
 

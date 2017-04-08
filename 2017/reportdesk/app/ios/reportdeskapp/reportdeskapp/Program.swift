@@ -41,6 +41,16 @@ class Program{
         return true
     }
     
+    func isAtlestOnParticipantArrived() -> Bool{
+        for p in self.Participants{
+            if(p.arrived){
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     func getArrivedCount() -> Int{
         var count:Int = 0
         for p in self.Participants{

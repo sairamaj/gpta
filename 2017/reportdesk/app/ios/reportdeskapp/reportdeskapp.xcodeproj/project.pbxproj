@@ -15,6 +15,9 @@
 		C80E640D1E7F6F38001AE5FD /* ProgramTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E640C1E7F6F38001AE5FD /* ProgramTableViewController.swift */; };
 		C80E64111E7F6F96001AE5FD /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E64101E7F6F96001AE5FD /* Program.swift */; };
 		C80E64131E7F702B001AE5FD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E64121E7F702B001AE5FD /* Repository.swift */; };
+		C82B75311E9872F400D76C0C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C82B75301E9872F400D76C0C /* Settings.bundle */; };
+		C82B75341E98753900D76C0C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75331E98753900D76C0C /* Settings.swift */; };
+		C82B75361E98821700D76C0C /* issues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C82B75351E98821700D76C0C /* issues.txt */; };
 		C84D84981E86048C00B33BB3 /* ProgramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */; };
 		C84D849A1E860FC300B33BB3 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84D84991E860FC300B33BB3 /* ArrayExtension.swift */; };
 		C8C3569C1E908FD3009EEDD8 /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3569B1E908FD3009EEDD8 /* SlimLogger.swift */; };
@@ -39,6 +42,9 @@
 		C80E640C1E7F6F38001AE5FD /* ProgramTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgramTableViewController.swift; path = Views/ProgramTableViewController.swift; sourceTree = "<group>"; };
 		C80E64101E7F6F96001AE5FD /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		C80E64121E7F702B001AE5FD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = Repository/Repository.swift; sourceTree = "<group>"; };
+		C82B75301E9872F400D76C0C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		C82B75331E98753900D76C0C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C82B75351E98821700D76C0C /* issues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = issues.txt; sourceTree = "<group>"; };
 		C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgramTableViewCell.swift; path = Views/ProgramTableViewCell.swift; sourceTree = "<group>"; };
 		C84D84991E860FC300B33BB3 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Extensions/ArrayExtension.swift; sourceTree = "<group>"; };
 		C8C3569B1E908FD3009EEDD8 /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlimLogger.swift; path = Logging/SlimLogger.swift; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 		C80E63F81E7F6EE7001AE5FD /* reportdeskapp */ = {
 			isa = PBXGroup;
 			children = (
+				C82B75321E98752100D76C0C /* Configuration */,
 				C8C3569A1E908FBA009EEDD8 /* Logging */,
 				C84D849B1E860FCB00B33BB3 /* Extensions */,
 				C80E640F1E7F6F86001AE5FD /* Model */,
@@ -93,6 +100,8 @@
 				C80E64001E7F6EE7001AE5FD /* Assets.xcassets */,
 				C80E64021E7F6EE7001AE5FD /* LaunchScreen.storyboard */,
 				C80E64051E7F6EE7001AE5FD /* Info.plist */,
+				C82B75301E9872F400D76C0C /* Settings.bundle */,
+				C82B75351E98821700D76C0C /* issues.txt */,
 			);
 			path = reportdeskapp;
 			sourceTree = "<group>";
@@ -127,6 +136,14 @@
 				C8C356A11E909CB8009EEDD8 /* LogMessage.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		C82B75321E98752100D76C0C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C82B75331E98753900D76C0C /* Settings.swift */,
+			);
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 		C84D849B1E860FCB00B33BB3 /* Extensions */ = {
@@ -206,7 +223,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C82B75311E9872F400D76C0C /* Settings.bundle in Resources */,
 				C80E64041E7F6EE7001AE5FD /* LaunchScreen.storyboard in Resources */,
+				C82B75361E98821700D76C0C /* issues.txt in Resources */,
 				C80E64011E7F6EE7001AE5FD /* Assets.xcassets in Resources */,
 				C80E63FF1E7F6EE7001AE5FD /* Main.storyboard in Resources */,
 			);
@@ -222,6 +241,7 @@
 				C8C356A61E915B2A009EEDD8 /* ReportViewController.swift in Sources */,
 				C8C3569C1E908FD3009EEDD8 /* SlimLogger.swift in Sources */,
 				C80E64111E7F6F96001AE5FD /* Program.swift in Sources */,
+				C82B75341E98753900D76C0C /* Settings.swift in Sources */,
 				C80E640D1E7F6F38001AE5FD /* ProgramTableViewController.swift in Sources */,
 				C8C356A41E909ECE009EEDD8 /* LogTableViewCell.swift in Sources */,
 				C8C3569E1E908FFA009EEDD8 /* SlimLoggerConfig.swift in Sources */,

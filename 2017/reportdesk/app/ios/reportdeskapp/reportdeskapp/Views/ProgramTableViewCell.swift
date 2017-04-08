@@ -13,7 +13,7 @@ protocol DetailButtonPressedDelegate{
 }
 
 class ProgramTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var arrivedCountLabel: UILabel!
     @IBOutlet weak var arrivalIndicatorView: UIView!
     @IBOutlet weak var durationLabel: UILabel!
@@ -30,7 +30,7 @@ class ProgramTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         if self.CurrentProgram == nil{
@@ -38,10 +38,13 @@ class ProgramTableViewCell: UITableViewCell {
         }
         
         if( self.CurrentProgram.areAllParticipantsArrived()){
-         
-           self.arrivalIndicatorView.backgroundColor = UIColor.green
-        }else{
- 
+            
+            self.arrivalIndicatorView.backgroundColor = UIColor.green
+        }else if(self.CurrentProgram.isAtlestOnParticipantArrived()){
+            self.arrivalIndicatorView.backgroundColor = UIColor.yellow
+        }
+        else{
+            
             self.arrivalIndicatorView.backgroundColor = UIColor.red
         }
         self.nameLabel.text = self.CurrentProgram!.Name
@@ -51,7 +54,7 @@ class ProgramTableViewCell: UITableViewCell {
         self.reportTimeLabel.text = self.CurrentProgram!.ReportTime
         self.durationLabel.text = self.CurrentProgram!.Duration
         self.arrivedCountLabel.text = String(self.CurrentProgram!.getArrivedCount()) + "/" + String(self.CurrentProgram!.getParticipantsCount())
-     
+        
     }
     
     
@@ -60,5 +63,5 @@ class ProgramTableViewCell: UITableViewCell {
             delegate.OnClicked(program: self.CurrentProgram, currentCell: self, isHide:true)
         }
     }
-
+    
 }

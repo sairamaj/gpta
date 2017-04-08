@@ -15,7 +15,7 @@ import Foundation
 class Repository{
     
     /*
-     class communicates to aws REST api for mom restaurant items
+     class communicates to aws REST api for report desk
      */
     public static let shared:Repository = {
         return Repository()
@@ -214,19 +214,15 @@ class Repository{
             } else {
                 
                 do {
-                    Slim.trace(data as Any)
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [Any]
-                    {
-                        Slim.trace(json)
-                        callback(json)
-                        
-                    }else{
-                        Slim.error("unable to deserialize.")
+                    
+                    if let httpResponse = response as? HTTPURLResponse{
+                        if httpResponse.statusCode == 200{
+                            Slim.info("post returned 200(ok)")
+                        }else{
+                            Slim.error("post returned \(httpResponse.statusCode)")
+                        }
                     }
-                } catch {
-                    
-                    Slim.error("error in JSONSerialization")
-                    
+             
                 }
             }
             

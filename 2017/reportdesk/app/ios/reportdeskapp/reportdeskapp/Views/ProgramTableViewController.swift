@@ -20,6 +20,8 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
     var programs:[Program] = []
     var filteredPrograms:[Program] = []
     var selectedRow:Int = -1
+    var timer = Timer()
+    var counter = 0
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -43,6 +45,36 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
         
         tableView.separatorStyle = .none
         
+        refreshTimer()
+        NotificationCenter.default.addObserver(self, selector:#selector(ProgramTableViewController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+       
+    }
+    
+    
+    func refreshTimer(){
+        timer.invalidate()
+        if Settings.shared.IsAutoRefreshEnabled(){
+            // start the timer
+            let refreshInterval = Settings.shared.getAutoRefreshIntervalInMinutes()
+            Slim.info("enabling the timer with: \(refreshInterval) seconds"  )
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(refreshInterval), target: self, selector: #selector(refreshTimerAction), userInfo: nil, repeats: true)
+        }else{
+            Slim.info("disabling the timer")
+        }
+        
+    }
+    
+    func defaultsChanged(){
+        Slim.info("settings changed.")
+        refreshTimer()
+    }
+    
+    // called every time interval from the timer
+    func refreshTimerAction() {
+        counter += 1
+        Slim.info("autoRefresh: \(counter)")
+        self.refreshParticipantArrivalInfo()
+        Slim.info("autoRefresh: triggered")
     }
     
     override func didReceiveMemoryWarning() {
