@@ -64,4 +64,11 @@ class Program{
     func getParticipantsCount() -> Int{
         return self.Participants.count
     }
+    
+    func dumpInfo() -> Void{
+        print(self.Name)
+        for p in self.getParticipants() {
+            print(" \(p.name) -> \(p.id) -> \(p.arrived)")
+        }
+    }
 }

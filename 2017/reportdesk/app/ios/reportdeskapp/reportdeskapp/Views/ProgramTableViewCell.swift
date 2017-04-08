@@ -36,7 +36,7 @@ class ProgramTableViewCell: UITableViewCell {
         if self.CurrentProgram == nil{
             return
         }
-        
+     
         if( self.CurrentProgram.areAllParticipantsArrived()){
             
             self.arrivalIndicatorView.backgroundColor = UIColor.green

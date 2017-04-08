@@ -12,6 +12,7 @@ class ParticipantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var arrivedSwitch: UISwitch!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var serialNumberLabel: UILabel!
     var CurrentParticipant: Participant!
     
     override func awakeFromNib() {

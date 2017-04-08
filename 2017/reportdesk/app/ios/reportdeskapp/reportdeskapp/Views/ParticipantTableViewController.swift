@@ -35,6 +35,10 @@ class ParticipantTableViewController: UITableViewController ,UISearchBarDelegate
         
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,7 +76,12 @@ class ParticipantTableViewController: UITableViewController ,UISearchBarDelegate
         cell.nameLabel?.text =  participant.name
         if participant.arrived {
             cell.arrivedSwitch.isOn = true
+        }else{
+            cell.arrivedSwitch.isOn = false     // Note: even though default is off we need to set explict ,because the cells are shared in UI and if there
+            // are more than screen fit and we don't set explict false then it will take from the previously set value ( as the cell UI is shared)
         }
+        
+        cell.serialNumberLabel.text = String( participant.serialNumber)
 
         return cell
     }
@@ -91,6 +100,13 @@ class ParticipantTableViewController: UITableViewController ,UISearchBarDelegate
     func sortParticipants() -> Void{
         self.participants = self.participants.sorted(by: { (p1, p2) -> Bool in
             p1.name.localizedCompare(p2.name)  == ComparisonResult.orderedAscending      })
+        
+        var serialNumber = 1
+        // re assign serial numbers
+        for p in self.participants{
+            p.serialNumber = serialNumber
+            serialNumber += 1
+        }
     }
 
     func filterContentForSearchText(searchText: String) {

@@ -10,6 +10,7 @@ import Foundation
 
 class Participant{
     var id:String!
+    var serialNumber: Int!
     var name: String!
     var arrived: Bool
     
