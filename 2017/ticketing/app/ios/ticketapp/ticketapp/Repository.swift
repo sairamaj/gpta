@@ -73,7 +73,6 @@ class Repository{
         
         
         Slim.trace(checkInfo)
-        print(checkInfo)
         
         
         post( url: URL(string: getApiUrl(resource: "/tickets/checkins"))!, input:checkInfo, callback: {
@@ -173,20 +172,13 @@ class Repository{
                 
                 do {
                     Slim.trace(data as Any)
-                    print(data!)
-                    print(response)
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [Any]
-                    {
-                        Slim.trace(json)
-                        callback(json)
-                        
-                    }else{
-                        Slim.error("unable to deserialize.")
+                    if let httpResponse = response as? HTTPURLResponse{
+                        if httpResponse.statusCode == 200{
+                            Slim.info("post returned 200(ok)")
+                        }else{
+                            Slim.error("post returned \(httpResponse.statusCode)")
+                        }
                     }
-                } catch {
-                    
-                    Slim.error("error in JSONSerialization")
-                    
                 }
             }
             
