@@ -1,5 +1,5 @@
 # Tickets screen
-[[https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Tickets.png]]
+![tickets](https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Tickets.png)
 
 # Logs
 [[https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Log.png]]
