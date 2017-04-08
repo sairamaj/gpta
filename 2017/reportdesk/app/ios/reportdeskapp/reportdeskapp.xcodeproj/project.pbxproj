@@ -18,6 +18,7 @@
 		C82B75311E9872F400D76C0C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C82B75301E9872F400D76C0C /* Settings.bundle */; };
 		C82B75341E98753900D76C0C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75331E98753900D76C0C /* Settings.swift */; };
 		C82B75361E98821700D76C0C /* issues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C82B75351E98821700D76C0C /* issues.txt */; };
+		C82B75381E98892000D76C0C /* MessageCollectorLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75371E98892000D76C0C /* MessageCollectorLogDestination.swift */; };
 		C84D84981E86048C00B33BB3 /* ProgramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */; };
 		C84D849A1E860FC300B33BB3 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84D84991E860FC300B33BB3 /* ArrayExtension.swift */; };
 		C8C3569C1E908FD3009EEDD8 /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3569B1E908FD3009EEDD8 /* SlimLogger.swift */; };
@@ -45,6 +46,7 @@
 		C82B75301E9872F400D76C0C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C82B75331E98753900D76C0C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C82B75351E98821700D76C0C /* issues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = issues.txt; sourceTree = "<group>"; };
+		C82B75371E98892000D76C0C /* MessageCollectorLogDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCollectorLogDestination.swift; path = Logging/MessageCollectorLogDestination.swift; sourceTree = "<group>"; };
 		C84D84971E86048C00B33BB3 /* ProgramTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgramTableViewCell.swift; path = Views/ProgramTableViewCell.swift; sourceTree = "<group>"; };
 		C84D84991E860FC300B33BB3 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Extensions/ArrayExtension.swift; sourceTree = "<group>"; };
 		C8C3569B1E908FD3009EEDD8 /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlimLogger.swift; path = Logging/SlimLogger.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				C8C3569B1E908FD3009EEDD8 /* SlimLogger.swift */,
 				C8C3569D1E908FFA009EEDD8 /* SlimLoggerConfig.swift */,
+				C82B75371E98892000D76C0C /* MessageCollectorLogDestination.swift */,
 			);
 			name = Logging;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				C8E582BF1E82D08000496EB5 /* ParticipantTableViewCell.swift in Sources */,
 				C8C356A01E90936E009EEDD8 /* LogViewTableViewController.swift in Sources */,
 				C84D849A1E860FC300B33BB3 /* ArrayExtension.swift in Sources */,
+				C82B75381E98892000D76C0C /* MessageCollectorLogDestination.swift in Sources */,
 				C80E63FC1E7F6EE7001AE5FD /* ViewController.swift in Sources */,
 				C8CD28FA1E817FF40052B69B /* ParticipantTableViewController.swift in Sources */,
 				C80E63FA1E7F6EE7001AE5FD /* AppDelegate.swift in Sources */,

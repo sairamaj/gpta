@@ -37,7 +37,7 @@ class LogTableViewCell: UITableViewCell {
             return
         }
         
-        self.timeLabel.text = self.dateFormatter.string(from: Date() as Date)
+        self.timeLabel.text = self.dateFormatter.string(from: self.Log.DateTime)
         self.fileLabel.text = self.Log.FileName
         self.lineLabel.text = String(self.Log.Line)
         self.messageLabel.text = self.Log.Message
