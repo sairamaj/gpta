@@ -21,10 +21,10 @@
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
 			<string>Auto refresh interval (min)</string>
-			<key>DefaultValue</key>
-			<string>5</string>
 			<key>Key</key>
 			<string>auto_refresh_interval</string>
+			<key>DefaultValue</key>
+			<string>5</string>
 		</dict>
 	</array>
 </dict>

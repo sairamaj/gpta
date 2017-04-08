@@ -1,6 +1,6 @@
 struct SlimConfig {
     // Enable or disable console logging. When releasing your app, you should set this to false.
-    static let enableConsoleLogging = true
+    static let enableConsoleLogging = false
     
     // Log level for console logging, can be set during runtime
     static var consoleLogLevel = LogLevel.info

@@ -20,6 +20,8 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
     var ticketHolders:[TicketHolder] = []
     var filteredTicketHolders:[TicketHolder] = []
     let searchController = UISearchController(searchResultsController: nil)
+    var timer = Timer()
+    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,37 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchBar.sizeToFit()
         
+        
+        refreshTimer()
+        NotificationCenter.default.addObserver(self, selector:#selector(TicketHolderTableViewController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        
+        
+    }
+    
+    func refreshTimer(){
+        timer.invalidate()
+        if Settings.shared.IsAutoRefreshEnabled(){
+            // start the timer
+            let refreshInterval = Settings.shared.getAutoRefreshIntervalInMinutes()
+            Slim.info("enabling the timer with: \(refreshInterval) seconds"  )
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(refreshInterval), target: self, selector: #selector(refreshTimerAction), userInfo: nil, repeats: true)
+        }else{
+            Slim.info("disabling the timer")
+        }
+        
+    }
+    
+    func defaultsChanged(){
+        Slim.info("settings changed.")
+        refreshTimer()
+    }
+    
+    // called every time interval from the timer
+    func refreshTimerAction() {
+        counter += 1
+        Slim.info("autoRefresh: \(counter)")
+        self.refreshTicketHolderInfo()
+        Slim.info("autoRefresh: triggered")
     }
     
     override func didReceiveMemoryWarning() {
@@ -159,7 +192,7 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
      */
     
     func load() -> Void{
-        // Slim.info("load starting.")
+        Slim.info("load starting.")
         
         Repository.shared.getTicketHolders( callback:    {
             (objects) -> Void in
@@ -169,7 +202,7 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
             }
             
             self.sortTicketHolders()
-            //  Slim.info("loadPrograms done.")
+            Slim.info("loadPrograms done.")
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
             }
