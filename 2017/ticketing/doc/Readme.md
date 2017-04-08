@@ -19,7 +19,7 @@
     * One can search using the __name__(partial) or __confirmation__ number
 
 # Logs
-![logs](https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Log.png|alt=logs)
+![logs](https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Log.png)
 * Shows diagnostics logs
 
 # Navigating to settings
@@ -33,6 +33,3 @@
   * Time period in minutes to auto refresh should happen
   
   __Note__ : 2 minutes is the lowest value and even if you set below 2 the app will  make it 2 minutes ( to save the cost of my __aws__ account)
-
-
-[[https://github.com/sairamaj/gpta/blob/master/2017/ticketing/doc/Screen_Settings.png]]
