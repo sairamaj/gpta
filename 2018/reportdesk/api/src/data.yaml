@@ -1,0 +1,34 @@
+  - 
+      name: program_1
+
+      participants:
+        - 
+           name: part_1_1
+           id  : 1_1  
+        - 
+           name: part_1_2
+           id  : 1_2
+  - 
+      name: Program_2
+      participants:
+        - 
+           name: part_2_1
+           id  : 2_1  
+        - 
+           name: part_2_2
+           id  : 2_2
+  - 
+      name: Program_3
+      participants:
+        - 
+           name: part_3_1
+           id  : 3_1  
+        - 
+           name: part_3_2
+           id  : 3_2
+        - 
+           name: part_3_3
+           id  : 3_3
+
+      
+    

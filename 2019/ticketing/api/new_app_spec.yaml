@@ -1,0 +1,76 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: GPTA Ticket Application
+Resources:
+  CheckIn:
+    Properties:
+      CodeUri: s3://gpta2018/3530c925e9d7b09bd80c7054c4129631
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Properties:
+            Method: post
+            Path: /tickets/checkins
+          Type: Api
+      Handler: checkIn.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  GetCheckIns:
+    Properties:
+      CodeUri: s3://gpta2018/3530c925e9d7b09bd80c7054c4129631
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Properties:
+            Method: get
+            Path: /tickets/checkins
+          Type: Api
+      Handler: getCheckIns.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  GetTickets:
+    Properties:
+      CodeUri: s3://gpta2018/3530c925e9d7b09bd80c7054c4129631
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /tickets
+          Type: Api
+      Handler: getTickets.handler
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs4.3
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  TicketCheckIn:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
+  TicketTable:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+    Type: AWS::Serverless::SimpleTable
+Transform: AWS::Serverless-2016-10-31
