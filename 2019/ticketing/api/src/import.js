@@ -1,6 +1,6 @@
 'use strict'
 
-var dev = false
+var dev = true
 process.env.dev = dev
 if (process.argv.length > 2) {
     console.log('setting dev')
@@ -20,21 +20,21 @@ var debug = require('debug')('import')
 debug(JSON.stringify(tableNames))
 var lastProgram
 var programs = []
-var data = fs.readFileSync(__dirname + '../../UgadiTickets.csv', 'utf8')
+var data = fs.readFileSync(__dirname + '/../UgadiTickets.csv', 'utf8')
 
 let adultCountIndex = 0
 let kidCountIndex = 1
 let nameIndex = 5
 let confirmationIndex = 14
 
-data.split('\r\n').slice(2).forEach(line => {
+data.split('\n').slice(2).forEach(line => {
     var parts = line.split(',')
     if (parts.length > confirmationIndex) {
-        /*console.log(parts[adultCountIndex])
+        console.log(parts[adultCountIndex])
         console.log(parts[kidCountIndex])
         console.log(parts[nameIndex])
         console.log(parts[confirmationIndex])
-        console.log('-------------------')*/
+        console.log('-------------------')
 
         var ticketInfo = {
             id: parts[confirmationIndex],
@@ -54,7 +54,7 @@ data.split('\r\n').slice(2).forEach(line => {
                 })
                 .catch(err => {
                     console.log(err.red)
-                    process.exit(-2)
+                 //   process.exit(-2)
                 })
 
         }

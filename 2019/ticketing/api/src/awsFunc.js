@@ -11,7 +11,7 @@ AWS.config.update({
 console.log('dev:' + process.env.dev)
 if( process.env !== undefined && process.env.dev == 'true'){
   console.log('setting endpoint...')
-  AWS.config.endpoint = 'http://192.168.99.100:8000'
+  AWS.config.endpoint = 'http://127.0.0.1:8000'
 }
 
 var sns = new AWS.SNS()
@@ -33,6 +33,7 @@ function readDb(table, callback) {
 }
 
 function writeDb(table, data, callback) {
+    console.log(`writeDb ${AWS.config.endpoint}`)
   var docClient = new AWS.DynamoDB.DocumentClient()
 
   var params = {

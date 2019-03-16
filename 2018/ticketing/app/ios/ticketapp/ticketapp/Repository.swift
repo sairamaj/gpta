@@ -29,6 +29,8 @@ class Repository{
     
     func getTicketHolders(callback : @escaping ( [TicketHolder]) -> Void){
         let apiPath: String = "/tickets/"
+        let apiUrl = URL(string: getApiUrl(resource: apiPath))!
+
         get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
             (json) -> Void in
             
@@ -127,16 +129,18 @@ class Repository{
             } else {
                 
                 do {
-                    
+                    Slim.info("Repository.get got response...")
                     if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [Any]
                     {
-                        
+                        Slim.info("Parsed tickets response.")
                         callback(json)
+                    }else{
+                        Slim.error("Unable to parse the response.")
                     }
                     
                 } catch {
                     
-                    Slim.trace("Repository.get error in JSONSerialization...")
+                    Slim.error("Repository.get error in JSONSerialization...")
                     
                 }
                 
@@ -188,6 +192,7 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-        return "https://parfmou7ta.execute-api.us-west-2.amazonaws.com/Prod" + resource
+       // return "https://parfmou7ta.execute-api.us-west-2.amazonaws.com/Prod" + resource
+        return "http://127.0.0.1:4000" + resource
     }
 }
