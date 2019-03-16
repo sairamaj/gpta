@@ -29,7 +29,7 @@ class Repository{
     
     func getTicketHolders(callback : @escaping ( [TicketHolder]) -> Void){
         let apiPath: String = "/tickets/"
-        let apiUrl = URL(string: getApiUrl(resource: apiPath))!
+        // let apiUrl = URL(string: getApiUrl(resource: apiPath))!
 
         get( url: URL(string: getApiUrl(resource: apiPath))!, callback: {
             (json) -> Void in
@@ -40,9 +40,18 @@ class Repository{
                 if let dictionary = m as? [String: Any] {
                     let name = dictionary["name"] as! String
                     let confirmationNumber = dictionary["id"] as! String
-                    let adultCount = Int(dictionary["adults"] as! String)
-                    let kidsCount = Int(dictionary["kids"] as! String)
-                    let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount!, kidCount: kidsCount!)
+
+                    var adultCount =  0
+                    if let val = dictionary["adults"] {
+                        adultCount = Int(val as! String)!
+                    }
+                    
+                    var kidsCount =  0
+                    if let val = dictionary["kids"] {
+                        kidsCount = Int(val as! String)!
+                    }
+
+                    let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount, kidCount: kidsCount)
                     ticketHolders.append(ticketHolder)
                     serialNumber += 1
                 }
