@@ -3,7 +3,7 @@ Description: GPTA Ticket Application
 Resources:
   CheckIn:
     Properties:
-      CodeUri: s3://gpta2018/3530c925e9d7b09bd80c7054c4129631
+      CodeUri: s3://gpta2019/6bc8ab53b645bf2b38a197eef921bae4
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -16,12 +16,12 @@ Resources:
           Type: Api
       Handler: checkIn.handler
       Policies: AmazonDynamoDBFullAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   GetCheckIns:
     Properties:
-      CodeUri: s3://gpta2018/3530c925e9d7b09bd80c7054c4129631
+      CodeUri: s3://gpta2019/6bc8ab53b645bf2b38a197eef921bae4
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -34,12 +34,12 @@ Resources:
           Type: Api
       Handler: getCheckIns.handler
       Policies: AmazonDynamoDBFullAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   GetTickets:
     Properties:
-      CodeUri: s3://gpta2018/3530c925e9d7b09bd80c7054c4129631
+      CodeUri: s3://gpta2019/6bc8ab53b645bf2b38a197eef921bae4
       Environment:
         Variables:
           TABLE_NAME:
@@ -52,7 +52,7 @@ Resources:
           Type: Api
       Handler: getTickets.handler
       Policies: AmazonDynamoDBReadOnlyAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   TicketCheckIn:

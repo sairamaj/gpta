@@ -12,10 +12,12 @@ function getContext(res) {
     var context = {}
 
     context.succeed = function (data) {
-        res.send(data)
+        //res.send(data)
+        res.json(JSON.parse(data.body))
     }
     context.fail = function (data) {
-        res.send(data)
+        //res.send(data)
+        res.json(data)
     }
     return context
 }

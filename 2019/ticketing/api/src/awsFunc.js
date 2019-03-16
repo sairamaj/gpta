@@ -4,8 +4,8 @@
 'use strict'
 var AWS = require('aws-sdk')
 AWS.config.update({
-  region: 'us-west-2'
- // endpoint: "http://localhost:8000"
+  region: 'us-west-2',
+  //endpoint: "https://enz35hp5w5.execute-api.us-west-2.amazonaws.com/Prod/"
 })
 
 console.log('dev:' + process.env.dev)
@@ -33,6 +33,7 @@ function readDb(table, callback) {
 }
 
 function writeDb(table, data, callback) {
+  console.log(`table name:${table}`)
   var docClient = new AWS.DynamoDB.DocumentClient()
 
   var params = {
