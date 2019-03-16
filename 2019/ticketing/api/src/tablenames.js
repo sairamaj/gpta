@@ -5,7 +5,7 @@ module.exports = function getTableNames(dev){
         }
     }else{
         return {
-            ticket: 'gpta2018-ticketing-TicketTable-F3TQB98RIQL'
+            ticket: 'gpta2019-ticketing-TicketTable-FHA13AUCLC2X'
         }
     }
 }
