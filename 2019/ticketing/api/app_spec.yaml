@@ -39,6 +39,24 @@ Resources:
             Path: /tickets/checkins
             Method: get
 
+  AddTicket:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: addTicket.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref TicketTable
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets
+            Method: post
+
   CheckIn:
     Type: AWS::Serverless::Function
     Properties:

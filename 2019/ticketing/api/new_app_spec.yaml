@@ -1,9 +1,27 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: GPTA Ticket Application
 Resources:
+  AddTicket:
+    Properties:
+      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        PostResource:
+          Properties:
+            Method: post
+            Path: /tickets
+          Type: Api
+      Handler: addTicket.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: nodejs8.10
+      Timeout: 10
+    Type: AWS::Serverless::Function
   CheckIn:
     Properties:
-      CodeUri: s3://gpta2019/6bc8ab53b645bf2b38a197eef921bae4
+      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -21,7 +39,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetCheckIns:
     Properties:
-      CodeUri: s3://gpta2019/6bc8ab53b645bf2b38a197eef921bae4
+      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -39,7 +57,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetTickets:
     Properties:
-      CodeUri: s3://gpta2019/6bc8ab53b645bf2b38a197eef921bae4
+      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
       Environment:
         Variables:
           TABLE_NAME:

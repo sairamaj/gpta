@@ -1,4 +1,4 @@
-process.env.dev = false
+process.env.dev = true
 var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
