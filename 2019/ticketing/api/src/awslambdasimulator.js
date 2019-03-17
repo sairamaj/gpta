@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var app = express()
 var getTickets = require('./getTickets').handler
 var checkIn = require('./checkIn').handler
+var addTicket = require('./addTicket').handler
 var getCheckIns = require('./getCheckIns').handler
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -27,7 +28,7 @@ function getContext(res) {
     return context
 }
 
-function createEvent(id, body) {
+function createCheckInEvent(id, body) {
     var event = {
         pathParameters: {
             id: ""
@@ -41,9 +42,37 @@ function createEvent(id, body) {
     return event
 }
 
+function createTicketsEvent(id, body) {
+    console.log('createTicketsEvent')
+    var event = {
+        pathParameters: {
+            id: ""
+        }
+    }
+
+    event.pathParameters.id = id
+    event.body = JSON.stringify(body)
+    console.log('===================================')
+    console.log(event.body)
+    console.log('===================================')
+    console.log(JSON.stringify(event, null, 2))
+    return event
+}
+
 app.get('/tickets', function (req, res) {
     process.env.TABLE_NAME = "Ticket"
     getTickets(null, getContext(res), null)
+})
+
+app.post('/tickets', function (req, res) {
+    console.log('in /tickets')
+    process.env.TABLE_NAME = "Ticket"
+    console.log(req.path)
+    console.log(req.body)
+    var realBody = JSON.parse(Object.keys(req.body)[0])
+    console.log(`realbody : ${JSON.stringify(realBody)}`)
+    var e = createTicketsEvent(req.params.id, realBody)
+    addTicket(e, getContext(res), null)
 })
 
 app.get('/tickets/checkins', function (req, res) {
@@ -57,10 +86,9 @@ app.post('/tickets/checkins', function (req, res) {
     console.log(req.path)
     var realBody = JSON.parse(Object.keys(req.body)[0])
         
-    var e = createEvent(req.params.id, realBody)
+    var e = createCheckInEvent(req.params.id, realBody)
     checkIn(e, getContext(res), null)
 })
-
 
 console.log('listening 4000...')
 app.listen(4000);
