@@ -82,7 +82,7 @@ class Repository{
             "\"updatedAt\": \"\(utcTimeZoneStr)\" " +
             "}")
         
-        
+        print(checkInfo)
         Slim.trace(checkInfo)
         
         

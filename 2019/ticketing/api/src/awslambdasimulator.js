@@ -17,7 +17,12 @@ function getContext(res) {
     }
     context.fail = function (data) {
         //res.send(data)
-        res.json(data)
+        //var response = JSON.parse(data.body)
+        console.log(`fail : ${data.status}`)
+        res.status(data.statusCode)
+        .send({
+              message: data.body
+              });
     }
     return context
 }
@@ -30,8 +35,7 @@ function createEvent(id, body) {
     }
 
     event.pathParameters.id = id
-    console.log('before filling updateat.')
-    event.body = JSON.stringify({ id:"abc", "adults": "1", "kids": "2", "updatedat": Date()})
+    event.body = JSON.stringify({ "id":body.id, "adults": body.adults, "kids": body.kids, "updatedat": Date()})
     console.log(event)
     console.log(JSON.stringify(event, null, 2))
     return event
@@ -51,8 +55,9 @@ app.post('/tickets/checkins', function (req, res) {
     console.log('in /tickets/checkins')
     process.env.TABLETICKETCHECKIN = "TicketCheckIn"
     console.log(req.path)
-    console.log("param id:" + req.body)
-    var e = createEvent(req.params.id, req.body)
+    var realBody = JSON.parse(Object.keys(req.body)[0])
+        
+    var e = createEvent(req.params.id, realBody)
     checkIn(e, getContext(res), null)
 })
 

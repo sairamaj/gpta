@@ -16,6 +16,7 @@ exports.handler = function (event, context, callback) {
             context.succeed(util.createResponse(200, status))
         })
         .catch(err => {
+            console.log('error in checkin')
             console.log(err)
             context.fail(util.createResponse(500, err))
         })
