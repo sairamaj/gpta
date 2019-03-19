@@ -8,7 +8,7 @@
     $url = "http://localhost:4000/tickets"
     
     ($tickets | ConvertTo-Json)
-    Invoke-WebRequest $url -Method Post -Body ($tickets | ConvertTo-Json)
+    Invoke-WebRequest $url -Method Post -Body ($tickets | ConvertTo-Json) -ContentType "application/x-www-form-urlencoded" 
 
     # using parameter splatting.
     #$parameaters = @{Uri=$url, Method='post'}

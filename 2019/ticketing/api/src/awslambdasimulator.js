@@ -69,6 +69,7 @@ app.post('/tickets', function (req, res) {
     process.env.TABLE_NAME = "Ticket"
     console.log(req.path)
     console.log(req.body)
+    console.log(`content type:${JSON.stringify(req.headers)}`)
     var realBody = JSON.parse(Object.keys(req.body)[0])
     console.log(`realbody : ${JSON.stringify(realBody)}`)
     var e = createTicketsEvent(req.params.id, realBody)
