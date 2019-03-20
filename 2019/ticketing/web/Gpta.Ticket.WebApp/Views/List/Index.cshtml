@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Gpta.Ticket.WebApp.Models.Ticket>
+
+<dv>
+<table border="1" cellpadding="10">
+       <th>Confirmation</th>
+                    <th>Name</th>
+                    <th>Adults</th>
+                    <th>Kids</th>
+                                    
+            @foreach(var ticket in Model.OrderBy(t=> t.Name)){
+                 <tr>
+                    <td>@ticket.Id </td>
+                    <td>@ticket.Name </td>
+                    <td>@ticket.Adults </td>
+                    <td>@ticket.Kids</td>
+                </tr>
+            }
+</table>
+</dv>

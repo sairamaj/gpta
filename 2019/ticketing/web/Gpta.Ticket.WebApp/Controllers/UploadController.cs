@@ -10,14 +10,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace Gpta.Ticket.WebApp.Controllers
 {
     // https://malcoded.com/posts/react-file-upload
-    public class UploadFilesController : Controller
+    public class UploadController : Controller
     {
         public ITicketRepositry TicketRepository { get; }
 
-        public UploadFilesController(ITicketRepositry ticketRepository)
+        public UploadController(ITicketRepositry ticketRepository)
         {
             System.Console.WriteLine(" >> In uploadFilesController <<<");
             TicketRepository = ticketRepository ?? throw new System.ArgumentNullException(nameof(ticketRepository));
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -44,7 +49,7 @@ namespace Gpta.Ticket.WebApp.Controllers
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
             System.Console.WriteLine($" >>>>>>>>>>>>>>.   Done {files.Count} size:{size}: filePath:{filePath}");
-            return Ok(new { count = files.Count, size, filePath });
+            return RedirectToAction("Index", "List", new { });
         }
 
         async Task AddTicketsFromFileAsync(string fileName)
