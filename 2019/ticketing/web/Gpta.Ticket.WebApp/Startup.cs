@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
 using Gpta.Ticket.WebApp.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +29,11 @@ namespace Gpta.Ticket.WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // https://www.c-sharpcorner.com/article/authentication-and-authorization-in-asp-net-core-2-0-using-azure-active-director/
             services.AddTransient<ITicketRepositry, TicketRepository>();
+         services.AddAuthentication(AzureADB2CDefaults.AuthenticationScheme)
+                .AddAzureADB2C(options => Configuration.Bind("AzureAdB2C", options));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -53,6 +54,8 @@ namespace Gpta.Ticket.WebApp
             //  app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
+
 
             app.UseMvc(routes =>
             {
