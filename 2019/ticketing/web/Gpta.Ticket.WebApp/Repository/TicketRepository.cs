@@ -42,5 +42,9 @@ namespace Gpta.Ticket.WebApp.Repository
             .PostAsync("/tickets")
             .WithBodyContent(content);
         }
+
+        public async Task DeleteAllAsync(){
+            await new FluentClient(this._baseUrl).DeleteAsync("/tickets");
+        }
     }    
 }

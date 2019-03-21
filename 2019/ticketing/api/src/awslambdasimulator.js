@@ -6,6 +6,7 @@ var getTickets = require('./getTickets').handler
 var checkIn = require('./checkIn').handler
 var addTicket = require('./addTicket').handler
 var getCheckIns = require('./getCheckIns').handler
+var deleteAllTickets = require('./deleteAllTickets').handler
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -90,6 +91,12 @@ app.post('/tickets/checkins', function (req, res) {
     var e = createCheckInEvent(req.params.id, realBody)
     checkIn(e, getContext(res), null)
 })
+
+app.delete('/tickets', function(req,res){
+    console.log(`delete`)
+    process.env.TABLE_NAME = "Ticket"
+    deleteAllTickets(null, getContext(res), null)
+});
 
 console.log('listening 4000...')
 app.listen(4000);

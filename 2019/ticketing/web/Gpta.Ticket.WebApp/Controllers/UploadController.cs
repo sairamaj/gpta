@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    [Authorize]
+//    [Authorize]
     public class UploadController : Controller
     {
         public ITicketRepositry TicketRepository { get; }

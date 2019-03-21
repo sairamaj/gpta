@@ -72,7 +72,6 @@ function sendNotification(data, topicArn, callback) {
     }
   }
 
-
   // first have to stringify the inner APNS object...
   payload.APNS = JSON.stringify(payload.APNS)
   // then have to stringify the entire message payload
