@@ -31,13 +31,13 @@ namespace ConsoleGraphTest
 
             var graphResult = graphClient.Users.Request(options).GetAsync().Result;
             Console.WriteLine("Graph SDK Result");
-            Console.WriteLine(graphResult[0].DisplayName);
-            Console.WriteLine("Member of:" + graphResult[0].MemberOf );
-
-            foreach(var group in graphClient.Groups.Request(options).GetAsync().Result){
-                Console.WriteLine($"Group name: {group.DisplayName}");
+            Console.WriteLine("Mail nick name:" + graphResult[0].DisplayName);
+            Console.WriteLine("Member of:" + graphResult[0].MemberOf);
+            var alias = graphResult[0].DisplayName;
+            var groups = new PermissionHelper(graphClient).UserMemberOf(alias).Result;
+            foreach(var group in groups){
+                System.Console.WriteLine($"group: {group.Display}");
             }
-
             //Direct query using HTTPClient (for beta endpoint calls or not available in Graph SDK)
             // HttpClient httpClient = GetAuthenticatedHTTPClient(config);
             // Uri Uri = new Uri("https://graph.microsoft.com/v1.0/users?$top=1");
