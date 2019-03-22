@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gpta.Ticket.WebApp.Models;
 using Gpta.Ticket.WebApp.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    // https://malcoded.com/posts/react-file-upload
+    [Authorize]
     public class ListController : Controller
     {
         public ITicketRepositry TicketRepository { get; }
