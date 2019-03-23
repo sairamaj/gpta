@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.Identity.Client;
 using Microsoft.Graph;
 using Microsoft.Extensions.Configuration;
+using GraphLib;
 
 namespace ConsoleGraphTest
 {
-
     class Program
     {
-        private static GraphServiceClient _graphServiceClient;
-        private static HttpClient _httpClient;
         static void Main(string[] args)
         {
-            var config = LoadAppSettings();
+            var config = Util.LoadAppSettings();
             if (null == config)
             {
                 Console.WriteLine("Missing or invalid appsettings.json file. Please see README.md for configuration instructions.");
@@ -24,18 +22,25 @@ namespace ConsoleGraphTest
             }
 
             //Query using Graph SDK (preferred when possible)
-            GraphServiceClient graphClient = GetAuthenticatedGraphClient(config);
+            GraphServiceClient graphClient = Util.GetAuthenticatedGraphClient(config);
             List<QueryOption> options = new List<QueryOption>{
-                new QueryOption("$top", "1")
+                new QueryOption("$top", "2")
             };
 
             var graphResult = graphClient.Users.Request(options).GetAsync().Result;
             Console.WriteLine("Graph SDK Result");
-            Console.WriteLine("Mail nick name:" + graphResult[0].DisplayName);
-            Console.WriteLine("Member of:" + graphResult[0].MemberOf);
-            var alias = graphResult[0].DisplayName;
+            foreach (var g in graphResult)
+            {
+                Console.WriteLine(g.DisplayName);
+            }
+            //Console.WriteLine("Mail nick name:" + graphResult[0].DisplayName);
+            //Console.WriteLine("Member of:" + graphResult[0].MemberOf);
+            //return;
+            var alias = args[0];
             var groups = new PermissionHelper(graphClient).UserMemberOf(alias).Result;
-            foreach(var group in groups){
+            Console.WriteLine($"group count: {groups.Count}");
+            foreach (var group in groups)
+            {
                 System.Console.WriteLine($"group: {group.Display}");
             }
             //Direct query using HTTPClient (for beta endpoint calls or not available in Graph SDK)
@@ -45,59 +50,6 @@ namespace ConsoleGraphTest
 
             // Console.WriteLine("HTTP Result");
             // Console.WriteLine(httpResult);
-        }
-
-        private static IConfigurationRoot LoadAppSettings()
-        {
-            try
-            {
-                var config = new ConfigurationBuilder()
-                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true)
-                .Build();
-
-                // Validate required settings
-                if (string.IsNullOrEmpty(config["applicationId"]) ||
-                string.IsNullOrEmpty(config["applicationSecret"]) ||
-                string.IsNullOrEmpty(config["redirectUri"]) ||
-                string.IsNullOrEmpty(config["tenantId"]))
-                {
-                    return null;
-                }
-
-                return config;
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                return null;
-            }
-        }
-        private static IAuthenticationProvider CreateAuthorizationProvider(IConfigurationRoot config)
-        {
-            var clientId = config["applicationId"];
-            var clientSecret = config["applicationSecret"];
-            var redirectUri = config["redirectUri"];
-            var authority = $"https://login.microsoftonline.com/{config["tenantId"]}/v2.0";
-
-            List<string> scopes = new List<string>();
-            scopes.Add("https://graph.microsoft.com/.default");
-
-            var cca = new ConfidentialClientApplication(clientId, authority, redirectUri, new ClientCredential(clientSecret), null, null);
-            return new MsalAuthenticationProvider(cca, scopes.ToArray());
-        }
-
-        private static GraphServiceClient GetAuthenticatedGraphClient(IConfigurationRoot config)
-        {
-            var authenticationProvider = CreateAuthorizationProvider(config);
-            _graphServiceClient = new GraphServiceClient(authenticationProvider);
-            return _graphServiceClient;
-        }
-
-        private static HttpClient GetAuthenticatedHTTPClient(IConfigurationRoot config)
-        {
-            var authenticationProvider = CreateAuthorizationProvider(config);
-            _httpClient = new HttpClient(new AuthHandler(authenticationProvider, new HttpClientHandler()));
-            return _httpClient;
         }
     }
 }

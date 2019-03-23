@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Graph;
 //Comment
-namespace ConsoleGraphTest
+namespace GraphLib
 {
     public class ResultsItem
     {

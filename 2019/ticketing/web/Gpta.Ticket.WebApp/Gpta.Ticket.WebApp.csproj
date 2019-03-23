@@ -15,4 +15,9 @@
     <PackageReference Include="System.CommandLine.Experimental" Version="0.2.0-alpha.19156.3" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\lib\GraphLib\GraphLib.csproj" />
+  </ItemGroup>
+
 </Project>

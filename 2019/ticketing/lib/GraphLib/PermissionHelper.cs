@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Graph;
 
-namespace ConsoleGraphTest
+namespace GraphLib
 {
     public class PermissionHelper
     {
