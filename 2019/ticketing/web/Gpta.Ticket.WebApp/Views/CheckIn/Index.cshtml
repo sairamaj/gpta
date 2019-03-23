@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Gpta.Ticket.WebApp.Models.TicketCheckIn>
+<dv>
+<table border="1" cellpadding="10">
+    <th></th>
+    <th>Total</th>
+                 <tr>
+                    <td><b>Adults</b></td>
+                    <td>@Model.Sum(t=> t.Adults)</td>
+                </tr>
+
+                 <tr>
+                    <td><b>Kids</b></td>
+                    <td>@Model.Sum(t=> t.Kids)</td>
+                </tr>
+</table>
+</dv>
+<dv>
+<table border="1" cellpadding="10">
+       <th>Confirmation</th>
+                    <th>Name</th>
+                    <th>Adults</th>
+                    <th>Kids</th>
+                                    
+            @foreach(var checkIn in Model){
+                 <tr>
+                    <td>@checkIn.Id </td>
+                    <td>@checkIn.Name </td>
+                    <td>@checkIn.Adults </td>
+                    <td>@checkIn.Kids</td>
+                </tr>
+            }
+</table>
+</dv>

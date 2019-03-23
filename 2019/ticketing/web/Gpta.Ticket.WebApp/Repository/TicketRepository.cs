@@ -30,6 +30,12 @@ namespace Gpta.Ticket.WebApp.Repository
             .As<IEnumerable<Gpta.Ticket.WebApp.Models.Ticket>>();
         }
 
+        public async Task<IEnumerable<Gpta.Ticket.WebApp.Models.TicketCheckIn>> GetCheckInsAsync()
+        {
+            return await new FluentClient(this._baseUrl)
+            .GetAsync("/tickets/checkins")
+            .As<IEnumerable<Gpta.Ticket.WebApp.Models.TicketCheckIn>>();
+        }
 
         public async Task<Gpta.Ticket.WebApp.Models.TicketSummary> GetSummaryAsync()
         {
