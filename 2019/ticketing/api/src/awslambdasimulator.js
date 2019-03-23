@@ -6,6 +6,7 @@ var getTickets = require('./getTickets').handler
 var checkIn = require('./checkIn').handler
 var addTicket = require('./addTicket').handler
 var getCheckIns = require('./getCheckIns').handler
+var getTicketsSummary = require('./getTicketsSummary').handler
 var deleteAllTickets = require('./deleteAllTickets').handler
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -63,7 +64,13 @@ function createTicketsEvent(id, body) {
 app.get('/tickets', function (req, res) {
     process.env.TABLE_NAME = "Ticket"
     getTickets(null, getContext(res), null)
-})
+});
+
+app.get('/tickets/summary', function (req, res) {
+    process.env.TABLE_NAME = "Ticket"
+    process.env.TABLETICKETCHECKIN = "TicketCheckIn"
+    getTicketsSummary(null, getContext(res), null)
+});
 
 app.post('/tickets', function (req, res) {
     console.log('in /tickets')

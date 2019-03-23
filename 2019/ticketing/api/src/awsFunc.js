@@ -33,6 +33,22 @@ function readDb(table, callback) {
   }
 }
 
+function countDb(table, callback){
+  var docClient = new AWS.DynamoDB.DocumentClient()
+  var params = {
+    TableName: table
+  }
+  params.Select= "COUNT";
+  docClient.scan(params, onScan)
+  function onScan(err, data) {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, data)
+    }
+  }
+}
+
 function writeDb(table, data, callback) {
   console.log(`table name:${table}`)
   var docClient = new AWS.DynamoDB.DocumentClient()
@@ -118,6 +134,7 @@ module.exports.readDb = readDb
 module.exports.writeDb = writeDb
 module.exports.deleteDb = deleteDb
 module.exports.queryDb = queryDb
+module.exports.countDb = countDb
 module.exports.sendMenuItemAddedNotification = sendMenuItemAddedNotification
 module.exports.sendMenuItemRemovedNotification = sendMenuItemRemovedNotification
 module.exports.sendOrderNotification = sendOrderNotification

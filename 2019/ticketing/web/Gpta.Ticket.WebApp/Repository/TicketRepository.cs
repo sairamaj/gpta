@@ -30,6 +30,14 @@ namespace Gpta.Ticket.WebApp.Repository
             .As<IEnumerable<Gpta.Ticket.WebApp.Models.Ticket>>();
         }
 
+
+        public async Task<Gpta.Ticket.WebApp.Models.TicketSummary> GetSummaryAsync()
+        {
+            return await new FluentClient(this._baseUrl)
+            .GetAsync("/tickets/summary")
+            .As<Gpta.Ticket.WebApp.Models.TicketSummary>();
+        }
+
         public async Task AddTicketsAsync(IEnumerable<Gpta.Ticket.WebApp.Models.Ticket> tickets)
         {
             System.Console.WriteLine($"Adding tickets...:{tickets.Count()}");
@@ -43,8 +51,9 @@ namespace Gpta.Ticket.WebApp.Repository
             .WithBodyContent(content);
         }
 
-        public async Task DeleteAllAsync(){
+        public async Task DeleteAllAsync()
+        {
             await new FluentClient(this._baseUrl).DeleteAsync("/tickets");
         }
-    }    
+    }
 }

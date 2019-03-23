@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model TicketSummary
+
+<dv>
+<table border="1" cellpadding="10">
+    <th></th>
+    <th>Total</th>
+    <th>Checked In</th>
+                 <tr>
+                    <td><b>Adults</b></td>
+                    <td>@Model.Adults</td>
+                    <td>@Model.CheckedInAdults</td>
+                </tr>
+
+                 <tr>
+                    <td><b>Kids</b></td>
+                    <td>@Model.Kids</td>
+                    <td>@Model.CheckedInKids</td>
+                </tr>
+</table>
+</dv>

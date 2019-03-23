@@ -1,2 +1,9 @@
-12456|sairama jamal|4|2
-7890|Jv rao|2|2
+var numbers = [65, 44, 12, 4];
+
+function getSum(total, num) {
+  return total + num;
+}
+
+function myFunction(item) {
+  document.getElementById("demo").innerHTML = numbers.reduce(getSum);
+}

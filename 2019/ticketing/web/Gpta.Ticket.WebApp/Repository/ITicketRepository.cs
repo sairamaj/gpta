@@ -7,6 +7,7 @@ namespace Gpta.Ticket.WebApp.Repository
     {
         Task<IEnumerable<Gpta.Ticket.WebApp.Models.Ticket>> GetTicketsAsync();
         Task AddTicketsAsync(IEnumerable<Gpta.Ticket.WebApp.Models.Ticket> tickets);
+        Task<Gpta.Ticket.WebApp.Models.TicketSummary> GetSummaryAsync();
         Task DeleteAllAsync();
     }
 }
