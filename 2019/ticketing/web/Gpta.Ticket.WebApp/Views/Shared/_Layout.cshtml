@@ -3,8 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] Gpta Ticketing</title>
+    <div>
+    <img src="~/images/gpta_logo.png" asp-append-version="true" height="40"/>
+    <!-- <img src="~/images/gpta_app.png" asp-append-version="true" height="40" align="center"/> -->
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+@Html.Label("GPTA Ticketing Application", "GPTA Ticketing Application",new {@class = "header" })
+<!-- <asp:Label ID="lbl_phone_number" runat="server" Font-Bold="true" align="center" >GPTA</asp:Label> -->
 
+    <img src="~/images/gpta_ticket.png" asp-append-version="true" height="40" align="right"/>
+    <title>@ViewData["Title"] Gpta Ticketing</title>
+</div>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
@@ -21,7 +35,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GPTA Ticket App</a>
+                <!-- <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GPTA Ticket App</a> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,11 +58,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <!-- <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - testauth - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> -->
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

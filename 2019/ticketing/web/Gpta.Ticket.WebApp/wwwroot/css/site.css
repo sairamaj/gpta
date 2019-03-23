@@ -65,3 +65,15 @@ body {
 {
    color: brown;
 }
+
+.header
+{
+  font-size: 25px;
+  text-align: center;
+  color: green;
+  display:inline-block;
+ }
+
+.textAlign{
+  text-align:center;
+}
