@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h2>
+@Html.Label("Access denied", "Access Denied",new {@class = "error" })
+</h2>
+ 
+
+@model IEnumerable<System.Security.Claims.Claim>
+
+@Html.Label("Access denied", "You belong to the following groups:",new {@class = "info" }) <br/>
+
+<h5>
+    <table border="1" cellpadding="10">
+@foreach(var claim in Model.Where(c=> c.Type == System.Security.Claims.ClaimTypes.Role)){
+        <tr>
+            <td>
+        @Html.Label("Group", @claim.Value,new {@class = "info" }) 
+        </td>
+        </tr>        
+}
+</table>
+</h5>
