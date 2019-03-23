@@ -14,7 +14,6 @@ namespace Gpta.Ticket.WebApp.Models{
 
         public static Ticket Parse(string info)
         {
-
             const int adultCountIndex = 0;
             const int kidCountIndex = 1;
             const int nameIndex = 5;

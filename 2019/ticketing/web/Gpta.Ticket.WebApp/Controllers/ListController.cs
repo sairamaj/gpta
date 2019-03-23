@@ -24,6 +24,7 @@ namespace Gpta.Ticket.WebApp.Controllers
         public async Task<IActionResult> Index()
         {
             var tickets = await this.TicketRepository.GetTicketsAsync();
+
             return View(tickets);
         }
     }

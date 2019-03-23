@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    [Authorize(Roles="Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class UploadController : Controller
     {
         public ITicketRepositry TicketRepository { get; }
@@ -46,29 +46,45 @@ namespace Gpta.Ticket.WebApp.Controllers
                 }
             }
 
-            await AddTicketsFromFileAsync(filePath);
+            var summary = await AddTicketsFromFileAsync(filePath);
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
             System.Console.WriteLine($" >>>>>>>>>>>>>>.   Done {files.Count} size:{size}: filePath:{filePath}");
-            return RedirectToAction("Index", "List", new { });
+            return View("Status", summary);
         }
 
-        async Task AddTicketsFromFileAsync(string fileName)
+        async Task<UploadSummary> AddTicketsFromFileAsync(string fileName)
         {
+            int totalParsed = 0;
+            int totalParseFailed = 0;
+            var failedLines = new List<FailedLineInfo>();
+
             const int batchSize = 5;
             var ticketsList = new List<Gpta.Ticket.WebApp.Models.Ticket>();
-            foreach (var line in (await System.IO.File.ReadAllLinesAsync(fileName)).Skip(2))
+            int headerLineCount = 2;
+            int lineNumber = headerLineCount;  // we start w
+            foreach (var line in (await System.IO.File.ReadAllLinesAsync(fileName)).Skip(headerLineCount))
             {
-                var ticket = Gpta.Ticket.WebApp.Models.Ticket.Parse(line);
-                if (ticket != null)
+                try
                 {
-                    System.Console.WriteLine($" ticket: {ticket}");
-                    ticketsList.Add(ticket);
-                    if (ticketsList.Count == batchSize)
+                    totalParsed++;
+                    lineNumber++;
+                    var ticket = Gpta.Ticket.WebApp.Models.Ticket.Parse(line);
+                    if (ticket != null)
                     {
-                        await TicketRepository.AddTicketsAsync(ticketsList);
-                        ticketsList.Clear();
+                        System.Console.WriteLine($" ticket: {ticket}");
+                        ticketsList.Add(ticket);
+                        if (ticketsList.Count == batchSize)
+                        {
+                            await TicketRepository.AddTicketsAsync(ticketsList);
+                            ticketsList.Clear();
+                        }
                     }
+                }
+                catch (System.Exception e)
+                {
+                    totalParseFailed++;
+                    failedLines.Add(new FailedLineInfo(line,lineNumber, $"Parsing error.{e.Message}"));
                 }
             }
 
@@ -76,6 +92,18 @@ namespace Gpta.Ticket.WebApp.Controllers
             {
                 await TicketRepository.AddTicketsAsync(ticketsList);
             }
+
+            var status = string.Empty;
+            if (failedLines.Any())
+            {
+                status = $"Some failed. Total {totalParsed} : failed:{totalParseFailed}";
+            }
+            else
+            {
+                status = $"Successfully parsed {totalParsed}";
+            }
+
+            return new UploadSummary(status, totalParsed, totalParseFailed, failedLines);
         }
     }
 }
