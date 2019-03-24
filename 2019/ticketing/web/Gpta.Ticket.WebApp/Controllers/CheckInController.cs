@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Gpta.Ticket.WebApp.Models;
 using Gpta.Ticket.WebApp.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
+    [Authorize(Roles="Administrator,Reader")]
     public class CheckInController : Controller
     {
         public ITicketRepositry TicketRepository { get; }
