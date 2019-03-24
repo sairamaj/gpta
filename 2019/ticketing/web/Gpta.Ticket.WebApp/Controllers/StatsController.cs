@@ -10,7 +10,7 @@ using Gpta.Ticket.WebApp.Repository;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    [Authorize(Roles="Reader")]
+    [Authorize(Roles="TicketingAdministrator,TicketingReader")]
     public class StatsController : Controller
     {
         public ITicketRepositry TicketRepository { get; }

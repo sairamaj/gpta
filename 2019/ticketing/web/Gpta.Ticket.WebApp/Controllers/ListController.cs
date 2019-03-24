@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    [Authorize(Roles="Readers")]
+    [Authorize(Roles="TicketingAdministrator,TicketingReader")]
     public class ListController : Controller
     {
         public ITicketRepositry TicketRepository { get; }

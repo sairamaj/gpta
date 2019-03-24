@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    [Authorize(Roles="Administrator")]
+    [Authorize(Roles="TicketingAdministrator")]
     public class DeleteController : Controller
     {
         public ITicketRepositry TicketRepository { get; }

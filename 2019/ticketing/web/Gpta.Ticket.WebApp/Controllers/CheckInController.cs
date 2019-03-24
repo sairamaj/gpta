@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
-    [Authorize(Roles="Administrator,Reader")]
+    [Authorize(Roles = "TicketingAdministrator,TicketingReader")]
     public class CheckInController : Controller
     {
         public ITicketRepositry TicketRepository { get; }
@@ -24,8 +24,9 @@ namespace Gpta.Ticket.WebApp.Controllers
         {
             var checkIns = await TicketRepository.GetCheckInsAsync();
             var tickets = await TicketRepository.GetTicketsAsync();
-            checkIns = checkIns.Select(c=> {
-                var checkedInTicket = tickets.FirstOrDefault(t=> t.Id == c.Id);
+            checkIns = checkIns.Select(c =>
+            {
+                var checkedInTicket = tickets.FirstOrDefault(t => t.Id == c.Id);
                 c.Name = checkedInTicket == null ? "NA" : checkedInTicket.Name;
                 return c;
             });
