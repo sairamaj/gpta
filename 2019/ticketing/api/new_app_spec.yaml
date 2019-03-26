@@ -3,7 +3,7 @@ Description: GPTA Ticket Application
 Resources:
   AddTicket:
     Properties:
-      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
+      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
       Environment:
         Variables:
           TABLE_NAME:
@@ -21,7 +21,7 @@ Resources:
     Type: AWS::Serverless::Function
   CheckIn:
     Properties:
-      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
+      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -37,9 +37,27 @@ Resources:
       Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
+  DeleteTickets:
+    Properties:
+      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        PostResource:
+          Properties:
+            Method: delete
+            Path: /tickets
+          Type: Api
+      Handler: deleteAllTickets.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: nodejs8.10
+      Timeout: 10
+    Type: AWS::Serverless::Function
   GetCheckIns:
     Properties:
-      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
+      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -57,7 +75,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetTickets:
     Properties:
-      CodeUri: s3://gpta2019/06ddcb506856dbed5cf4c7f6ce1eae66
+      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
       Environment:
         Variables:
           TABLE_NAME:
@@ -70,6 +88,26 @@ Resources:
           Type: Api
       Handler: getTickets.handler
       Policies: AmazonDynamoDBReadOnlyAccess
+      Runtime: nodejs8.10
+      Timeout: 10
+    Type: AWS::Serverless::Function
+  SummaryTickets:
+    Properties:
+      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        PostResource:
+          Properties:
+            Method: get
+            Path: /tickets/summary
+          Type: Api
+      Handler: getTicketsSummary.handler
+      Policies: AmazonDynamoDBFullAccess
       Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function

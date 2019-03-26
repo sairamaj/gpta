@@ -57,6 +57,43 @@ Resources:
             Path: /tickets
             Method: post
 
+  SummaryTickets:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getTicketsSummary.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref TicketTable
+          TABLETICKETCHECKIN: !Ref TicketCheckIn
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets/summary
+            Method: get
+            
+  DeleteTickets:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: deleteAllTickets.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref TicketTable
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets
+            Method: delete
+
   CheckIn:
     Type: AWS::Serverless::Function
     Properties:

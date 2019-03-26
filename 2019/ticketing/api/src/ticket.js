@@ -27,7 +27,7 @@ function getTickets(tableName, callback) {
 }
 
 function deleteTicket(tableName, id, name, callback) {
-  aws.deleteDb(tableName, { id: id, name: name }, callback);
+  aws.deleteDb(tableName, { id: id }, callback);
 }
 
 function checkIn(tableName, checkinInfo, callback) {
