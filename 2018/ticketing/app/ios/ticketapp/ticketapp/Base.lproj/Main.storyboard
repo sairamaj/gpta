@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vif-Gu-9Oq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vif-Gu-9Oq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +15,7 @@
                 <navigationController id="c05-vx-Gp8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Tickets" id="JsF-M7-r2O"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sgd-XZ-o8g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="242"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ghe-IP-CJc" id="nAM-LY-cBL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="241.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7D-4i-Q66">
@@ -155,7 +155,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A/T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tm-NG-ZCc">
-                                            <rect key="frame" x="325" y="10" width="27" height="21"/>
+                                            <rect key="frame" x="304" y="10" width="27" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -168,6 +168,11 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PO6-kl-d6M">
+                                            <rect key="frame" x="346" y="11" width="13" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="0.1668096946" blue="0.083244298059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -181,6 +186,7 @@
                                     <outlet property="kidsArrivedTextField" destination="4kk-nQ-xOW" id="XHA-CI-OCc"/>
                                     <outlet property="kidsStepper" destination="bey-yo-sWH" id="jWj-eD-Eir"/>
                                     <outlet property="name" destination="c7D-4i-Q66" id="4CK-X3-vV9"/>
+                                    <outlet property="syncView" destination="PO6-kl-d6M" id="Pby-PT-Rcc"/>
                                     <outlet property="ticketHolderIdLabel" destination="HL1-H4-GsN" id="DTb-L1-85o"/>
                                     <outlet property="ticketInfoLabel" destination="4tm-NG-ZCc" id="FHS-SV-gSF"/>
                                 </connections>
@@ -224,7 +230,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="266"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P5X-Nl-P9J" id="OCq-iY-oA8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="265.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaD-Sv-6Qe">
@@ -327,13 +333,59 @@
             </objects>
             <point key="canvasLocation" x="493.60000000000002" y="809.14542728635683"/>
         </scene>
+        <!--Report View Controller-->
+        <scene sceneID="cIt-lg-HEs">
+            <objects>
+                <viewController id="qwc-1D-uNJ" customClass="ReportViewController" customModule="ticketapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pox-69-7ug"/>
+                        <viewControllerLayoutGuide type="bottom" id="A2R-w7-WyO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mau-ZW-ycb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgF-6e-CRZ">
+                                <rect key="frame" x="99" y="150" width="165" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Retry Failed Tickets"/>
+                                <connections>
+                                    <action selector="onRetryFailedTickets:" destination="qwc-1D-uNJ" eventType="touchUpInside" id="hXk-2G-NNy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LcM-ID-nIX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69r-P3-N6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2364" y="2119.7901049475263"/>
+        </scene>
+        <!--Reports-->
+        <scene sceneID="nF3-sG-ebA">
+            <objects>
+                <navigationController id="GiD-tR-9rg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reports" id="5xv-8T-c6W"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rnQ-sM-N13">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qwc-1D-uNJ" kind="relationship" relationship="rootViewController" id="FYY-iO-oO6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JL0-EK-pw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="2105"/>
+        </scene>
         <!--Logs-->
         <scene sceneID="0JC-0l-Pvk">
             <objects>
                 <navigationController id="xh2-G7-CaL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Logs" id="dcV-fw-OXj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mro-Up-1Uf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -356,6 +408,7 @@
                     <connections>
                         <segue destination="c05-vx-Gp8" kind="relationship" relationship="viewControllers" id="8Kz-Ov-5X0"/>
                         <segue destination="xh2-G7-CaL" kind="relationship" relationship="viewControllers" id="pXQ-RI-t32"/>
+                        <segue destination="GiD-tR-9rg" kind="relationship" relationship="viewControllers" id="EII-Gs-cWl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3A-n7-FpS" userLabel="First Responder" sceneMemberID="firstResponder"/>

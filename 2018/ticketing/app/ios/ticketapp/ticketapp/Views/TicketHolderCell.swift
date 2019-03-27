@@ -14,6 +14,7 @@ protocol TaskChangedDelegate{
 
 class TicketHolderCell: UITableViewCell {
 
+    @IBOutlet weak var syncView: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var arrivalIndicatorView: UIView!
     @IBOutlet weak var ticketInfoLabel: UILabel!
@@ -54,7 +55,15 @@ class TicketHolderCell: UITableViewCell {
         self.aduitArrivedTextField.isEnabled = false
         self.kidsArrivedTextField.isEnabled = false
         self.ticketHolderIdLabel.text = String(self.CurrentTicketHolder.SerialNumber)
-        
+        if self.CurrentTicketHolder.isSynced == -1{
+            self.syncView.isHidden = true
+        }else if self.CurrentTicketHolder.isSynced == 0{
+            self.syncView.isHidden = false
+            self.syncView.backgroundColor = UIColor.green
+        }else{
+            self.syncView.isHidden = false
+            self.syncView.backgroundColor = UIColor.red
+        }
         self.setStepperValues()
         self.UpdateArrivedStatuses()
         

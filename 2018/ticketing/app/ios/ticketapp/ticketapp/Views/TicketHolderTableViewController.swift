@@ -223,7 +223,14 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
             self.selectedRow = -1
             let indexPath = IndexPath(row: currentCell.CurrentCellRow, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
-            Repository.shared.updateTicketHolder( ticketHolder )
+            Repository.shared.updateTicketHolder( ticketHolder ,callback: {
+                (ticket) -> Void in
+            
+                    Slim.info("UpdateTicketolder ")
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()    // reload in UI thread.
+                }
+            })
         }
         
         self.updateTitle()

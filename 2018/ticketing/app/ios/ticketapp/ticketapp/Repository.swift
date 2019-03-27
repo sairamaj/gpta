@@ -65,7 +65,7 @@ class Repository{
         })
     }
     
-    func updateTicketHolder( _ ticketHolder : TicketHolder){
+    func updateTicketHolder( _ ticketHolder : TicketHolder,callback : @escaping ( TicketHolder) -> Void){
         
         let date = NSDate();
         // "Apr 1, 2015, 8:53 AM" <-- local without seconds
@@ -87,9 +87,15 @@ class Repository{
         
         
         post( url: URL(string: getApiUrl(resource: "/tickets/checkins"))!, input:checkInfo, callback: {
-            (json) -> Void in
-            
-            Slim.info("checkin was saved successfully")
+            (ret) -> Void in
+            if ret == true{
+                Slim.info("checkin status success")
+                ticketHolder.isSynced = 0
+            }else{
+                Slim.error("checkin status failed")
+                ticketHolder.isSynced = 1
+            }
+            callback(ticketHolder)
         })
     }
     
@@ -164,7 +170,7 @@ class Repository{
     /*
      http post utility function.
      */
-    func post(url:URL, input:String, callback : @escaping ([Any]) -> Void){
+    func post(url:URL, input:String, callback : @escaping (Bool) -> Void){
         
         //var input:String = ""
         // Slim.trace(input)
@@ -180,6 +186,7 @@ class Repository{
             if error != nil {
                 
                 Slim.error(error!.localizedDescription)
+                callback(false)
                 
             } else {
                 
@@ -188,8 +195,10 @@ class Repository{
                     if let httpResponse = response as? HTTPURLResponse{
                         if httpResponse.statusCode == 200{
                             Slim.info("post returned 200(ok)")
+                            callback(true)
                         }else{
                             Slim.error("post returned \(httpResponse.statusCode)")
+                            callback(false)
                         }
                     }
                 }

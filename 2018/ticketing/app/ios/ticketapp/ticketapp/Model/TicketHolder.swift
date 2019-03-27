@@ -17,6 +17,7 @@ class TicketHolder{
     var AdultsArrived:Int
     var KidsArrived:Int
     var SerialNumber:Int
+    var isSynced:Int
     
     init(serialNumber:Int, name:String , confirmationNumber:String, adultCount:Int, kidCount:Int){
         
@@ -27,6 +28,7 @@ class TicketHolder{
         self.AdultsArrived = 0
         self.KidsArrived = 0
         self.SerialNumber = serialNumber
+        self.isSynced = -1
     }
     
     
