@@ -43,12 +43,14 @@ class Repository{
 
                     var adultCount =  0
                     if let val = dictionary["adults"] {
-                        adultCount = Int(val as! String)!
+                        //adultCount = Int(val as! String)!
+                        adultCount = val as! Int
                     }
                     
                     var kidsCount =  0
                     if let val = dictionary["kids"] {
-                        kidsCount = Int(val as! String)!
+                        // kidsCount = Int(val as! String)!
+                        kidsCount = val as! Int
                     }
 
                     let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount, kidCount: kidsCount)
@@ -108,13 +110,19 @@ class Repository{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
                     let adultsArrived = (Int)(dictionary["adults"] as! String)
-                    let kidsArrived = (Int)(dictionary["kids"] as! String)
+                    var kidsArrived =  0
                     
+                    if let val = dictionary["kids"] {
+                        kidsArrived = Int(val as! String)!
+                    }
+                    
+                    //let adultsArrived = (dictionary["adults"] as! Int)
+                    //let kidsArrived = (Int)(dictionary["kids"] as! Int)
                     
                     for ticketHolder in ticketHolders{
                         if ticketHolder.ConfirmationNumber == id{
                             ticketHolder.AdultsArrived = adultsArrived!
-                            ticketHolder.KidsArrived = kidsArrived!
+                            ticketHolder.KidsArrived = kidsArrived
                             
                         }
                     }
@@ -210,7 +218,7 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-       // return "https://parfmou7ta.execute-api.us-west-2.amazonaws.com/Prod" + resource
-        return "http://127.0.0.1:4000" + resource
+       return "https://enz35hp5w5.execute-api.us-west-2.amazonaws.com/Prod" + resource
+       // return "http://127.0.0.1:4000" + resource
     }
 }
