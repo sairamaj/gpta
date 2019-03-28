@@ -3,7 +3,7 @@ Description: GPTA Ticket Application
 Resources:
   AddTicket:
     Properties:
-      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      CodeUri: s3://gpta2019/5fb0bd890d51b5c8c8a95f67c8996db1
       Environment:
         Variables:
           TABLE_NAME:
@@ -21,7 +21,7 @@ Resources:
     Type: AWS::Serverless::Function
   CheckIn:
     Properties:
-      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      CodeUri: s3://gpta2019/5fb0bd890d51b5c8c8a95f67c8996db1
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -39,7 +39,7 @@ Resources:
     Type: AWS::Serverless::Function
   DeleteTickets:
     Properties:
-      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      CodeUri: s3://gpta2019/5fb0bd890d51b5c8c8a95f67c8996db1
       Environment:
         Variables:
           TABLE_NAME:
@@ -57,7 +57,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetCheckIns:
     Properties:
-      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      CodeUri: s3://gpta2019/5fb0bd890d51b5c8c8a95f67c8996db1
       Environment:
         Variables:
           TABLETICKETCHECKIN:
@@ -75,7 +75,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetTickets:
     Properties:
-      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      CodeUri: s3://gpta2019/5fb0bd890d51b5c8c8a95f67c8996db1
       Environment:
         Variables:
           TABLE_NAME:
@@ -93,7 +93,7 @@ Resources:
     Type: AWS::Serverless::Function
   SummaryTickets:
     Properties:
-      CodeUri: s3://gpta2019/8a67f7f0a9e45d714719bfcfc7d824bc
+      CodeUri: s3://gpta2019/5fb0bd890d51b5c8c8a95f67c8996db1
       Environment:
         Variables:
           TABLETICKETCHECKIN:
