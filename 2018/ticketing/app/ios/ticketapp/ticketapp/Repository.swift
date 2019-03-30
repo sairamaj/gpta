@@ -43,12 +43,14 @@ class Repository{
 
                     var adultCount =  0
                     if let val = dictionary["adults"] {
-                        adultCount = Int(val as! String)!
+                        //adultCount = Int(val as! String)!
+                        adultCount = val as! Int
                     }
                     
                     var kidsCount =  0
                     if let val = dictionary["kids"] {
-                        kidsCount = Int(val as! String)!
+                        // kidsCount = Int(val as! String)!
+                        kidsCount = val as! Int
                     }
 
                     let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount, kidCount: kidsCount)
@@ -65,7 +67,7 @@ class Repository{
         })
     }
     
-    func updateTicketHolder( _ ticketHolder : TicketHolder){
+    func updateTicketHolder( _ ticketHolder : TicketHolder,callback : @escaping ( TicketHolder) -> Void){
         
         let date = NSDate();
         // "Apr 1, 2015, 8:53 AM" <-- local without seconds
@@ -87,9 +89,15 @@ class Repository{
         
         
         post( url: URL(string: getApiUrl(resource: "/tickets/checkins"))!, input:checkInfo, callback: {
-            (json) -> Void in
-            
-            Slim.info("checkin was saved successfully")
+            (ret) -> Void in
+            if ret == true{
+                Slim.info("checkin status success")
+                ticketHolder.isSynced = 0
+            }else{
+                Slim.error("checkin status failed")
+                ticketHolder.isSynced = 1
+            }
+            callback(ticketHolder)
         })
     }
     
@@ -102,13 +110,19 @@ class Repository{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
                     let adultsArrived = (Int)(dictionary["adults"] as! String)
-                    let kidsArrived = (Int)(dictionary["kids"] as! String)
+                    var kidsArrived =  0
                     
+                    if let val = dictionary["kids"] {
+                        kidsArrived = Int(val as! String)!
+                    }
+                    
+                    //let adultsArrived = (dictionary["adults"] as! Int)
+                    //let kidsArrived = (Int)(dictionary["kids"] as! Int)
                     
                     for ticketHolder in ticketHolders{
                         if ticketHolder.ConfirmationNumber == id{
                             ticketHolder.AdultsArrived = adultsArrived!
-                            ticketHolder.KidsArrived = kidsArrived!
+                            ticketHolder.KidsArrived = kidsArrived
                             
                         }
                     }
@@ -164,7 +178,7 @@ class Repository{
     /*
      http post utility function.
      */
-    func post(url:URL, input:String, callback : @escaping ([Any]) -> Void){
+    func post(url:URL, input:String, callback : @escaping (Bool) -> Void){
         
         //var input:String = ""
         // Slim.trace(input)
@@ -180,6 +194,7 @@ class Repository{
             if error != nil {
                 
                 Slim.error(error!.localizedDescription)
+                callback(false)
                 
             } else {
                 
@@ -188,8 +203,10 @@ class Repository{
                     if let httpResponse = response as? HTTPURLResponse{
                         if httpResponse.statusCode == 200{
                             Slim.info("post returned 200(ok)")
+                            callback(true)
                         }else{
                             Slim.error("post returned \(httpResponse.statusCode)")
+                            callback(false)
                         }
                     }
                 }
@@ -201,7 +218,7 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-       // return "https://parfmou7ta.execute-api.us-west-2.amazonaws.com/Prod" + resource
-        return "http://127.0.0.1:4000" + resource
+       return "https://enz35hp5w5.execute-api.us-west-2.amazonaws.com/Prod" + resource
+       // return "http://127.0.0.1:4000" + resource
     }
 }

@@ -78,6 +78,9 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -223,7 +226,14 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
             self.selectedRow = -1
             let indexPath = IndexPath(row: currentCell.CurrentCellRow, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
-            Repository.shared.updateTicketHolder( ticketHolder )
+            Repository.shared.updateTicketHolder( ticketHolder ,callback: {
+                (ticket) -> Void in
+            
+                    Slim.info("UpdateTicketolder ")
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()    // reload in UI thread.
+                }
+            })
         }
         
         self.updateTitle()
