@@ -17,7 +17,6 @@ namespace Gpta.Ticket.WebApp.Controllers
 
         public UploadController(ITicketRepositry ticketRepository)
         {
-            System.Console.WriteLine(" >> In uploadFilesController <<<");
             TicketRepository = ticketRepository ?? throw new System.ArgumentNullException(nameof(ticketRepository));
         }
 
@@ -29,7 +28,6 @@ namespace Gpta.Ticket.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Upload(List<IFormFile> files)
         {
-            System.Console.WriteLine(">>>>>>>>>>>>>>. In Upload Post...");
             long size = files.Sum(f => f.Length);
 
             // full path to file in temp location
@@ -49,7 +47,6 @@ namespace Gpta.Ticket.WebApp.Controllers
             var summary = await AddTicketsFromFileAsync(filePath);
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
-            System.Console.WriteLine($" >>>>>>>>>>>>>>.   Done {files.Count} size:{size}: filePath:{filePath}");
             return View("Status", summary);
         }
 
@@ -72,7 +69,6 @@ namespace Gpta.Ticket.WebApp.Controllers
                     var ticket = Gpta.Ticket.WebApp.Models.Ticket.Parse(line);
                     if (ticket != null)
                     {
-                        System.Console.WriteLine($" ticket: {ticket}");
                         ticketsList.Add(ticket);
                         if (ticketsList.Count == batchSize)
                         {

@@ -7,6 +7,7 @@ using Gpta.Ticket.WebApp.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Gpta.Ticket.WebApp.Controllers
 {
@@ -17,7 +18,6 @@ namespace Gpta.Ticket.WebApp.Controllers
 
         public ListController(ITicketRepositry ticketRepository)
         {
-            System.Console.WriteLine(" >> In uploadFilesController <<<");
             TicketRepository = ticketRepository ?? throw new System.ArgumentNullException(nameof(ticketRepository));
         }
 

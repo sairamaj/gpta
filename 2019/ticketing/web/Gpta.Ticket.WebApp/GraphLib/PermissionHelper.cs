@@ -46,9 +46,13 @@ namespace GraphLib
             User user = FindByAlias(alias).Result;
             List<ResultsItem> items = UserMemberOf(alias).Result;
             if (items.FindIndex(f => f.Id == groupId) >= 0)
+            {
                 Console.WriteLine("User already belongs to this group");
+            }
             else
+            {
                 await _graphClient.Groups[groupId].Members.References.Request().AddAsync(user);
+            }
         }
 
         //Returns the first unified group with the given suffix
@@ -63,7 +67,7 @@ namespace GraphLib
             else
             {
                 groupId = CreateGroup().Result;
-                
+
             }
             return groupId;
         }
@@ -83,8 +87,8 @@ namespace GraphLib
                 SecurityEnabled = false
             });
             if (null == group)
-                throw new ApplicationException($"Unable to create a unified group"); 
-            
+                throw new ApplicationException($"Unable to create a unified group");
+
             return group.Id;
         }
 
