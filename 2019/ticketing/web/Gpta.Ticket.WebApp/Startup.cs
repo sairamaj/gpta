@@ -39,6 +39,7 @@ namespace Gpta.Ticket.WebApp
                        Configuration.Bind("AzureAdB2C", options);
                    });
 
+            services.AddMemoryCache();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

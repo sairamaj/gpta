@@ -17,7 +17,6 @@ namespace Gpta.Ticket.WebApp.Controllers
 
         public CheckInController(ITicketRepositry ticketRepository)
         {
-            System.Console.WriteLine(" >> In uploadFilesController <<<");
             TicketRepository = ticketRepository ?? throw new System.ArgumentNullException(nameof(ticketRepository));
         }
         public async Task<IActionResult> Index()

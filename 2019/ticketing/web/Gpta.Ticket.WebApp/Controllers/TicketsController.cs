@@ -17,7 +17,6 @@ namespace Gpta.Ticket.WebApp.Controllers
 
         public TicketsController(ITicketRepositry ticketRepository)
         {
-            System.Console.WriteLine(" >> In uploadFilesController <<<");
             TicketRepository = ticketRepository ?? throw new System.ArgumentNullException(nameof(ticketRepository));
         }
 

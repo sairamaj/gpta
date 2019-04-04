@@ -17,7 +17,6 @@ namespace Gpta.Ticket.WebApp.Controllers
 
         public DeleteController(ITicketRepositry ticketRepository)
         {
-            System.Console.WriteLine(" >> In uploadFilesController <<<");
             TicketRepository = ticketRepository ?? throw new System.ArgumentNullException(nameof(ticketRepository));
         }
 
@@ -29,7 +28,6 @@ namespace Gpta.Ticket.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete()
         {
-            System.Console.WriteLine(">>>>>>>>>>>>>>. In Delete Tickets...");
             await TicketRepository.DeleteAllAsync();
             return RedirectToAction("Index", "List", new { });
         }
