@@ -118,11 +118,11 @@ class Repository{
             for m in json{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
-                    //let arrived = (Int)(dictionary["arrived"] as! String)
-                    var arrived = 0
-                    if let val = dictionary["arrived"] {
-                        arrived = val as! Int
-                    }
+                    let arrived = (Int)(dictionary["arrived"] as! String)
+                    /*var arrived = 0
+                    if let val = dictionary["arrived"] as! String{
+                        arrived = Int(val)
+                    }*/
                     
                     
                     for program in programs{
