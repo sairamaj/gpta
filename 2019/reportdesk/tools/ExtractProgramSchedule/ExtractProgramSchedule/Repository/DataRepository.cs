@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ExcelLibrary.SpreadSheet;
 using ExtractProgramSchedule.Model;
 using OfficeOpenXml;
 
@@ -18,6 +17,14 @@ namespace ExtractProgramSchedule.Repository
 			var dataMapInfo = new DataMapInfo();
 			using (ExcelPackage package = new ExcelPackage(newFile))
 			{
+				if(package.Workbook == null)
+				{
+					throw new ApplicationException($"Workbook cannot be opended in {newFile}");
+				}
+				if( package.Workbook.Worksheets == null)
+				{
+					throw new ApplicationException($"Could not open worksheets in {newFile}");
+				}
 				var programSheet = package.Workbook.Worksheets.FirstOrDefault(s => s.Name == dataMapInfo.SheetName);
 				if (programSheet == null)
 				{
@@ -35,13 +42,15 @@ namespace ExtractProgramSchedule.Repository
 					if (serialNumber != null)
 					{
 						var choreographerName = programSheet.Cells[row, dataMapInfo.ChoreographerNameCellIndex].Value as string;
-						var duration = (DateTime)programSheet.Cells[row, dataMapInfo.DurationCellIndex].Value;
-						var startTime = (DateTime)programSheet.Cells[row, dataMapInfo.StartTimeCellIndex].Value;
-						var reportTime = (DateTime)programSheet.Cells[row, dataMapInfo.ReportTimeCellIndex].Value;
-						var durationSpan = new TimeSpan(0, duration.Minute, duration.Second);
-						var program = new Program(Convert.ToInt32(serialNumber.ToString()), name, choreographerName,reportTime, startTime, durationSpan);
+						//var duration = (DateTime)programSheet.Cells[row, dataMapInfo.DurationCellIndex].Value;
+						//var startTime = (DateTime)programSheet.Cells[row, dataMapInfo.StartTimeCellIndex].Value;
+						//var reportTime = (DateTime)programSheet.Cells[row, dataMapInfo.ReportTimeCellIndex].Value;
+						var reportTime = DateTime.Now;
+						//var durationSpan = new TimeSpan(0, duration.Minute, duration.Second);
+						var startTime = DateTime.Now;
+						var durationSpan = new TimeSpan(0, 5, 0);
 						var participants = programSheet.Cells[row, dataMapInfo.ParticipantsCellIndex].Value as string;
-						foreach (var participant in participants.Split(new string[] { "\r\n" }, StringSplitOptions.None))
+						foreach (var participant in participants.Split(new string[] { "\r\n\t" }, StringSplitOptions.None))
 						{
 							program.AddParticipant(new Participant(participant));
 						}

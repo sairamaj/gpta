@@ -4,7 +4,7 @@
 	{
 		public DataMapInfo()
 		{
-			SheetName = "FinalParticipants List";
+			SheetName = "Particpants  Check-in";
 		}
 
 		public string SheetName { get; set; }
@@ -14,8 +14,8 @@
 		public int ChoreographerNameCellIndex = 4;
 		public int DurationCellIndex = 5;
 		public int StartTimeCellIndex = 7;
-		public int ReportTimeCellIndex = 8;
-		public int ParticipantsCellIndex = 11;
+		public int ReportTimeCellIndex = 3;
+		public int ParticipantsCellIndex = 7;
 
 	}
 }

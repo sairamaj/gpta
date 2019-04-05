@@ -3,7 +3,7 @@ Description: GPTa Application
 Resources:
   AddParticipantArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2018/a6fe008699328d36fb8b95c4799e4ff5
+      CodeUri: s3://gpta2019/e3654693e9e514466e0630797804b466
       Environment:
         Variables:
           TABLEPARTCIPANTARRIVALINFO:
@@ -16,7 +16,7 @@ Resources:
           Type: Api
       Handler: addParticipantArrivalInfo.handler
       Policies: AmazonDynamoDBFullAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   EventTable:
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   GetEvents:
     Properties:
-      CodeUri: s3://gpta2018/a6fe008699328d36fb8b95c4799e4ff5
+      CodeUri: s3://gpta2019/e3654693e9e514466e0630797804b466
       Environment:
         Variables:
           TABLE_NAME:
@@ -43,12 +43,12 @@ Resources:
           Type: Api
       Handler: getEvents.handler
       Policies: AmazonDynamoDBReadOnlyAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   GetEventsById:
     Properties:
-      CodeUri: s3://gpta2018/a6fe008699328d36fb8b95c4799e4ff5
+      CodeUri: s3://gpta2019/e3654693e9e514466e0630797804b466
       Environment:
         Variables:
           TABLE_NAME:
@@ -61,12 +61,12 @@ Resources:
           Type: Api
       Handler: getEvents.handler
       Policies: AmazonDynamoDBReadOnlyAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   GetParticipantsArrivalInfo:
     Properties:
-      CodeUri: s3://gpta2018/a6fe008699328d36fb8b95c4799e4ff5
+      CodeUri: s3://gpta2019/e3654693e9e514466e0630797804b466
       Environment:
         Variables:
           TABLEPARTCIPANTARRIVALINFO:
@@ -79,12 +79,12 @@ Resources:
           Type: Api
       Handler: getParticipantsArrivalInfo.handler
       Policies: AmazonDynamoDBReadOnlyAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   GetProgramParticipants:
     Properties:
-      CodeUri: s3://gpta2018/a6fe008699328d36fb8b95c4799e4ff5
+      CodeUri: s3://gpta2019/e3654693e9e514466e0630797804b466
       Environment:
         Variables:
           TABLE_NAME:
@@ -99,12 +99,12 @@ Resources:
           Type: Api
       Handler: getProgramParticipants.handler
       Policies: AmazonDynamoDBReadOnlyAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   GetPrograms:
     Properties:
-      CodeUri: s3://gpta2018/a6fe008699328d36fb8b95c4799e4ff5
+      CodeUri: s3://gpta2019/e3654693e9e514466e0630797804b466
       Environment:
         Variables:
           TABLE_NAME_PARTICIPANTS:
@@ -121,7 +121,7 @@ Resources:
           Type: Api
       Handler: getEventProgramsWithDetails.handler
       Policies: AmazonDynamoDBReadOnlyAccess
-      Runtime: nodejs4.3
+      Runtime: nodejs8.10
       Timeout: 10
     Type: AWS::Serverless::Function
   Participant:

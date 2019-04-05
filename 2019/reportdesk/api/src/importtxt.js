@@ -56,7 +56,7 @@ data.split('\r\n').forEach(line => {
 
 //console.log(JSON.stringify(programs, null, 2))
 
-evt.addEventAsync(tableNames.event, '2018 GPTA Ugadi')
+evt.addEventAsync(tableNames.event, '2019 GPTA Ugadi')
     .then(newEvent => {
         programs.forEach(program => {
             console.log(program.name)

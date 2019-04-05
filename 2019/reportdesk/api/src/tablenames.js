@@ -8,10 +8,10 @@ module.exports = function getTableNames(dev){
         }
     }else{
         return {
-            event: 'gpta2018-reportdesk-EventTable-6F6SMK2UAWXQ',
-            program: 'gpta2018-reportdesk-ProgramTable-1WHLR307YV53W',
-            participant: 'gpta2018-reportdesk-Participant-H0SULO1SPA30',
-            programParticipant: 'gpta2018-reportdesk-ProgramParticipants-18PXF0YZT5ZXB'
+            event: 'gpta2019-reportdesk-EventTable-1COJ1IFY61BP7',
+            program: 'gpta2019-reportdesk-ProgramTable-15MVZJ2HUJGEC',
+            participant: 'gpta2019-reportdesk-Participant-1KHGCSV39MGG5',
+            programParticipant: 'gpta2019-reportdesk-ProgramParticipants-1C4VH378RI1M7'
         }
     }
 }
