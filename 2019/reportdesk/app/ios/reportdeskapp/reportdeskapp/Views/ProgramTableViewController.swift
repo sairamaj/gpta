@@ -64,13 +64,13 @@ class ProgramTableViewController: UITableViewController ,UISearchBarDelegate, UI
         
     }
     
-    func defaultsChanged(){
+    @objc func defaultsChanged(){
         Slim.info("settings changed.")
         refreshTimer()
     }
     
     // called every time interval from the timer
-    func refreshTimerAction() {
+    @objc func refreshTimerAction() {
         counter += 1
         Slim.info("autoRefresh: \(counter)")
         self.refreshParticipantArrivalInfo()
