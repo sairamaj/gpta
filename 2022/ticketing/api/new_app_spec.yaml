@@ -1,0 +1,132 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: GPTA Ticket Application
+Resources:
+  GetTickets:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getTickets.handler
+      Runtime: nodejs14.x
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: s3://gpta2022/8d4b68616f1b194435775a9d8d6df857
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /tickets
+            Method: get
+  GetCheckIns:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getCheckIns.handler
+      Runtime: nodejs14.x
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: s3://gpta2022/8d4b68616f1b194435775a9d8d6df857
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets/checkins
+            Method: get
+  AddTicket:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: addTicket.handler
+      Runtime: nodejs14.x
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: s3://gpta2022/8d4b68616f1b194435775a9d8d6df857
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets
+            Method: post
+  SummaryTickets:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getTicketsSummary.handler
+      Runtime: nodejs14.x
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: s3://gpta2022/8d4b68616f1b194435775a9d8d6df857
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets/summary
+            Method: get
+  DeleteTickets:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: deleteAllTickets.handler
+      Runtime: nodejs14.x
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: s3://gpta2022/8d4b68616f1b194435775a9d8d6df857
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: TicketTable
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets
+            Method: delete
+  CheckIn:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: checkIn.handler
+      Runtime: nodejs14.x
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: s3://gpta2022/8d4b68616f1b194435775a9d8d6df857
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLETICKETCHECKIN:
+            Ref: TicketCheckIn
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /tickets/checkins
+            Method: post
+  TicketTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+  TicketCheckIn:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5

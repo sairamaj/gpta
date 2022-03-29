@@ -1,0 +1,166 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: GPTa Application
+
+Resources:
+  GetEvents:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getEvents.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref EventTable
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /events
+            Method: get
+
+  GetEventsById:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getEvents.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref EventTable
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /events/{id}
+            Method: get
+
+  GetPrograms:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getEventProgramsWithDetails.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME_PROGRAM: !Ref ProgramTable
+          TABLE_NAME_PARTICIPANTS: !Ref Participant
+          TABLE_NAME_PROGRAMPARTICIPANTS: !Ref ProgramParticipants
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /events/{id}/programs
+            Method: get
+  
+  GetProgramParticipants:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getProgramParticipants.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ProgramParticipants
+          TABLE_PARTICIPANTS: !Ref Participant
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /programs/{id}/participants
+            Method: get
+
+  GetParticipantsArrivalInfo:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getParticipantsArrivalInfo.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBReadOnlyAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLEPARTCIPANTARRIVALINFO: !Ref ParticipantArrivalInfo
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /participants/arrivalinfo
+            Method: get
+
+  AddParticipantArrivalInfo:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: addParticipantArrivalInfo.handler
+      Runtime: nodejs8.10
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: src
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLEPARTCIPANTARRIVALINFO: !Ref ParticipantArrivalInfo
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /participants/arrivalinfo
+            Method: post
+
+
+  EventTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: name
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
+
+  ProgramTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: id
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
+
+  Participant:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: id
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
+
+  ProgramParticipants:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: id
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5
+
+  ParticipantArrivalInfo:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+         Name: id
+         Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 5
+         WriteCapacityUnits: 5

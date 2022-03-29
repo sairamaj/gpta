@@ -1,0 +1,2 @@
+If internet connection is off and app is open you will see Program list is empty. that is expected .But if you connect to internet at this time , the app still shows programs empty even if you
+refresh ( as refresh is doing only participants arrival.). In order to fix this close the app and re launch.
