@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Graph;
 
+// https://www.tatvasoft.com/blog/overview-of-users-groups-and-permissions-in-microsoft-graph-part-1/
+// https://www.tatvasoft.com/blog/overview-of-users-groups-and-permissions-in-microsoft-graph-part-2/
 namespace GraphLib
 {
     public class PermissionHelper
@@ -97,7 +99,7 @@ namespace GraphLib
         {
             List<QueryOption> queryOptions = new List<QueryOption>
             {
-                new QueryOption("$filter", $@"displayName eq '{alias}'")
+                new QueryOption("$filter", $@"id eq '{alias}'")
             };
 
             var userResult = await _graphClient.Users.Request(queryOptions).GetAsync();

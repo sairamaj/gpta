@@ -21,12 +21,20 @@ namespace Gpta.Ticket.WebApp.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var memberOfClaim = context.User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role);
+            var memberOfClaim = context.User.Claims.FirstOrDefault(
+                c => c.Type == System.Security.Claims.ClaimTypes.Role
+            );
             if (memberOfClaim == null && context.User.Identity.IsAuthenticated)
             {
                 var config = Util.LoadAppSettings();
                 var graphClient = Util.GetAuthenticatedGraphClient(config);
-                var nameClaim = context.User.Claims.FirstOrDefault(c => c.Type == "name");
+                System.Console.WriteLine("_____________________________");
+                foreach (var c in context.User.Claims)
+                {
+                    System.Console.WriteLine($"{c.Type}:{c.Value}");
+                }
+                System.Console.WriteLine("_____________________________");
+                var nameClaim = context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
                 if (nameClaim == null)
                 {
                     throw new ArgumentException($"name claime not found in claim list.");
@@ -34,25 +42,31 @@ namespace Gpta.Ticket.WebApp.Middleware
 
                 try
                 {
-                    var groups = new PermissionHelper(graphClient).UserMemberOf(nameClaim.Value).Result;
+                    var groups =
+                        new PermissionHelper(graphClient).UserMemberOf(nameClaim.Value).Result;
                     foreach (var group in groups)
                     {
-                        ((ClaimsIdentity)context.User.Identity)
-                        .AddClaim(new Claim(ClaimTypes.Role, group.Display, ClaimValueTypes.String));
+                        ((ClaimsIdentity)context.User.Identity).AddClaim(
+                            new Claim(ClaimTypes.Role, group.Display, ClaimValueTypes.String)
+                        );
                     }
                 }
                 catch (AggregateException ae)
                 {
                     var actualException = ae.Message;
-                    if(ae.InnerExceptions.Any())
+                    if (ae.InnerExceptions.Any())
                     {
                         actualException = ae.InnerExceptions.First().Message;
                     }
-                    _logger.LogError($"Error while getting the groups for user:{nameClaim.Value}. No groups were set, Error:{actualException}");
+                    _logger.LogError(
+                        $"Error while getting the groups for user:{nameClaim.Value}. No groups were set, Error:{actualException}"
+                    );
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError($"Error while getting the groups for user:{nameClaim.Value}. No groups were set, Error:{e.Message}");
+                    _logger.LogError(
+                        $"Error while getting the groups for user:{nameClaim.Value}. No groups were set, Error:{e.Message}"
+                    );
                 }
             }
 
