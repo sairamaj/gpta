@@ -16,8 +16,8 @@ namespace Gpta.Ticket.WebApp.Models{
         {
             const int adultCountIndex = 0;
             const int kidCountIndex = 1;
-            const int nameIndex = 13;
-            const int confirmationIndex = 11;
+            const int nameIndex = 5;
+            const int confirmationIndex = 14;
             if (string.IsNullOrWhiteSpace(info))
             {
                 return null;
