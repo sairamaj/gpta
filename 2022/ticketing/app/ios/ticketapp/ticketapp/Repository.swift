@@ -218,7 +218,7 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-       return "https://enz35hp5w5.execute-api.us-west-2.amazonaws.com/Prod" + resource
+       return "https://c6hqh0tjcl.execute-api.us-west-2.amazonaws.com/Prod" + resource
        // return "http://127.0.0.1:4000" + resource
     }
 }

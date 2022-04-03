@@ -8,13 +8,28 @@
 
 import UIKit
 
+extension ParticipantTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+       
+        if (searchController.isActive){
+             shouldShowSearchResults = true
+        }
+        if(searchController.isBeingDismissed){
+            shouldShowSearchResults = false
+        }
+    
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+}
 class ParticipantTableViewController: UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate{
 
     var CurrentProgram:Program!
     var participants:[Participant] = []
     var filteredParticipants:[Participant] = []    
     var shouldShowSearchResults = false
-
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +44,12 @@ class ParticipantTableViewController: UITableViewController ,UISearchBarDelegate
         }else{
             self.participants = CurrentProgram.getParticipants()
         }
-        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchBar.sizeToFit()
+
         self.sortParticipants()
         tableView.separatorStyle = .none
         
