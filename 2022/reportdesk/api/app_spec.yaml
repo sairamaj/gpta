@@ -7,7 +7,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: getEvents.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs14.x
       Policies: AmazonDynamoDBReadOnlyAccess
       CodeUri: src
       Timeout: 10
@@ -25,7 +25,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: getEvents.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs14.x
       Policies: AmazonDynamoDBReadOnlyAccess
       CodeUri: src
       Timeout: 10
@@ -43,7 +43,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: getEventProgramsWithDetails.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs14.x
       Policies: AmazonDynamoDBReadOnlyAccess
       CodeUri: src
       Timeout: 10
@@ -63,7 +63,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: getProgramParticipants.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs14.x
       Policies: AmazonDynamoDBReadOnlyAccess
       CodeUri: src
       Timeout: 10
@@ -82,7 +82,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: getParticipantsArrivalInfo.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs14.x
       Policies: AmazonDynamoDBReadOnlyAccess
       CodeUri: src
       Timeout: 10
@@ -100,7 +100,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: addParticipantArrivalInfo.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs14.x
       Policies: AmazonDynamoDBFullAccess
       CodeUri: src
       Timeout: 10

@@ -1,7 +1,7 @@
 'use strict'
 
-var dev = true
-process.env.dev = true
+var dev = false
+process.env.dev = false
 if (process.argv.length > 2) {
     console.log('setting dev')
     if (process.argv[2] === 'aws') {
