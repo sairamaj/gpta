@@ -45,7 +45,7 @@ data.split('\r\n').forEach(line => {
         // participants
         if (line.trim().length > 0) {
             var participant = {
-                name: line.trim()
+                name: line.trim().replace('\t',' ')
             }
 
             lastProgram.participants.push(participant)
@@ -54,9 +54,9 @@ data.split('\r\n').forEach(line => {
     //console.log(line)
 })
 
-//console.log(JSON.stringify(programs, null, 2))
+console.log(JSON.stringify(programs, null, 2))
 
-evt.addEventAsync(tableNames.event, '2019 GPTA Ugadi')
+evt.addEventAsync(tableNames.event, '2022 GPTA Ugadi')
     .then(newEvent => {
         programs.forEach(program => {
             console.log(program.name)

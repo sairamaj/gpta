@@ -1,4 +1,7 @@
-namespace Gpta.Ticket.WebApp.Models{
+using System;
+
+namespace Gpta.Ticket.WebApp.Models
+{
     public class Ticket
     {
         public string Id { get; set; }
@@ -11,29 +14,31 @@ namespace Gpta.Ticket.WebApp.Models{
             return $"Id={Id} Name={Name} Adults={Adults} Kids={Kids}";
         }
 
-
-        public static Ticket Parse(string info)
+        public static Ticket? Parse(string info)
         {
-            const int adultCountIndex = 0;
-            const int kidCountIndex = 1;
-            const int nameIndex = 5;
-            const int confirmationIndex = 14;
+            // todo: parse header and get the positions.
+            const int nameIndex = 0;
+            const int confirmationIndex = 2;
+            const int adultsIndex = 3;
+            const int kidIndex = 4;
+
             if (string.IsNullOrWhiteSpace(info))
             {
                 return null;
             }
 
-            if (info.Split(',').Length < confirmationIndex)
+            if (info.Split(',').Length < kidIndex)
             {
-                throw new System.ArgumentException($"{info} does not contain ${confirmationIndex} parts");
+                throw new System.ArgumentException($"{info} does not contain ${kidIndex} parts");
             }
 
+            var parts = info.Split(',');
             return new Ticket
             {
-                Name = info.Split(',')[nameIndex],
-                Adults = System.Convert.ToInt32(info.Split(',')[adultCountIndex]),
-                Kids = System.Convert.ToInt32(info.Split(',')[kidCountIndex]),
-                Id = info.Split(',')[confirmationIndex]
+                Name = parts[nameIndex],
+                Id = parts[confirmationIndex],
+                Adults = Convert.ToInt32(parts[adultsIndex]),
+                Kids = Convert.ToInt32(parts[kidIndex]),
             };
         }
     }

@@ -1,301 +1,250 @@
-#program|Chalaki Chitties|1|priyanka Matcha|02:00:00|00:00:00|01:00:00|00:05:00
-
-Bhoomi pulingundla
-Hoshita Gangula                  
-Tanvisree Inampudi   
-             
-             Tripurasree Veeramachineni       
-                 Rithvika Tirupati       
-              Ramanee Srina      
-              Akshara Pulikanti   
-               Saanvi Swargam                      
-
-#program|Cool Dance School - Marvelous Medley|2|Bhavana Jaiswal/ Viti Eachambadi|02:10:00|00:00:00|01:00:00|00:05:00
-
-     Bhavnish Tarigopula
-        Laasya Reddy Kanamatha                       
-        Sree Vemuri (Abhi)
-                     Harshini Dasari              
-                     Pujit Challa
-                                    Umika Vutukuri
-                                               Nikita Vutukuri
-                                                           Sahassra Patlolla        
-                                                           Rohit Reddy Kypu
-                                                                Mohit Parupalli
-
-
-#program|Tollywood Dance by Rhythmic Squad|3|Kalyani Kundan|02:20:00|00:00:00|01:00:00|00:05:00
-
-     Saiva Pamujula
-         Lakshya Suryapalem   
-                 Ridhima Botla   
-                          Hasini Koganti
-                                      Divija Anumandla   
-                                              Krithi Ketineni  
-                                                      Parnika Gubbala  
-                                                                Parnika Sai Mangineni
-
-
-#program|Cool Dance School - Tollywood Medley|4|Bhavana Jaiswal/ Viti Eachambadi|02:30:00|00:00:00|01:15:00|00:05:00
-
-     Hasith Gunda 
-                 Krish Eepuri
-                                     Arnav Pabha
-                                                        Manasvi Polisetty  
-                                                                       Ruthvik Surapaneni   
-                                                                            Ananya Kunda     
-                                                                               Manaswi Gudavalli   
-                                                                                    Krishiv Routhu
-                                                                                            Saanvi Mendu
-                                                                                                        Ushita Vaddadi 
-
-#program|Little Rockstars|5|Shweta Upadhyay/POC: Madhuri (9046109027)|02:35:00|00:00:00|01:15:00|00:05:00
-
-     Jagath Aman Darsi
-                         Rishi Shankar Kovelkar
-                                              Yuvan Karanam                      
-                                              Yashneel Kammari
-                                                                   Bhava Nishanth Talanki
-                                                                                             Daivik Yenduri
-                                                                                                                                              Nikhil Earle 
-                                                                                                                                                                  Akshit Pulikanti        
-
-#program|Dancing Dolls - Folk medley |6|Ragadeepika Dendukuri|02:45:00|00:00:00|01:30:00|00:05:00
-
-     Thanvi Chintalapati
-                         Sahasra Jampani
-                         	              Aanya Shaik
-                                            	                        Srihitha Konduru
-                                                                         	                          Srihitha ChintakuntaVenkata
-                                                                                                        	                Anshu Kalidindi
-                                                                                                                             	                Monisha Kilaru
-                                                                                                                                                  	                        Mahathi Sunil
-
-
-#program|Jai Jawaan|7|Harita Reddy|02:55:00|00:00:00|01:30:00|00:05:00
-
-     Viraj Akula
-     Gagan Kankara
-     Sriharsha Padigi
-     Srihaas Padig
-     Ashrith Gurram
-                 Arnav Bansal
-                                          Advait Gurram
-                                                                   Siddharth Subbareddy
-
-
-#program|Ugadi Vindu|8|Sangeetha Balaji|03:00:00|00:00:00|01:45:00|00:05:00
-
-     Charan Bapanapalli
-Charan Konduri
-Hassini Prabhuram
-Harshini Kumar
-Lavanya koppineni
-Rakshan Balaji
-Rishith Surineni
-Sahithi Ainampudi
-Sancia Madanu
-Surya sai Bapanapalli
-
-#program|Nartana Juniors|9|Dharani/ Anuradha Ganeshan|03:05:00|00:00:00|01:45:00|00:05:00
-
-     Dhanvi Reddy Kankara  
-                              Diya Babu 
-                                                     Ria Rao 
-                                                                   Shanmukhapriya Mamidala 
-                                                                                                   Sree varshini Gade 
-                                                                                                                   Kundana Jagarapu 
-                                                                                                                                Nitya Thungathurti    
-                                                                                                                                         Sreshta Chalicham
-
-#program|Dancing Divas|10|Kalyani Kundan|03:10:00|00:00:00|02:00:00|00:05:00
-
-     Diya Vimal 
-                                                    Neha Vimal  
-                                                                                  Shaivi Nangunoori
-                                                                                          Manasvi Nalasani
-                                                                                                  Hasini Lavu
-                                                                                                                            Neha Thodupunuri 
-                                                                                                                                   Saukhyada Pathibandla
-                                                                                                                                                          Kriti Guthikonda  
-                                                                                                                                                                Shreeya Bukka
-
-#program|Thunder Stars|11|Sudeshna|03:20:00|00:00:00|02:00:00|00:05:00
+#program|Happy Feet(Folk medley) Bhavana's group|1|Bhavana Jaiswal Eachambadi|02:00:00|00:00:00|01:30:00|00:04:00
+
+Aarnav	Buchapudi
+Akshay	Periakaruppnan
+Shrestav Ram	Routhu
+Kushi	Palla
+Yukta	Gade
+Arshika	Pragya
+
+#program|90s vs Current Kids|2|Rupa Kota|02:06:00|00:00:00|01:30:00|00:05:00
+
+Nainalalitha	Chinni
+Vaishnavi	Kotturi
+Advaith	Buduku
+Yuktha	Annam
+Upeksha	Karimikonda
+Dhanvin	Naviri
+
+#program|Team Siragugal|3|Yashodha Duraisamy|02:13:00|00:00:00|01:30:00|00:04:00
+
+Aadhav	Aravind
+Nivaan	Maniar
+Pranil	Adhvaryu
+Vishnu	LakshmiNarayanan
+Ajay	Barath
+Dhruvan	Muppalla
+
+#program|Samajavaragamana|4|Madhuri Dokuparthi|02:19:00|00:00:00|01:30:00|00:04:00
+
+Shreenika	Sadineni
+Akshaya	Guntuku
+Saanvi	Chilukuri
+Akshaya	Cheemalapati
+Keyura	Kona
+Aadya B	Kadali
+Ved	Nalam
+Vaishnavi	Avunuri
+Mahimanvita	Pulleti
+Yuvan	Vutukuri
+Pranavi	Munagala
+
+#program|Dancing Dolls|5|Madhuri Dokuparthi|02:25:00|00:00:00|01:30:00|00:04:00
+
+Srihitha Sheni	Shetti
+Rishitha	Myadarapu
+Hoshitha	Gangula
+Sameeksha	Boggarapu
+Saanvi	Swargam
+Aaradhya	Mogallapu
+Dhanvi	Naidu
+Shanvi Teja	Chittineni
+
+#program|Ugadi Taralu|6|Lalitha Byraju|02:31:00|00:00:00|01:30:00|00:04:00
+
+Sonakshi	Juturu
+Subaharini	RavindhiraKumar
+Krishna Jeevani	Mavireddy 
+Kanishkaa	Prasath
+Keerthana	Shravanaboyina Besta
+Saathvika	Jagabathula
+Harshini	Gatla
+Srigowri	Kulkarni
+
+#program|Rhythmic Stars|7|Swathi|02:37:00|00:00:00|01:30:00|00:05:00
+
+Sreehita	Konduru
+Anshu	Kalidindi
+Sahasra	Gaddam
+Thanvi	Chintalapati
+
+#program|Dazzling Stars - Madhuri group|8|Madhuri Dokuparthi|02:44:00|00:00:00|01:30:00|00:05:00
+
+Amartya B	Kadali
+AdithNandan	Segu
+Yuvanraju	Muppalla
+Jaanvi	Vuradi
+Charan	Bapanapalli
+Surya	Bapanapalli
+Sri Sai Vidisha	Vanjarapu
+Reva	Bheemireddy
+Aadhyareddy	Adevelly
+Mahitha	Dokuparthi
+
+#program|Dasavataram - Kuchipudi dance, classical|9|Anupama Yerrawar|02:51:00|00:00:00|01:30:00|00:10:00
+
+Siri Mallika	Yerrawar
+Pawani	Dongre
+Asmi	Jain
+Chandsi	Golani
+
+
+#program|Folk - by Kirtana's group|10|Kirthana Chamarthi|03:07:00|00:00:00|02:15:00|00:06:00
+
+Kashvi	Sudhireddy
+Leisha	Kamidi
+Advaitha	Anakaraju
+Shloka	Battu
+Saanvi	Nangunoori
+Manya	Balasubramanian
+Ira	Mohan
+
 
-     Ainesh Yarlagadda
-                               Advay Kunchakuri 
-                                                                   Medhansh Ram Gubbala 
-                                                                                                   Ritesh Grandhe
-                                                                                                                                           Sachit Chilukuri 
-                                                                                                                                                                Akhil Kumar  
-                                                                                                                                                                              Dinesh Veeramachineni 
-                                                                                                                                                                                                    Ishan Kumar
-
-#program|Thunder RockStars  Group - Medley|12|Sirisha Rani Kale|03:30:00|00:00:00|02:15:00|00:05:00
-
-     SakethRam Achanta
-                  Akshaya Ankireddi
-                  	               Sathvik Maheshwaram
-                                      	           Saishanvitha Gummadavelli
-                                                      	             Sasideep Kola
-                                                                        	           Thanishka Kale
-                                                                                        	          Nikhilsai Gatla
-                                                                                                       	           Akshaj Palamasi
-                                                                                                                       	               Preetham Krishnaa 
-                                                                                                                                                          Manya Maheshwaram 
-                                                                                                                                                                          Karthika Kola
-                                                                                                                                                                                          Harshini Gatla
-
-
-#program|Thodaya Mangalam (Bharatanatyam)|13|Vasini Maheswaran for Jayanthi Raman Natya Dance School|03:35:00|00:00:00|02:30:00|00:05:00
-
-     Janani Maheswaran 
-                       Nilani Maheswaran
-                       	            Shreemoyee Saha	  
-                                               Nivrithi Deepak	    
-                                                        Autri Das
-
-#program|Solo Singing|0|Shravan Gunishetty|03:45:00|00:00:00|02:30:00|00:05:00
-
-     Shravan Gunishetty
-
-#program|Portland Manabadi|14|Yagna Jyothy Vemuri|03:50:00|00:00:00|02:15:00|00:05:00
-
-     Raaga Mandala
-                       Lohith Pappula 
-                                          Ashitha Pulla 
-                                                              Anisha Oruganty  
-                                                                              Sahassra Patlolla 
-                                                                                                 Navya Kolavennu 
-                                                                                                               Mourya Penmetsa
-                                                                                                                                   Anika Malyavanatham 
-                                                                                                                                                      Anusri Posam 
-                                                                                                                                                                           Yash Moinikunta 
-                                                                                                                                                                                             Rohit Reddy Kypu
- 
-
-
-
-#program|Dil-E-India|15|Sreenija Muduganti|04:00:00|00:00:00|03:00:00|00:05:00
-
-     Sahith Chandra 
-               Abhishek Polavarapu 
-               	            Karthik Anumandla 
-                                	             Jayanth Sunkara 	
-                                                                Niketh Yaramaka 
-                                                                	             Sindhuja Muduganti 
-                                                                                  	                  Shruthi Prudvi
-
-#program|1:13 | Thriller Short Film|16|Sourabh Jamalapuram & Varun Dharmala|04:00:00|00:00:00|04:00:00|00:05:00
-
-     Varun Dharmala 
-                               Sourabh Jamalapuram	
-                                                   Chaithu Dikkala
-                                                   	                 Bhargav Sunkara
-                                                                         	            Rahul Kajjam
-
-
-
-
-#program|Jhaaptal Kathak (Classical Dance)|17|Sudeshna Ganguly|04:20:00|00:00:00|03:00:00|00:05:00
-
-     Stacie Ganguly
-                          Divyashree Vemparala 
-                                                      Sayali Pawar  
-                                                                        Yuvapreethi Ganesh   
-                                                                                           Sasmita Kumar 
-                                                                                                                  Bhargavi chunchu 
-                                                                                                                                       Shephali Dontula
-
-
-#program|Bailamos|18|Niharika Arlagadda Narasimharaju|04:30:00|00:00:00|03:30:00|00:05:00
-
-     Niharika Raju 
-             Navkiran Pandher  
-                        Supriya Kanyal   
-                                 Simran Mahapatra      
-                                        Prathibha Sundaramurthy    
-                                               Medha Vemla          
-                                                    Ramya S. Kakarlapudi
-
-
-#program|Shiva Stotram|19|Sudeshna Ganguly|04:50:00|00:00:00|03:00:00|00:05:00
-
-     Renuka Lokare  
-                                Surabhi Patil 
-                                                          Narthana Krishnan 
-                                                                                      Pragathi Reddy 
-                                                                                                         Bhavana Reddy  
-                                                                                                                              Chandra Lekha Pulikallu
-                                                                                                                                                     Vaishali Phalke
-                                                                                                                                                                                Lija Manoj  
-                                                                                                                                                                                                      Lakshmi Inturi
-
-
-#program|Rangasthalam|20|Durgesh Pattamatta|05:00:00|00:00:00|03:45:00|00:05:00
-
-     Durgesh Pattamatta
-                   Sailaja Pattamatta 
-                                      Sreekanth Thirunagari  
-                                                        Prasanna Thirunagari     
-                                                                       Prasad Ravi   
-                                                                                              Haritha Ravi 
-                                                                                                            Sarma Palepu   
-                                                                                                                                    Bharathi Palepu                   
-
-#program|Super Masti- Tollywood |21|Sreenija Muduganti|05:05:00|00:00:00|04:00:00|00:05:00
-
-     Sreenija Muduganti 
-               Shreya Andhole 
-               	             Srija Padala 
-                                 	           Vaishnavi Chandu 	
-                                                              Aneesha Mahindraker 
-
-
-#program|P4 (Skit) Pillala Potilu-Peddala Pattlu-Anu Anthega|22|Yagna Jyothy Vemuri|05:20:00|00:00:00|03:45:00|00:05:00
-
-     Yagna Jyothy Vemuri 
-                         Vandana Gade
-                         	                Padmashree Sattiraju
-                                              	              Padmavalli Chamarthi	
-                                                                               Manjari Chirravuri	
-                                                                                           Praveena Bandi	
-                                                                                                           Aruna Payala	 
-                                                                                                                      Rakesh Chirravuri
-                                                                                                                      	           Bhaskar Mandala   
-                                                                                                                                                  Kalyan Vuppamandla 
-                                                                                                                                                                           Ram Pappula   
-                                                                                                                                                                                             Bala Chamarthi  
-                                                                                                                                                                                                                       Mahathi Sattiraju 
-                                                                                                                                                                                                                                              Taara Mandala
-
-
-#program|Bho Shiva Sambho - Classical Fusion |23|Prashanthi Harathi|05:45:00|00:00:00|04:00:00|00:05:00
-
-     Alekhya Bhupalam
-       Aashita Pulla
-                        Viti Eachambadi Jaiswal 
-                                        Sridhriti Kuram 
-                                                     Tanya Krishna Harathi
-                                                                          Aarya Aluru  
-                                                                                      Mahalakshmi Chamarthi 
-                                                                                                     Vedika Sunehari Seth 
-                                                                                                                             Sahasra Chamarthi
-Tanvisri Kuram
-Anushka Kandula
-Devika Nirali Seth
-Darshni Arun
-
-#program|Dhamakas and Patakhas|24|Siri Narisetty/Ravi Kanth Paidisetti|05:50:00|00:00:00|04:00:00|00:05:00
-
-     Siri Narisetty
-                              krishna vivek kacham 
-                                                      Ravikanth Paidisetti 
-                                                                Ganesh akella 
-                                                                              Dora Suhrer  
-                                                                                           Mohammed Rafi   
-                                                                                                      Kavya sree muppala  
-                                                                                                                              Sagarika Kondaparti 
-                                                                                                                                        Priyanka Suresh  
-                                                                                                                                                           Shravan Doosa
-
+#program|Manabadi Skit|11|Jyothi Vemuri|03:15:00|00:00:00|02:15:00|00:10:00
+
+Raaga	Mandala
+Anisha	Oruganty
+Navya	Kolavennu
+Parnitha	Mudunuri
+Krishiv	Routhu
+Charith	Nimmagadda
+Vibha	Sukka
+Bbhuvan	Peddireddy
+Akshaj	Palamasi
+Anusri	Posam
+Saketh	Vasala
+Yuvan	Karanam
+Yashvi	Aleti
+Anvi	Vysyaraju
+Adi Aishani	Nudagala
+Saadhana	Sistla
+Shanmukhapriya	Mamidala
+Taara	Mandala
+Sriya	Tallapragada
+
+#program|JATHISWARAM|12|Shivy Vanka|03:27:00|00:00:00|02:15:00|00:10:00
+
+STUTI	ATREYA
+INCHARA	SHREE
+DHRITHIKA	GANNAMANENI
+ISHA	MARLA
+HASSINI	PRABHURAM
+KEYA	KOTHARI
+ADITI	RAGURAMAN
+MALAVI	BHARADWAJ
+ESHA	VIJAY
+AKSHITHA	SENTHILKUMAR
+NEHA	GOPALSWAMY
+SHIVAANI	SELVAPRABA
+RESHMA	JEYAKUMAR
+SHREYA	BALA
+NIKITA	JOTHIKUMAR
+AARNA	SHAH
+
+#program|Dazzling Stars - Samhita group|13|Samhitha/Sirisha Kale|03:39:00|00:00:00|02:15:00|00:05:00
+
+Sri Prathiksha	
+Sreeprada	Konduru
+Thanishka	Kale
+Abinaya	Sathyanath
+Sahasra	Swargam
+Sruti	Sathyanath
+
+#program|Fast number - Kirtana's group|14|Kirthana|03:46:00|00:00:00|02:15:00|00:06:00
+
+Viti	Eachambadi
+Arshia	Rajeshnarayan
+Raajitha	Dasari
+Kirthana	Chamarthi
+Yasodha	Duraisamy
+Gauri	Nagul
+Ramya	Bhat
+Pratyusha	Upadhyayula
+
+#program|SADHGURU|15|Shivy Vanka|03:54:00|00:00:00|02:15:00|00:10:00
+
+AANANDI	SOHAL
+ARSHIA	SOHAL
+HASVI	PATEL
+MEGHA	CHANDER
+ADITI	ATREYA
+NISHTHA	PATEL
+SHRIYA	MARLA
+HIMANVITHA	KAYAM
+ANUSHA	JEYAKUMAR
+ANJALI	SANJEEPAN
+NIVEDHA	SATHISHKUMAR
+YALINI	GOPALSWAMY
+JOSHITHA	VELMURUGAN
+
+#program|Elite Emeralds|16|Madhuri Dokuparthi|04:06:00|00:00:00|03:15:00|00:04:00
+
+Babita	Yellamilli
+Madhuri	Dokuparthi
+Divyaja	Vanjarapu
+Sangeetha	Rajiv
+Bhargavi	Bompelly
+Swathi	Dampanaboyina
+Pavana	Anur
+
+#program|Bollywood Medley|17|Srinija Mudiganti|04:12:00|00:00:00|03:15:00|00:05:00
+
+Sindhuja	Muduganti
+Bhavika	Buddi
+Shruthi	Prudvi
+Anvitha	Mahankali
+Shrika	Ganta
+
+
+#program|Vote of Thanks|18|Sridhar|04:19:00|00:00:00|03:15:00|00:08:00
+#program|Kuchipudi|19|Prashanthi Harathi|04:29:00|00:00:00|03:15:00|00:10:00
+
+Tanya Krishna	Harathi
+Vedika Sunehari	Sheth
+Devika Nirali	Sheth
+Dharshni	Arunachalam
+Soumya	Salapati
+Deesha	Naidu
+Nihitha	Valeti
+Lasya	Singaraju
+Mahika	Pulla
+Vihaan Krishna	Harathi
+Nysha	Jhaveri
+Parnika	Gubbala
+Nitya Naviri
+
+#program|Dappulu (Kulu)|20|Sylace|04:41:00|00:00:00|03:15:00|00:10:00
+
+Kumaran	A.E
+Lavanya	Mohan Raj
+Adhithi Shree	Kumaran
+Gobhika Shree	Kumaran
+Romero	Emmanuel Santiago
+Pranav	Sathish Kumar
+Pranesh Raghav	Ganesh
+Tejasree Harini	Ganesh
+Sylace	Srinivasan
+Shruthi	Sylace
+Preetham Krishnaa	Suresh Kumar
+Priya	Ganesh
+Ponmuhilan	Subramanian
+Lingesh	Hariharan
+Pradeesh	Thindumal Korath
+Chitralakshmi	Narayanan
+Sahana	Muthaiya
+Saravanakumar 	Sevugapandian
+Rudran	Saravana
+
+#program|Fusion Divas - Kirtan's group|21|Gauri/Kirtana Chamarthi|04:53:00|00:00:00|03:15:00|00:08:00
+
+Laasya Kanamatha
+Tejju Bethaputi
+Shreeya	Bukka
+Eisha	Paruvada
+
+#program|Classical Folk - Deepa Barve group|22|Deepa|05:03:00|00:00:00|03:15:00|00:04:00
+
+Priyanka Chaturvedi
+Deepti	Joshi
+Deepa	Barve
+Rupali	Kadgi
