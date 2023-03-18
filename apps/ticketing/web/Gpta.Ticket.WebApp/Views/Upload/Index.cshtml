@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Upload" asp-action="Upload" method="post" enctype="multipart/form-data" >
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Upload the file which was downloaded from paypal (see 2018 sample below):</p>
+            <input type="file" name="files" />
+        </div>
+    </div>
+        <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+
+    <div>
+        &nbsp;&nbsp;<label>For sample file download </label>
+         <a asp-action="Download"
+               asp-route-filename="2018UgadiTickets.csv">
+                2018 Ugadi Tickets
+            </a>
+    </div>
+</form>
