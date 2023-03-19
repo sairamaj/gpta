@@ -1,0 +1,53 @@
+﻿@page "/ticketpage"
+@using Gpta.Ticketing.Web.Shared
+@inject HttpClient Http
+
+<PageTitle>Tickets</PageTitle>
+
+<h1>Tickets</h1>
+
+
+@if (tickets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Adults</th>
+                <th>Kids</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in tickets)
+            {
+                <tr>
+                    <td>@ticket.Id</td>
+                    <td>@ticket.Name</td>
+                    <td>@ticket.Adults</td>
+                    <td>@ticket.Kids</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Ticket[]? tickets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try{
+            System.Console.WriteLine("Fetching tickets");
+            tickets = await Http.GetFromJsonAsync<Ticket[]>("Tickets");
+            System.Console.WriteLine($"Count:{tickets?.Count()}");
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+        }
+    }
+}

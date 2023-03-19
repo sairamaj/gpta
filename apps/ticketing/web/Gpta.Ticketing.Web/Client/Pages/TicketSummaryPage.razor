@@ -1,0 +1,51 @@
+﻿@page "/ticketsummary"
+@using Gpta.Ticketing.Web.Shared
+@inject HttpClient Http
+
+<PageTitle>Tickets</PageTitle>
+
+@if (summary == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>Summary</h3>
+    <table class="table" align="center">
+        <tbody>
+                <tr>
+                    <td>Adults</td>
+                    <td>@summary.Adults</td>
+                </tr>
+
+                <tr>
+                    <td>Kids</td>
+                    <td>@summary.Kids</td>
+                </tr>
+                <tr>
+                    <td>Checked Adults</td>
+                    <td>@summary.CheckedInAdults</td>
+                    </tr>
+                <tr>
+                    <td>Checked Kids</td>
+                    <td>@summary.CheckedInKids</td>
+                </tr>
+        </tbody>
+    </table>
+}
+
+@code {
+    private TicketSummary? summary;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try{
+            System.Console.WriteLine("Fetching tickets");
+            summary = await Http.GetFromJsonAsync<TicketSummary>("/api/summary");
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+            throw;
+        }
+    }
+}
