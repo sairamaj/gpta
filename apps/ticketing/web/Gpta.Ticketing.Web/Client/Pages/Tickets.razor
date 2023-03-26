@@ -1,4 +1,4 @@
-﻿@page "/ticketpage"
+﻿@page "/tickets"
 @using Gpta.Ticketing.Web.Shared
 @inject HttpClient Http
 
@@ -48,6 +48,7 @@ else
         }
         catch(Exception e){
             System.Console.WriteLine(e);
+            throw;
         }
     }
 }
