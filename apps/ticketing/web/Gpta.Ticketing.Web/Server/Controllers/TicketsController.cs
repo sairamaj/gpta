@@ -19,16 +19,18 @@ public class TicketsController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Ticket> Get()
+    [Route("/api/tickets")]
+    public async Task<IEnumerable<Ticket>> Get()
     {
-        yield return new Ticket{ Id="1", Name = "sai1", Adults =2, Kids=2};
-        yield return new Ticket{ Id="2", Name = "sai2", Adults =2, Kids=3};
+        System.Console.WriteLine("/api/tickets...");
+        return await this._repository.GetTickets();
     }
 
     [HttpGet]
-    [Route("/api/summary")]
+    [Route("/api/summary2")]
     public async Task<TicketSummary> GetSummary()
     {
+        System.Console.WriteLine("/api/summary2...");
         return await this._repository.GetSummary();
     }
 }

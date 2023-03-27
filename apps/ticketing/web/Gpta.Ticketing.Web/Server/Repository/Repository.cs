@@ -24,6 +24,11 @@ class Repository : IRepository
         });
     }
 
+    public async Task<IEnumerable<Ticket>> GetTickets()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private HttpClient Client
     {
         get { return this.clientFactory.CreateClient("ticketing-api"); }

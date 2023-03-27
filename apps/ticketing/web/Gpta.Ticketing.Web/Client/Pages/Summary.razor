@@ -1,8 +1,8 @@
-﻿@page "/ticketsummary"
+﻿@page "/summary"
 @using Gpta.Ticketing.Web.Shared
 @inject HttpClient Http
 
-<PageTitle>Tickets</PageTitle>
+<PageTitle>Summary</PageTitle>
 
 @if (summary == null)
 {
@@ -40,8 +40,8 @@ else
     protected override async Task OnInitializedAsync()
     {
         try{
-            System.Console.WriteLine("Fetching tickets");
-            summary = await Http.GetFromJsonAsync<TicketSummary>("/api/summary");
+            System.Console.WriteLine("Fetching summary (/api/summary2)");
+            summary = await Http.GetFromJsonAsync<TicketSummary>("/api/summary2");
         }
         catch(Exception e){
             System.Console.WriteLine(e);

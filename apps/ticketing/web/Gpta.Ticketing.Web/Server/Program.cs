@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Ticketing.ServerAPI"));
-builder.Services.AddSingleton<IRepository, Repository>();
+//builder.Services.AddSingleton<IRepository, Repository>();
+builder.Services.AddSingleton<IRepository, LocalRepository>();
 builder.Services.AddHttpClient("ticketing-api", c =>
 {
     Console.WriteLine($"Reading api options...");

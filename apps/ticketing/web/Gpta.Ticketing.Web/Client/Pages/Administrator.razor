@@ -1,0 +1,39 @@
+@page "/administrator"
+@using Gpta.Ticketing.Web.Shared
+@inject HttpClient Http
+
+<div>
+<InputFileExtended OnUploadedFile="OnSelect" ButtonShow="false" />
+
+<button class="btn btn-primary" @onclick="Upload">Upload </button>
+</div>
+
+
+@code {
+    [Inject]
+    public HttpClient Client { get; set; }
+
+    InputFileHandler FileHandler;
+    string Messages;
+
+    protected override void OnInitialized()
+    {
+        FileHandler = new InputFileHandler(Client);
+    }
+
+    void OnError(Exception e)
+        => Messages = $"Exception: {e.Message}";
+
+    void OnSelect(FileUploadEventArgs e)
+    {
+        FileHandler.Add(e.File);
+        Messages = $"File {e.File.Name} chosen. Total size {e.File.Size}.";
+    }
+
+    async void Upload()
+    {
+        Messages = $"Start upload ...";
+        bool result = await FileHandler.UploadAsync<bool>("/upload");
+        Messages = $"Files Upload with result {result}";
+    }
+}

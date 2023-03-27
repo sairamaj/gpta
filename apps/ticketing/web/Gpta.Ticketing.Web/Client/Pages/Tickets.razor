@@ -13,28 +13,27 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Adults</th>
-                <th>Kids</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var ticket in tickets)
+       
+     <MatAccordion Multi="true">
+            @foreach(var @ticket in @tickets)
             {
-                <tr>
-                    <td>@ticket.Id</td>
-                    <td>@ticket.Name</td>
-                    <td>@ticket.Adults</td>
-                    <td>@ticket.Kids</td>
-                </tr>
+                <MatExpansionPanel>
+                    <MatExpansionPanelSummary>
+                        <MatExpansionPanelHeader>
+                        <div class="mat-layout-grid mat-layout-grid-align-left" style="max-width: 800px;">
+                            <div class="mat-layout-grid-inner">
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-4>Id:@ticket.Id</div>
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-2>Adults:@ticket.Adults</div>
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-2>Kids:@ticket.Kids</div>
+                            </div>
+                        </div>
+                    </MatExpansionPanelHeader>                    </MatExpansionPanelSummary>
+                    <MatExpansionPanelDetails>
+                        <p>Content of panel @ticket.Id</p>
+                    </MatExpansionPanelDetails>
+                </MatExpansionPanel>
             }
-        </tbody>
-    </table>
-}
+        </MatAccordion>}
 
 @code {
     private Ticket[]? tickets;
@@ -43,7 +42,7 @@ else
     {
         try{
             System.Console.WriteLine("Fetching tickets");
-            tickets = await Http.GetFromJsonAsync<Ticket[]>("Tickets");
+            tickets = await Http.GetFromJsonAsync<Ticket[]>("/api/tickets");
             System.Console.WriteLine($"Count:{tickets?.Count()}");
         }
         catch(Exception e){
