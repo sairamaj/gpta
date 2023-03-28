@@ -2,12 +2,17 @@
 @using Gpta.Ticketing.Web.Shared
 @inject HttpClient Http
 
+
 <div>
 <InputFileExtended OnUploadedFile="OnSelect" ButtonShow="false" />
-
 <button class="btn btn-primary" @onclick="Upload">Upload </button>
 </div>
 
+<div>
+    <MatButton Label="Clear" OnClick="OnClear"/>
+</div>
+
+<div>@Messages</div>
 
 @code {
     [Inject]
@@ -33,7 +38,27 @@
     async void Upload()
     {
         Messages = $"Start upload ...";
-        bool result = await FileHandler.UploadAsync<bool>("/upload");
-        Messages = $"Files Upload with result {result}";
+        try{
+            var result = await FileHandler.UploadAsync("/admin/tickets/upload");
+            var content = await result.Content.ReadAsStringAsync();
+            Console.WriteLine($"result.Content: |{content}|");
+            Messages = content;
+            Console.WriteLine(Messages);
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+            Messages = e.ToString();
+        }
+    }
+
+    async void OnClear()
+    {
+        System.Console.WriteLine("On Clear");
+        try{
+            await this.Client.DeleteAsync("/admin/tickets");
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+        }
     }
 }

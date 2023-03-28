@@ -1,8 +1,11 @@
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gpta.Ticketing.Web.Shared;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
-class Repository : IRepository
+internal class Repository : CoreRepository, IRepository
 {
     private readonly IHttpClientFactory clientFactory;
 
@@ -18,7 +21,7 @@ class Repository : IRepository
         response.EnsureSuccessStatusCode();
         var data = await response.Content.ReadAsStringAsync();
         System.Console.WriteLine(data);
-        return JsonSerializer.Deserialize<TicketSummary>(data, new JsonSerializerOptions
+        return System.Text.Json.JsonSerializer.Deserialize<TicketSummary>(data, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
@@ -26,7 +29,35 @@ class Repository : IRepository
 
     public async Task<IEnumerable<Ticket>> GetTickets()
     {
-        throw new System.NotImplementedException();
+        return await this.Client.GetFromJsonAsync<IEnumerable<Ticket>>("");
+    }
+
+    public async Task<UploadSummary> Upload(Stream stream) => await base.Upload(stream, async tickets =>
+    {
+        System.Console.WriteLine("Repository Begin Upload...");
+        foreach (var t in tickets)
+        {
+            System.Console.WriteLine(t);
+        }
+        await this.Save(tickets);
+        System.Console.WriteLine("Repository End...");
+    });
+
+    private async Task Save(IEnumerable<Ticket> tickets)
+    {
+        var serializerSettings = new JsonSerializerSettings();
+        serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+        var data = JsonConvert.SerializeObject(tickets, serializerSettings);
+        var content = new StringContent(data);
+        content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
+
+        // todo: why it is not working with AWS gateway base url and resource in postasync()
+        await this.Client.PostAsync("", content);
+    }
+
+    public Task ClearAll()
+    {
+        throw new NotImplementedException();
     }
 
     private HttpClient Client

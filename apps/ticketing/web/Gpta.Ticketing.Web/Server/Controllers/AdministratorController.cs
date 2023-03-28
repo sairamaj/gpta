@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Gpta.Ticketing.Web.Shared;
+using System.Text.Json;
 
 namespace Gpta.Ticketing.Web.Server.Controllers;
 
@@ -19,8 +20,8 @@ public class AdministratorController : ControllerBase
     }
 
     [HttpPost]
-    [Route("/upload")]
-    public async Task Post()
+    [Route("/admin/tickets/upload")]
+    public async Task<UploadSummary> Post()
     {
         System.Console.WriteLine("__________________________");
         System.Console.WriteLine("-------- Upload ------------");
@@ -35,10 +36,19 @@ public class AdministratorController : ControllerBase
                 System.Console.WriteLine($"ContentType: {file.ContentType}");
                 System.Console.WriteLine($"ContentDisposition: {file.ContentDisposition}");
                 System.Console.WriteLine("=========================");
-                var sr = new StreamReader(file.OpenReadStream());
-                var data = await sr.ReadToEndAsync();
-                System.Console.WriteLine(data);
+                var summary = await this._repository.Upload(file.OpenReadStream());
+                System.Console.WriteLine(JsonSerializer.Serialize(summary));
+                return summary;
             }
         }
+
+        return null;
+    }
+
+    [HttpDelete]
+    [Route("/admin/tickets")]
+    public async Task Delete()
+    {
+        await this._repository.ClearAll();
     }
 }
