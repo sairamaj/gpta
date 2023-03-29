@@ -23,7 +23,7 @@ jobs:
           include-prerelease: true
  
       - name: Build with dotnet
-        run: dotnet build apps/ticketing/web/Gpta.Ticketing.Web/Server/Gpta.Ticketing.Web.Server.csproj --configuration Release 
+        run: dotnet build --configuration Release apps\ticketing\web\Gpta.Ticketing.Web\Server\Gpta.Ticketing.Web.Server.csproj
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
