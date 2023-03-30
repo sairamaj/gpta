@@ -109,19 +109,36 @@ class Repository{
             for m in json{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
-                    let adultsArrived = (Int)(dictionary["adults"] as! String)
+                   // let adultsArrived = (Int)(dictionary["adults"] as! String)
                     var kidsArrived =  0
+                    var adultsArrived = 0
+                    
+                    if let val = dictionary["adults"] {
+                        let result = val is Int
+                        if result {
+                            adultsArrived = val as! Int
+                        }else{
+                            adultsArrived = Int(val as! String)!
+                        }
+                    }
+                    
                     
                     if let val = dictionary["kids"] {
-                        kidsArrived = Int(val as! String)!
+                        let result = val is Int
+                        if result {
+                            kidsArrived = val as! Int
+                        }else{
+                            kidsArrived = Int(val as! String)!
+                        }
                     }
+
                     
                     //let adultsArrived = (dictionary["adults"] as! Int)
                     //let kidsArrived = (Int)(dictionary["kids"] as! Int)
                     
                     for ticketHolder in ticketHolders{
                         if ticketHolder.ConfirmationNumber == id{
-                            ticketHolder.AdultsArrived = adultsArrived!
+                            ticketHolder.AdultsArrived = adultsArrived
                             ticketHolder.KidsArrived = kidsArrived
                             
                         }
@@ -218,7 +235,7 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-       return "https://c6hqh0tjcl.execute-api.us-west-2.amazonaws.com/Prod" + resource
+       return "https://j142kxxeal.execute-api.us-west-2.amazonaws.com/Prod" + resource
        // return "http://127.0.0.1:4000" + resource
     }
 }
