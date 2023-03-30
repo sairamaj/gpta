@@ -1,5 +1,5 @@
 ﻿# $url = 'http://localhost:4000'
-$url = 'https://rzkowjvkb0.execute-api.us-west-2.amazonaws.com/Prod'
+$url = 'https://6omqvlx5rg.execute-api.us-west-2.amazonaws.com/Prod'
 
 # get events
 $eventsUrl = "$url/events"

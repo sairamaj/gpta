@@ -55,9 +55,9 @@ internal class Repository : CoreRepository, IRepository
         await this.Client.PostAsync("", content);
     }
 
-    public Task ClearAll()
+    public async Task ClearAll()
     {
-        throw new NotImplementedException();
+        await this.Client.DeleteAsync("");
     }
 
     private HttpClient Client
