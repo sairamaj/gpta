@@ -232,6 +232,12 @@ class TicketHolderTableViewController:
         }
         
         do {
+            if captureSession.isRunning {
+                self.captureSession.stopRunning()
+                qrCodeFrameView?.removeFromSuperview()
+                self.videoPreviewLayer?.removeFromSuperlayer()
+                return
+            }
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
 
@@ -416,4 +422,5 @@ class TicketHolderTableViewController:
             }
         })
     }
+
 }
