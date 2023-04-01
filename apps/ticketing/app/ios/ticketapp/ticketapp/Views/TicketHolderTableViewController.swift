@@ -19,7 +19,7 @@ extension TicketHolderTableViewController: UISearchResultsUpdating {
 
 @available(iOS 10.0, *)
 class TicketHolderTableViewController:
-    UITableViewController ,UISearchBarDelegate, UISearchDisplayDelegate,AVCaptureMetadataOutputObjectsDelegate,TaskChangedDelegate{
+    UITableViewController ,UISearchBarDelegate,UpdatedOnScanDelegate, UISearchDisplayDelegate,AVCaptureMetadataOutputObjectsDelegate,TaskChangedDelegate{
     
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -375,12 +375,14 @@ class TicketHolderTableViewController:
                 let text = metadataObj.stringValue
                 let ticketHolder = QRCodeParser.parse(val: metadataObj.stringValue!)
                 var popUpWindow: PopUpWindow!
+                 
                 ticketHolder.AdultsArrived = ticketHolder.AdultCount
                 ticketHolder.KidsArrived = ticketHolder.KidCount
                 popUpWindow = PopUpWindow(title: "GPTA Ticket",
                                            text: text!,
                                            ticketHolder : ticketHolder,
                                            buttontext: "Check In")
+                popUpWindow.updatedOnScanDelegate = self
                 self.present(popUpWindow, animated: true, completion: nil)
                 
                  self.captureSession.stopRunning()
@@ -393,4 +395,14 @@ class TicketHolderTableViewController:
              }
          }
      }
+    
+    func TaskChanged(_ ticketHolder:TicketHolder){
+        Slim.info("checkin: \(ticketHolder.Name)")
+        Repository.shared.updateTicketHolder( ticketHolder ,callback: {
+            (ticket) -> Void in
+            DispatchQueue.main.async {
+                print("done updating: \(ticketHolder.Name)")
+            }
+        })
+    }
 }

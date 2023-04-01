@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+/*
+    Not used for real. Just for testing only.
+ */
+
 @available(iOS 10.0, *)
 class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 

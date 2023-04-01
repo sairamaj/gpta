@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
+protocol UpdatedOnScanDelegate{
+    func TaskChanged(_ ticketHolder:TicketHolder)
+}
+
 class PopUpWindow: UIViewController {
 
     private let popUpWindowView = PopUpWindowView()
     private var ticketHolder:TicketHolder!
+    var updatedOnScanDelegate:UpdatedOnScanDelegate? = nil
     
     init(title: String, text: String, ticketHolder: TicketHolder, buttontext: String) {
         super.init(nibName: nil, bundle: nil)
@@ -33,14 +38,8 @@ class PopUpWindow: UIViewController {
     
     
     @objc func dismissView(){
-        Slim.info("checkin: \(self.ticketHolder.Name)")
-        Repository.shared.updateTicketHolder( ticketHolder ,callback: {
-            (ticket) -> Void in
-            DispatchQueue.main.async {
-                print("done updating: \(self.ticketHolder.Name)")
-            }
-            
-        })
+        self.updatedOnScanDelegate?.TaskChanged(self.ticketHolder)
+
         self.dismiss(animated: true, completion: nil)
     }
 
