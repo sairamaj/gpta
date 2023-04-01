@@ -113,7 +113,8 @@ class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutp
                                            ticketHolder : ticketHolder,
                                            buttontext: "Check In")
                 self.present(popUpWindow, animated: true, completion: nil)
-
+                 self.captureSession.stopRunning()
+                 self.dismiss(animated: true, completion: nil)
                  // Move the message label and top bar to the front
                  //view.bringSubview(toFront: qrCodeInfo)
                  //view.bringSubview(toFront: topbar)
