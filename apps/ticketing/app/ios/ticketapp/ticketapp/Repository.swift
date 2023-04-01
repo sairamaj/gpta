@@ -250,7 +250,7 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-       return "https://j142kxxeal.execute-api.us-west-2.amazonaws.com/Prod" + resource
+       return "https://j142kxxeal.execute-api.us-west-2.amazonaws.com/Prodx" + resource
        // return "http://127.0.0.1:4000" + resource
     }
 }

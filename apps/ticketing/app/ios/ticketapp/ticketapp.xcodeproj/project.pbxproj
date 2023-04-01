@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F6FEAA929D89A59005F1B9D /* QRScannerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */; };
 		C82B753A1E98A11900D76C0C /* LogViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */; };
 		C82B753C1E98A14700D76C0C /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */; };
 		C82B753E1E98A27900D76C0C /* MessageCollectorLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerControllerViewController.swift; sourceTree = "<group>"; };
 		C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewTableViewController.swift; sourceTree = "<group>"; };
 		C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogTableViewCell.swift; path = Views/LogTableViewCell.swift; sourceTree = "<group>"; };
 		C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCollectorLogDestination.swift; path = Logging/MessageCollectorLogDestination.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		C8C356C71E91C998009EEDD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */,
 				C8C356C81E91C9CE009EEDD8 /* TicketHolderTableViewController.swift */,
 				C8C356CA1E91CA83009EEDD8 /* TicketHolderCell.swift */,
 				C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */,
@@ -249,6 +252,7 @@
 				C82B75451E98A91000D76C0C /* Settings.swift in Sources */,
 				C8C356D31E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift in Sources */,
 				C82B753A1E98A11900D76C0C /* LogViewTableViewController.swift in Sources */,
+				0F6FEAA929D89A59005F1B9D /* QRScannerControllerViewController.swift in Sources */,
 				C87C92D81E95A1B40084F61D /* SlimLoggerConfig.swift in Sources */,
 				C8C356CB1E91CA83009EEDD8 /* TicketHolderCell.swift in Sources */,
 				C82B753E1E98A27900D76C0C /* MessageCollectorLogDestination.swift in Sources */,
