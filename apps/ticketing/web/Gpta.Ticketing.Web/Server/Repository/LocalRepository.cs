@@ -25,8 +25,8 @@ internal class LocalRepository : CoreRepository, IRepository
         await Task.Delay(0);
         var tickets = new List<Ticket>();
 
-        tickets.Add(new Ticket { Id = "1", Name = "sai1", Adults = 2, Kids = 2 });
-        tickets.Add(new Ticket { Id = "2", Name = "sai2", Adults = 2, Kids = 3 });
+        tickets.Add(new Ticket { Id = "1", Name = "sai1", Adults = 2, Kids = 2 , Cost = 1, Member=0});
+        tickets.Add(new Ticket { Id = "2", Name = "sai2", Adults = 2, Kids = 3 , Cost = 2 , Member=1});
         return tickets;
     }
 

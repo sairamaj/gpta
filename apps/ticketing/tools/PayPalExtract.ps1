@@ -99,6 +99,7 @@ foreach($distictRecord in ($recs | sort Name | group Name) )
     }
 
     $Id = $Id.Trim()
+    $Member = $Member ? 1: 0
     "$($distictRecord.Name),$($Email),$($Id),$($Adults),$($Kids),$($Total),$($Member)"
 }
 

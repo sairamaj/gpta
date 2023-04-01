@@ -22,14 +22,28 @@ else
                         <MatExpansionPanelHeader>
                         <div class="mat-layout-grid mat-layout-grid-align-left" style="max-width: 800px;">
                             <div class="mat-layout-grid-inner">
-                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-12>@ticket.Name</div>
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-12>
+                                @if (@ticket.Member == 1){
+                                    <b>*</b>
+                                }
+                                @ticket.Name</div>
                                 <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-2>@ticket.Adults</div>
                                 <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-2>/@ticket.Kids</div>
                             </div>
                         </div>
                     </MatExpansionPanelHeader>                    </MatExpansionPanelSummary>
                     <MatExpansionPanelDetails>
-                        <p>Details here @ticket.Id</p>
+                        <table align="center" border="2">
+                            <tr>
+                            <td>Id</td>
+                            <td>@ticket.Id</td>
+                            </tr>
+                            <tr>
+                            <td>Cost</td>
+                            <td>@ticket.Cost</td>
+                            </tr>
+                        </table>
+                        
                     </MatExpansionPanelDetails>
                 </MatExpansionPanel>
             }
