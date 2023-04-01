@@ -18,8 +18,16 @@ class TicketHolder{
     var KidsArrived:Int
     var SerialNumber:Int
     var isSynced:Int
+    var Member:Int
+    var Cost:Int
     
-    init(serialNumber:Int, name:String , confirmationNumber:String, adultCount:Int, kidCount:Int){
+    init(serialNumber:Int,
+         name:String ,
+         confirmationNumber:String,
+         adultCount:Int,
+         kidCount:Int,
+         member:Int,
+         cost:Int){
         
         self.Name = name
         self.ConfirmationNumber = confirmationNumber
@@ -29,6 +37,8 @@ class TicketHolder{
         self.KidsArrived = 0
         self.SerialNumber = serialNumber
         self.isSynced = -1
+        self.Member = member
+        self.Cost = cost
     }
     
     

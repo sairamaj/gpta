@@ -27,6 +27,7 @@ class TicketHolderCell: UITableViewCell {
     @IBOutlet weak var kidsStepper: UIStepper!
     @IBOutlet weak var adultStepper: UIStepper!
     @IBOutlet weak var confirmationNumberLabel: UILabel!
+    @IBOutlet weak var costLabewl: UILabel!
     var taskChangeDelegate:TaskChangedDelegate? = nil
     
     var CurrentTicketHolder:TicketHolder!
@@ -46,7 +47,12 @@ class TicketHolderCell: UITableViewCell {
             return
         }
         
-        self.name.text = self.CurrentTicketHolder.Name
+        var name = ""
+        if self.CurrentTicketHolder.Member == 1 {
+            name = "*"
+        }
+        name += self.CurrentTicketHolder.Name
+        self.name.text = name
         self.aduitArrivedTextField.text = String(self.CurrentTicketHolder.AdultsArrived)
         self.adultCountTextField.text = String(self.CurrentTicketHolder.AdultCount)
         self.kidsArrivedTextField.text = String(self.CurrentTicketHolder.KidsArrived)
@@ -64,6 +70,7 @@ class TicketHolderCell: UITableViewCell {
             self.syncView.isHidden = false
             self.syncView.backgroundColor = UIColor.red
         }
+        self.costLabewl.text = String(self.CurrentTicketHolder.Cost)
         self.setStepperValues()
         self.UpdateArrivedStatuses()
         

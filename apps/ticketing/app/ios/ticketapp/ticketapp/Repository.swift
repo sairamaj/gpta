@@ -53,7 +53,19 @@ class Repository{
                         kidsCount = val as! Int
                     }
 
-                    let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount, kidCount: kidsCount)
+                    var member =  0
+                    if let val = dictionary["member"] {
+                        // kidsCount = Int(val as! String)!
+                        member = val as! Int
+                    }
+                    
+                    var cost =  0
+                    if let val = dictionary["cost"] {
+                        // kidsCount = Int(val as! String)!
+                        cost = val as! Int
+                    }
+                    
+                    let ticketHolder = TicketHolder(serialNumber:serialNumber, name: name, confirmationNumber: confirmationNumber, adultCount: adultCount, kidCount: kidsCount, member: member, cost: cost)
                     ticketHolders.append(ticketHolder)
                     serialNumber += 1
                 }
