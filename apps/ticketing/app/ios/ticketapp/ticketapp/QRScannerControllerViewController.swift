@@ -102,14 +102,20 @@ class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutp
              qrCodeFrameView?.frame = barCodeObject!.bounds
 
              if metadataObj.stringValue != nil {
-                qrCodeInfo.text = metadataObj.stringValue
+                //qrCodeInfo.text = metadataObj.stringValue
                 let text = metadataObj.stringValue
+                let ticketHolder = QRCodeParser.parse(val: metadataObj.stringValue!)
                 var popUpWindow: PopUpWindow!
-                popUpWindow = PopUpWindow(title: "Error", text: text!, buttontext: "OK")
+                ticketHolder.AdultsArrived = ticketHolder.AdultCount
+                ticketHolder.KidsArrived = ticketHolder.KidCount
+                 popUpWindow = PopUpWindow(title: "GPTA Ticket",
+                                           text: text!,
+                                           ticketHolder : ticketHolder,
+                                           buttontext: "OK")
                 self.present(popUpWindow, animated: true, completion: nil)
-                 
+
                  // Move the message label and top bar to the front
-                 view.bringSubview(toFront: qrCodeInfo)
+                 //view.bringSubview(toFront: qrCodeInfo)
                  //view.bringSubview(toFront: topbar)
              }
          }

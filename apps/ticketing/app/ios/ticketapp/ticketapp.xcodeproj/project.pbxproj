@@ -10,6 +10,7 @@
 		0F6FEAA929D89A59005F1B9D /* QRScannerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */; };
 		0F6FEAB129D8B2AD005F1B9D /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB029D8B2AD005F1B9D /* PopUpWindow.swift */; };
 		0F6FEAB429D8B2E6005F1B9D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB329D8B2E6005F1B9D /* Extension.swift */; };
+		0F6FEABA29D8C8F1005F1B9D /* QRCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */; };
 		C82B753A1E98A11900D76C0C /* LogViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */; };
 		C82B753C1E98A14700D76C0C /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */; };
 		C82B753E1E98A27900D76C0C /* MessageCollectorLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */; };
@@ -37,6 +38,7 @@
 		0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerControllerViewController.swift; sourceTree = "<group>"; };
 		0F6FEAB029D8B2AD005F1B9D /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
 		0F6FEAB329D8B2E6005F1B9D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeParser.swift; sourceTree = "<group>"; };
 		C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewTableViewController.swift; sourceTree = "<group>"; };
 		C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogTableViewCell.swift; path = Views/LogTableViewCell.swift; sourceTree = "<group>"; };
 		C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCollectorLogDestination.swift; path = Logging/MessageCollectorLogDestination.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				C8C356BC1E91C8B4009EEDD8 /* LaunchScreen.storyboard */,
 				C8C356BF1E91C8B4009EEDD8 /* Info.plist */,
 				C82B75411E98A76100D76C0C /* Settings.bundle */,
+				0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */,
 			);
 			path = ticketapp;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				C8C356D11E91CCC1009EEDD8 /* TicketHolder.swift in Sources */,
 				C8C356D81E91D45B009EEDD8 /* StringExtension.swift in Sources */,
 				C82B75401E98A29E00D76C0C /* LogMessage.swift in Sources */,
+				0F6FEABA29D8C8F1005F1B9D /* QRCodeParser.swift in Sources */,
 				0F6FEAB129D8B2AD005F1B9D /* PopUpWindow.swift in Sources */,
 				C82B753C1E98A14700D76C0C /* LogTableViewCell.swift in Sources */,
 				C8C356C91E91C9CE009EEDD8 /* TicketHolderTableViewController.swift in Sources */,

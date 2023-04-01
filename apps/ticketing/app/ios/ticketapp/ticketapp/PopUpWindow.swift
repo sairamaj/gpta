@@ -12,12 +12,14 @@ import UIKit
 class PopUpWindow: UIViewController {
 
     private let popUpWindowView = PopUpWindowView()
+    private var ticketHolder:TicketHolder!
     
-    init(title: String, text: String, buttontext: String) {
+    init(title: String, text: String, ticketHolder: TicketHolder, buttontext: String) {
         super.init(nibName: nil, bundle: nil)
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
         
+        self.ticketHolder = ticketHolder
         popUpWindowView.popupTitle.text = title
         popUpWindowView.popupText.text = text
         popUpWindowView.popupButton.setTitle(buttontext, for: .normal)
@@ -31,6 +33,13 @@ class PopUpWindow: UIViewController {
     
     
     @objc func dismissView(){
+        Repository.shared.updateTicketHolder( ticketHolder ,callback: {
+            (ticket) -> Void in
+            DispatchQueue.main.async {
+                print("done updating: \(self.ticketHolder.Name)")
+            }
+            
+        })
         self.dismiss(animated: true, completion: nil)
     }
 
