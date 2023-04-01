@@ -102,9 +102,12 @@ class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutp
              qrCodeFrameView?.frame = barCodeObject!.bounds
 
              if metadataObj.stringValue != nil {
-                 qrCodeInfo.text = metadataObj.stringValue
-                 let text = metadataObj.stringValue
-                 print(text)
+                qrCodeInfo.text = metadataObj.stringValue
+                let text = metadataObj.stringValue
+                var popUpWindow: PopUpWindow!
+                popUpWindow = PopUpWindow(title: "Error", text: text!, buttontext: "OK")
+                self.present(popUpWindow, animated: true, completion: nil)
+                 
                  // Move the message label and top bar to the front
                  view.bringSubview(toFront: qrCodeInfo)
                  //view.bringSubview(toFront: topbar)
