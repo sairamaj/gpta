@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Repository{
     
@@ -28,6 +29,7 @@ class Repository{
     
     
     func getTicketHolders(callback : @escaping ( [TicketHolder]) -> Void){
+      
         let apiPath: String = "/tickets/"
         // let apiUrl = URL(string: getApiUrl(resource: apiPath))!
 
@@ -93,9 +95,10 @@ class Repository{
             "\"id\": \"\(ticketHolder.ConfirmationNumber!)\" , " +
             "\"adults\": \"\(ticketHolder.AdultsArrived)\" ," +
             "\"kids\": \"\(ticketHolder.KidsArrived)\" ," +
-            "\"updatedAt\": \"\(utcTimeZoneStr)\" " +
+            "\"updatedAt\": \"\(utcTimeZoneStr)\" ," +
+            "\"updatedBy\": \"\(UIDevice.current.identifierForVendor!.uuidString)\" " +
             "}")
-        
+        //
         print(checkInfo)
         Slim.trace(checkInfo)
         

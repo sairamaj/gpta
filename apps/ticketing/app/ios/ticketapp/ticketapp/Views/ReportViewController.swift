@@ -13,6 +13,7 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var totalCheckedInKids: UILabel!
     @IBOutlet weak var totalKids: UILabel!
     @IBOutlet weak var totalCheckedInAdults: UILabel!
+    @IBOutlet weak var deviceId: UILabel!
     @IBOutlet weak var totalAdults: UILabel!
     @IBOutlet weak var totalTickets: UILabel!
     @IBOutlet weak var notSyncedLabel: UILabel!
@@ -79,5 +80,6 @@ class ReportViewController: UIViewController {
         self.totalKids.text = String(totalKids)
         self.totalCheckedInAdults.text = String(totalCheckedInAdults)
         self.totalCheckedInKids.text = String(totalCheckedInKids)
+        self.deviceId.text = UIDevice.current.identifierForVendor!.uuidString
     }
 }
