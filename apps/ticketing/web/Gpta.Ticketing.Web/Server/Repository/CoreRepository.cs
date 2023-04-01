@@ -51,6 +51,9 @@ internal class CoreRepository
             {
                 totalParseFailed++;
                 failedLines.Add(new FailedLineInfo(line, lineNumber, $"Parsing error.{e.Message}"));
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine(e.ToString());
+                Console.WriteLine("------------------------------------");
             }
         }
 

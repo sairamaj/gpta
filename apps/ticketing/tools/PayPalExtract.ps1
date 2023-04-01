@@ -77,6 +77,8 @@ foreach ($rec in $recs ) {
 }
 
 $ids = @()
+"Name,Email,Id,Adults,Kids,Cost,Member"
+"-------------------------------------"
 foreach($distictRecord in ($recs | sort Name | group Name) )
 {
     $Id = ""
@@ -95,10 +97,12 @@ foreach($distictRecord in ($recs | sort Name | group Name) )
         $Description = $entry."Item Title"
         $Member = $Description -like "*Membership*"
     }
+
+    $Id = $Id.Trim()
     "$($distictRecord.Name),$($Email),$($Id),$($Adults),$($Kids),$($Total),$($Member)"
 }
 
 
-"----------------------------"
+#"----------------------------"
 #$NotMatched
-"----------------------------"
+#"----------------------------"

@@ -20,7 +20,7 @@ var tableNames = require('./tablenames')(dev)
 console.log(tableNames)
 var lastProgram
 var programs = []
-var data = fs.readFileSync(__dirname + '/data.txt', 'utf8')
+var data = fs.readFileSync(__dirname + '\\..\\deploydata\\data.txt', 'utf8')
 data.split('\r\n').forEach(line => {
     //console.log('----------------')
     if (line.startsWith('#program')) {   // program
@@ -56,7 +56,7 @@ data.split('\r\n').forEach(line => {
 
 console.log(JSON.stringify(programs, null, 2))
 
-evt.addEventAsync(tableNames.event, '2022 GPTA Ugadi')
+evt.addEventAsync(tableNames.event, '2023 GPTA Ugadi')
     .then(newEvent => {
         programs.forEach(program => {
             console.log(program.name)

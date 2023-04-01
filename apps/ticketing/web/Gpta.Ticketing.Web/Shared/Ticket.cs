@@ -31,6 +31,12 @@ public class Ticket
         }
 
         var parts = info.Split(',');
+        if(!Int32.TryParse(parts[adultsIndex], out var adultsCount)){
+            throw new FormatException($"Adults Count version error: val : |{parts[adultsIndex]}| cannot be converted to int");
+        }
+        if(!Int32.TryParse(parts[kidIndex], out var kidsCount)){
+            throw new FormatException($"kidsIndex Count version error: val : |{parts[kidIndex]}| cannot be converted to int");
+        }
         return new Ticket
         {
             Name = parts[nameIndex],
