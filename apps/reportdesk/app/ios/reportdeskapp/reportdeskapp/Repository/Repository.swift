@@ -118,7 +118,15 @@ class Repository{
             for m in json{
                 if let dictionary = m as? [String: Any] {
                     let id = dictionary["id"] as! String
-                    let arrived = (Int)(dictionary["arrived"] as! String)
+                    var arrived = 0
+                    if let val = dictionary["arrived"] {
+                        let result = val is Int
+                        if result {
+                            arrived = val as! Int
+                        }else{
+                            arrived = Int(val as! String)!
+                        }
+                    }
                     /*var arrived = 0
                     if let val = dictionary["arrived"] as! String{
                         arrived = Int(val)
@@ -236,6 +244,6 @@ class Repository{
     }
     
     func getApiUrl(resource:String) ->String{
-        return "https://1p3yu88tdg.execute-api.us-west-2.amazonaws.com/Prod" + resource
+        return "https://6omqvlx5rg.execute-api.us-west-2.amazonaws.com/Prod" + resource
     }
 }
