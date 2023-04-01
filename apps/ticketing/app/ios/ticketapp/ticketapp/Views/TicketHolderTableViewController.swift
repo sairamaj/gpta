@@ -398,10 +398,21 @@ class TicketHolderTableViewController:
     
     func TaskChanged(_ ticketHolder:TicketHolder){
         Slim.info("checkin: \(ticketHolder.Name)")
+        
+        // move this to repository (updating this memory)
+        for t in self.ticketHolders{
+            if t.ConfirmationNumber == ticketHolder.ConfirmationNumber{
+                t.AdultsArrived = ticketHolder.AdultsArrived
+                t.KidsArrived = ticketHolder.KidsArrived
+            }
+        }
+        
         Repository.shared.updateTicketHolder( ticketHolder ,callback: {
             (ticket) -> Void in
             DispatchQueue.main.async {
                 print("done updating: \(ticketHolder.Name)")
+                self.tableView.reloadData()
+                self.updateTitle()
             }
         })
     }
