@@ -108,10 +108,10 @@ class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutp
                 var popUpWindow: PopUpWindow!
                 ticketHolder.AdultsArrived = ticketHolder.AdultCount
                 ticketHolder.KidsArrived = ticketHolder.KidCount
-                 popUpWindow = PopUpWindow(title: "GPTA Ticket",
+                popUpWindow = PopUpWindow(title: "GPTA Ticket",
                                            text: text!,
                                            ticketHolder : ticketHolder,
-                                           buttontext: "OK")
+                                           buttontext: "Check In")
                 self.present(popUpWindow, animated: true, completion: nil)
 
                  // Move the message label and top bar to the front

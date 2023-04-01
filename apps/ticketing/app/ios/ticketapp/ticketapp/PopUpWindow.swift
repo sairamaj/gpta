@@ -33,6 +33,7 @@ class PopUpWindow: UIViewController {
     
     
     @objc func dismissView(){
+        Slim.info("checkin: \(self.ticketHolder.Name)")
         Repository.shared.updateTicketHolder( ticketHolder ,callback: {
             (ticket) -> Void in
             DispatchQueue.main.async {

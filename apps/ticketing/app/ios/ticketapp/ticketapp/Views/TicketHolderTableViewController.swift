@@ -214,6 +214,9 @@ class TicketHolderTableViewController: UITableViewController ,UISearchBarDelegat
         })
     }
     
+    @IBAction func onScan(_ sender: Any) {
+        
+    }
     
     @IBAction func onRefresh(_ sender: Any) {
         self.refreshTicketHolderInfo()
