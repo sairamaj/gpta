@@ -1,18 +1,32 @@
+//
+//  PopUpWindow.swift
+//  PopUpWindowExample
+//
+//  Created by John Codeos on 1/18/20.
+//  Copyright © 2020 John Codeos. All rights reserved.
+//
+
 import Foundation
 import UIKit
 
-class PopUpWindow: UIViewController {
+protocol UpdatedOnScanDelegate{
+    func TaskChanged(_ ticketHolder:TicketHolder) -> QRScanUpdateStatus
+}
 
-    private let popUpWindowView = PopUpWindowView()
+class UpdateTicketPopUpWindow: UIViewController {
 
+    private let popUpWindowView = UpdateTicketPopUpWindowView()
+    private var ticketHolder:TicketHolder!
+    var updatedOnScanDelegate:UpdatedOnScanDelegate? = nil
     var updateStatus = QRScanUpdateStatus.unknown
+    var isFirstTime = true
     
-    init(title: String, text: String, buttontext: String) {
+    init(title: String, text: String, ticketHolder: TicketHolder!, buttontext: String) {
         super.init(nibName: nil, bundle: nil)
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
         
-
+        self.ticketHolder = ticketHolder
         popUpWindowView.popupTitle.text = title
         popUpWindowView.popupText.text = text
         popUpWindowView.popupButton.setTitle(buttontext, for: .normal)
@@ -26,12 +40,56 @@ class PopUpWindow: UIViewController {
     
     
     @objc func dismissView(){
-        self.dismiss(animated: true, completion: nil)
+        if isFirstTime == false {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        if self.ticketHolder != nil {
+            updateStatus = (self.updatedOnScanDelegate?.TaskChanged(self.ticketHolder))!
+        }else{
+            updateStatus = QRScanUpdateStatus.success
+        }
+
+        let name = self.ticketHolder.Name ?? "unknown"
+        if updateStatus == QRScanUpdateStatus.success {
+            self.changeToSuccessMode(text : "\(name) checked-in.")
+        }else if updateStatus == QRScanUpdateStatus.alreadyArrived {
+            self.changeToErrorMode(text :" \(name) already checked-in.")
+        }
+        else if updateStatus == QRScanUpdateStatus.ticketNotFound {
+            self.changeToErrorMode(text :"\(name) not found in current tickets.")
+        }else{
+            self.changeToErrorMode(text :"\(name) unknown error.")
+        }
+        
+        isFirstTime = false
+        
+    }
+    
+    func changeToErrorMode(text : String) {
+        popUpWindowView.popupText.text = text
+        popUpWindowView.popupView.backgroundColor = UIColor.colorFromHex("#BC214B")
+        popUpWindowView.popupTitle.backgroundColor = UIColor.colorFromHex("#9E1C40")
+        popUpWindowView.popupTitle.text = "Error"
+        popUpWindowView.popupText.textColor = UIColor.white
+        popUpWindowView.popupButton.setTitleColor(UIColor.white, for: .normal)
+        popUpWindowView.popupButton.setTitle("OK", for: .normal)
     }
 
+    func changeToSuccessMode(text : String) {
+        popUpWindowView.popupText.text = text
+        popUpWindowView.popupView.backgroundColor = UIColor.colorFromHex("#00FF00")
+        popUpWindowView.popupTitle.backgroundColor = UIColor.colorFromHex("#00FF00")
+        popUpWindowView.popupTitle.text = "Success"
+        popUpWindowView.popupTitle.textColor = UIColor.black
+        popUpWindowView.popupText.textColor = UIColor.black
+        popUpWindowView.popupButton.setTitleColor(UIColor.black, for: .normal)
+        popUpWindowView.popupButton.setTitle("OK", for: .normal)
+    }
 }
 
-private class PopUpWindowView: UIView {
+private class UpdateTicketPopUpWindowView: UIView {
     
     let popupView = UIView(frame: CGRect.zero)
     let popupTitle = UILabel(frame: CGRect.zero)
@@ -45,15 +103,17 @@ private class PopUpWindowView: UIView {
         // Semi-transparent background
         backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
+        // UIColor.colorFromHex("#BC214B")
         // Popup Background
-        popupView.backgroundColor = UIColor.colorFromHex("#BC214B")
+        popupView.backgroundColor = UIColor.colorFromHex("#00FF00")
         popupView.layer.borderWidth = BorderWidth
         popupView.layer.masksToBounds = true
         popupView.layer.borderColor = UIColor.white.cgColor
         
+        //
         // Popup Title
         popupTitle.textColor = UIColor.white
-        popupTitle.backgroundColor = UIColor.colorFromHex("#9E1C40")
+        popupTitle.backgroundColor = UIColor.colorFromHex("#000000")
         popupTitle.layer.masksToBounds = true
         popupTitle.adjustsFontSizeToFitWidth = true
         popupTitle.clipsToBounds = true
@@ -62,7 +122,7 @@ private class PopUpWindowView: UIView {
         popupTitle.textAlignment = .center
         
         // Popup Text
-        popupText.textColor = UIColor.white
+        popupText.textColor = UIColor.black
         popupText.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
         popupText.numberOfLines = 0
         popupText.textAlignment = .center
@@ -123,5 +183,7 @@ private class PopUpWindowView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+
     
 }

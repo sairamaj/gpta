@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F36761529D94D1000391648 /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F36761429D94D1000391648 /* PopUpWindow.swift */; };
 		0F6FEAA929D89A59005F1B9D /* QRScannerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */; };
-		0F6FEAB129D8B2AD005F1B9D /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB029D8B2AD005F1B9D /* PopUpWindow.swift */; };
+		0F6FEAB129D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB029D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift */; };
 		0F6FEAB429D8B2E6005F1B9D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB329D8B2E6005F1B9D /* Extension.swift */; };
 		0F6FEABA29D8C8F1005F1B9D /* QRCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */; };
 		C82B753A1E98A11900D76C0C /* LogViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */; };
@@ -35,8 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F36761429D94D1000391648 /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
 		0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerControllerViewController.swift; sourceTree = "<group>"; };
-		0F6FEAB029D8B2AD005F1B9D /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
+		0F6FEAB029D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTicketPopUpWindow.swift; sourceTree = "<group>"; };
 		0F6FEAB329D8B2E6005F1B9D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeParser.swift; sourceTree = "<group>"; };
 		C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewTableViewController.swift; sourceTree = "<group>"; };
@@ -135,8 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */,
-				0F6FEAB029D8B2AD005F1B9D /* PopUpWindow.swift */,
+				0F6FEAB029D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift */,
 				C8C356C81E91C9CE009EEDD8 /* TicketHolderTableViewController.swift */,
+				0F36761429D94D1000391648 /* PopUpWindow.swift */,
 				C8C356CA1E91CA83009EEDD8 /* TicketHolderCell.swift */,
 				C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */,
 				C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */,
@@ -253,11 +256,12 @@
 				C8C356B41E91C8B4009EEDD8 /* AppDelegate.swift in Sources */,
 				C8C356CE1E91CC29009EEDD8 /* Repository.swift in Sources */,
 				C87C92D61E95A1910084F61D /* SlimLogger.swift in Sources */,
+				0F36761529D94D1000391648 /* PopUpWindow.swift in Sources */,
 				C8C356D11E91CCC1009EEDD8 /* TicketHolder.swift in Sources */,
 				C8C356D81E91D45B009EEDD8 /* StringExtension.swift in Sources */,
 				C82B75401E98A29E00D76C0C /* LogMessage.swift in Sources */,
 				0F6FEABA29D8C8F1005F1B9D /* QRCodeParser.swift in Sources */,
-				0F6FEAB129D8B2AD005F1B9D /* PopUpWindow.swift in Sources */,
+				0F6FEAB129D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift in Sources */,
 				C82B753C1E98A14700D76C0C /* LogTableViewCell.swift in Sources */,
 				C8C356C91E91C9CE009EEDD8 /* TicketHolderTableViewController.swift in Sources */,
 				C82B75451E98A91000D76C0C /* Settings.swift in Sources */,

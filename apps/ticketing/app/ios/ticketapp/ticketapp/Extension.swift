@@ -42,6 +42,13 @@ enum QRCodeParseError: Error {
     case unexpected(code: Int)
 }
 
+enum QRScanUpdateStatus {
+    case unknown
+    case success
+    case ticketNotFound
+    case alreadyArrived
+}
+
 extension QRCodeParseError: CustomStringConvertible {
     public var description: String {
         switch self {
@@ -52,3 +59,4 @@ extension QRCodeParseError: CustomStringConvertible {
         }
     }
 }
+

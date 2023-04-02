@@ -52,7 +52,7 @@ class TicketHolderTableViewController:
         
         refreshTimer()
         NotificationCenter.default.addObserver(self, selector:#selector(TicketHolderTableViewController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
-    
+
         
     }
     
@@ -217,9 +217,11 @@ class TicketHolderTableViewController:
             Slim.info("loadPrograms done.")
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
+
             }
             
             self.refreshTicketHolderInfo()
+
         })
     }
     
@@ -342,6 +344,7 @@ class TicketHolderTableViewController:
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()    // reload in UI thread.
+                self.updateTitle()
             }
         })
         
@@ -383,27 +386,27 @@ class TicketHolderTableViewController:
                      
                      
                      let ticketHolder = try QRCodeParser.parse(val: text)
-                     var popUpWindow: PopUpWindow!
                      
                      ticketHolder.AdultsArrived = ticketHolder.AdultCount
                      ticketHolder.KidsArrived = ticketHolder.KidCount
-                     popUpWindow = PopUpWindow(title: "GPTA Ticket",
+                     let updatePopUpWindow = UpdateTicketPopUpWindow(title: "GPTA Ticket",
                                                text: text,
                                                ticketHolder : ticketHolder,
                                                buttontext: "Check In")
-                     popUpWindow.updatedOnScanDelegate = self
-                     self.present(popUpWindow, animated: true, completion: nil)
+                     updatePopUpWindow.updatedOnScanDelegate = self
+                     self.present(updatePopUpWindow, animated: true, completion: {
+                                () in print("Done🔨")
+                         
+                     })
                  }
                  catch QRCodeParseError.notAValidTicket
                 {
-                    var popUpWindow: PopUpWindow!
-                    popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, ticketHolder: nil, buttontext: "OK")
+                    let popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, buttontext: "OK")
                     self.present(popUpWindow, animated: true, completion: nil)
                 }
                 catch
                 {
-                     var popUpWindow: PopUpWindow!
-                     popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, ticketHolder: nil, buttontext: "OK")
+                     let popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, buttontext: "OK")
                      self.present(popUpWindow, animated: true, completion: nil)
                  }
                  
@@ -418,16 +421,32 @@ class TicketHolderTableViewController:
          }
      }
     
-    func TaskChanged(_ ticketHolder:TicketHolder){
+    func TaskChanged(_ ticketHolder:TicketHolder) -> QRScanUpdateStatus{
 
         Slim.info("checkin: \(ticketHolder.Name)")
         
+        var found = false;
+        var alreadyCheckedInCount = false
         // move this to repository (updating this memory)
         for t in self.ticketHolders{
             if t.ConfirmationNumber == ticketHolder.ConfirmationNumber{
-                t.AdultsArrived = ticketHolder.AdultsArrived
-                t.KidsArrived = ticketHolder.KidsArrived
+                if( t.AdultsArrived > 0 || t.KidsArrived > 0){
+                    alreadyCheckedInCount = true
+                }else{
+                    t.AdultsArrived = ticketHolder.AdultsArrived
+                    t.KidsArrived = ticketHolder.KidsArrived
+                }
+                found = true
+                break
             }
+        }
+        
+        if(!found){
+            return QRScanUpdateStatus.ticketNotFound  // did not find the scanned ticket
+        }
+        
+        if(alreadyCheckedInCount){
+            return QRScanUpdateStatus.alreadyArrived
         }
         
         Repository.shared.updateTicketHolder( ticketHolder ,callback: {
@@ -439,6 +458,8 @@ class TicketHolderTableViewController:
                 self.updateTitle()
             }
         })
+        
+        return QRScanUpdateStatus.success
     }
 
 }
