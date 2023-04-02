@@ -226,6 +226,16 @@ class TicketHolderTableViewController:
     }
     
     @IBAction func onScan(_ sender: Any) {
+        
+        // Use below lines to test the Parsing and Popup without going through entire process of scanning
+        // Speed dev and can be tested on simulator
+            // processScanCode(text: "sai,sai@gmail.com,xxx5LC33117KA234292E,2,5")
+            // processScanCode(text: "sai,sai@gmail.com")
+            // processScanCode(text: "sai,sai@gmail.com,xxx5LC33117KA234292E,notaint,notint")
+            //processScanCode(text: "sai,sai@gmail.com,6SW64429E6173130K 3JR01788PK839950G 2R543605L2110010F 6XH68052019113833,notaint,notint")
+            // processScanCode(text: nil)
+            //return
+        
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
         
         guard let captureDevice = deviceDiscoverySession.devices.first else {
@@ -366,7 +376,6 @@ class TicketHolderTableViewController:
          // Check if the metadataObjects array is not nil and it contains at least one object.
          if metadataObjects.count == 0 {
              qrCodeFrameView?.frame = CGRect.zero
-             //qrCodeInfo.text = "No QR code is detected"
              return
          }
 
@@ -374,56 +383,22 @@ class TicketHolderTableViewController:
          let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
 
          if metadataObj.type == AVMetadataObject.ObjectType.qr {
-             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
-             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-             qrCodeFrameView?.frame = barCodeObject!.bounds
+            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.frame = barCodeObject!.bounds
 
-             if metadataObj.stringValue != nil {
-                //qrCodeInfo.text = metadataObj.stringValue
+            if metadataObj.stringValue != nil {
                 let text = metadataObj.stringValue!
-                 do{
-                     
-                     
-                     let ticketHolder = try QRCodeParser.parse(val: text)
-                     
-                     ticketHolder.AdultsArrived = ticketHolder.AdultCount
-                     ticketHolder.KidsArrived = ticketHolder.KidCount
-                     let updatePopUpWindow = UpdateTicketPopUpWindow(title: "GPTA Ticket",
-                                               text: text,
-                                               ticketHolder : ticketHolder,
-                                               buttontext: "Check In")
-                     updatePopUpWindow.updatedOnScanDelegate = self
-                     self.present(updatePopUpWindow, animated: true, completion: {
-                                () in print("Done🔨")
-                         
-                     })
-                 }
-                 catch QRCodeParseError.notAValidTicket
-                {
-                    let popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, buttontext: "OK")
-                    self.present(popUpWindow, animated: true, completion: nil)
-                }
-                catch
-                {
-                     let popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, buttontext: "OK")
-                     self.present(popUpWindow, animated: true, completion: nil)
-                 }
-                 
-                 self.captureSession.stopRunning()
-                 qrCodeFrameView?.removeFromSuperview()
-                 self.videoPreviewLayer?.removeFromSuperlayer()
+                processScanCode(text: text)
                 
-                 // Move the message label and top bar to the front
-                 //view.bringSubview(toFront: qrCodeInfo)
-                 //view.bringSubview(toFront: topbar)
+                self.captureSession.stopRunning()
+                qrCodeFrameView?.removeFromSuperview()
+                self.videoPreviewLayer?.removeFromSuperlayer()
              }
          }
      }
     
     func TaskChanged(_ ticketHolder:TicketHolder) -> QRScanUpdateStatus{
-
-        Slim.info("checkin(scan): \(ticketHolder.Name ?? "na")")
-        
         var found = false;
         var alreadyCheckedInCount = false
         // move this to repository (updating this memory)
@@ -448,6 +423,7 @@ class TicketHolderTableViewController:
             return QRScanUpdateStatus.alreadyArrived
         }
         
+        Slim.info("checkin(scan): \(ticketHolder.Name ?? "na")")
         Repository.shared.updateTicketHolder( ticketHolder ,callback: {
             (ticket) -> Void in
          
@@ -460,5 +436,32 @@ class TicketHolderTableViewController:
         
         return QRScanUpdateStatus.success
     }
-
+    
+    func processScanCode(text: String!){
+        do{
+            let ticketHolder = try QRCodeParser.parse(val: text)
+            
+            ticketHolder.AdultsArrived = ticketHolder.AdultCount
+            ticketHolder.KidsArrived = ticketHolder.KidCount
+            let updatePopUpWindow = UpdateTicketPopUpWindow(title: "GPTA Ticket",
+                                      text: text,
+                                      ticketHolder : ticketHolder,
+                                      buttontext: "Check In")
+            updatePopUpWindow.updatedOnScanDelegate = self
+            self.present(updatePopUpWindow, animated: true, completion: {
+                       () in print("Done🔨")
+                
+            })
+        }
+        catch QRCodeParseError.notAValidTicket
+       {
+           let popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text ?? "", buttontext: "OK")
+           self.present(popUpWindow, animated: true, completion: nil)
+       }
+       catch
+       {
+            let popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text ?? "", buttontext: "OK")
+            self.present(popUpWindow, animated: true, completion: nil)
+        }
+    }
 }

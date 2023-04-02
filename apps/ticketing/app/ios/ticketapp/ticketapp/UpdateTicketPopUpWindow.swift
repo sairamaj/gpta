@@ -32,6 +32,8 @@ class UpdateTicketPopUpWindow: UIViewController {
         popUpWindowView.popupButton.setTitle(buttontext, for: .normal)
         popUpWindowView.popupButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         view = popUpWindowView
+        
+        self.changeToInfoMode(text: text)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -68,24 +70,66 @@ class UpdateTicketPopUpWindow: UIViewController {
     }
     
     func changeToErrorMode(text : String) {
-        popUpWindowView.popupText.text = text
-        popUpWindowView.popupView.backgroundColor = UIColor.colorFromHex("#BC214B")
-        popUpWindowView.popupTitle.backgroundColor = UIColor.colorFromHex("#9E1C40")
+        
+        // entire back groun.
+        popUpWindowView.popupView.backgroundColor = UIColor.systemRed
+        
+        // title
+        popUpWindowView.popupTitle.backgroundColor = UIColor.colorFromHex("#BC214B")
+        popUpWindowView.popupTitle.textColor = UIColor.white
         popUpWindowView.popupTitle.text = "Error"
-        popUpWindowView.popupText.textColor = UIColor.white
+        
+        // text
+        popUpWindowView.popupText.backgroundColor = UIColor.systemRed
+        popUpWindowView.popupText.textColor = UIColor.black
+        popUpWindowView.popupText.text = text
+        
+        // button
+        popUpWindowView.popupButton.backgroundColor = UIColor.colorFromHex("#BC214B")
         popUpWindowView.popupButton.setTitleColor(UIColor.white, for: .normal)
         popUpWindowView.popupButton.setTitle("OK", for: .normal)
     }
 
     func changeToSuccessMode(text : String) {
-        popUpWindowView.popupText.text = text
-        popUpWindowView.popupView.backgroundColor = UIColor.colorFromHex("#00FF00")
-        popUpWindowView.popupTitle.backgroundColor = UIColor.colorFromHex("#00FF00")
+    
+        // entire back groun.
+        popUpWindowView.popupView.backgroundColor = UIColor.green
+        
+        // title
+        popUpWindowView.popupTitle.backgroundColor = UIColor.systemGreen
+        popUpWindowView.popupTitle.textColor = UIColor.white
         popUpWindowView.popupTitle.text = "Success"
-        popUpWindowView.popupTitle.textColor = UIColor.black
+        
+        // text
+        popUpWindowView.popupText.backgroundColor = UIColor.green
         popUpWindowView.popupText.textColor = UIColor.black
-        popUpWindowView.popupButton.setTitleColor(UIColor.black, for: .normal)
+        popUpWindowView.popupText.text = text
+        
+        // button
+        popUpWindowView.popupButton.backgroundColor = UIColor.systemGreen
+        popUpWindowView.popupButton.setTitleColor(UIColor.white, for: .normal)
         popUpWindowView.popupButton.setTitle("OK", for: .normal)
+    }
+    
+    func changeToInfoMode(text : String){
+        
+        // entire back groun.
+        popUpWindowView.popupView.backgroundColor = UIColor.gray
+        
+        // title
+        popUpWindowView.popupTitle.backgroundColor = UIColor.black
+        popUpWindowView.popupTitle.textColor = UIColor.white
+        popUpWindowView.popupTitle.text = "Ticket"
+        
+        // text
+        popUpWindowView.popupText.backgroundColor = UIColor.gray
+        popUpWindowView.popupText.textColor = UIColor.black
+        popUpWindowView.popupText.text = text
+        
+        // button
+        popUpWindowView.popupButton.backgroundColor = UIColor.black
+        popUpWindowView.popupButton.setTitleColor(UIColor.white, for: .normal)
+        popUpWindowView.popupButton.setTitle("Check In", for: .normal)
     }
 }
 
@@ -183,7 +227,5 @@ private class UpdateTicketPopUpWindowView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
-    
 }
