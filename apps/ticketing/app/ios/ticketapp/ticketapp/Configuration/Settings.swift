@@ -21,8 +21,6 @@ class Settings{
         
     }
     
-    
-    
     public func IsAutoRefreshEnabled() -> Bool{
         let defaults = UserDefaults.standard
         return defaults.bool(forKey: "auto_refresh")

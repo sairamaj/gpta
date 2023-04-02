@@ -307,13 +307,12 @@ class TicketHolderTableViewController:
         
         if( isDone )
         {
+            Slim.info("checkin(cell): \(ticketHolder.Name ?? "na")")
             self.selectedRow = -1
             let indexPath = IndexPath(row: currentCell.CurrentCellRow, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
             Repository.shared.updateTicketHolder( ticketHolder ,callback: {
                 (ticket) -> Void in
-            
-                    Slim.info("UpdateTicketolder ")
                 DispatchQueue.main.async {
                     self.tableView.reloadData()    // reload in UI thread.
                 }
@@ -423,7 +422,7 @@ class TicketHolderTableViewController:
     
     func TaskChanged(_ ticketHolder:TicketHolder) -> QRScanUpdateStatus{
 
-        Slim.info("checkin: \(ticketHolder.Name)")
+        Slim.info("checkin(scan): \(ticketHolder.Name ?? "na")")
         
         var found = false;
         var alreadyCheckedInCount = false
@@ -453,7 +452,7 @@ class TicketHolderTableViewController:
             (ticket) -> Void in
          
             DispatchQueue.main.async {
-                print("done updating: \(ticketHolder.Name)")
+                print("done updating: \(ticketHolder.Name ?? "na")")
                 self.tableView.reloadData()
                 self.updateTitle()
             }

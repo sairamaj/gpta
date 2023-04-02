@@ -21,7 +21,7 @@ class ReportViewController: UIViewController {
         print("retrying failed ones")
         for ticket in Repository.shared.ticketHolders{
             if ticket.isSynced > 0 {
-                print("\(ticket.Name)")
+                Slim.info("checkin(refresh): \(ticket.Name ?? "na")")
                 Repository.shared.updateTicketHolder( ticket ,callback: {
                     (ticket) -> Void in
                     DispatchQueue.main.async {
