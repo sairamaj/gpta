@@ -9,10 +9,14 @@
 import Foundation
 
 struct QRCodeParser {
-    static func parse(val:String) -> TicketHolder {
+    static func parse(val:String) throws -> TicketHolder {
 
         let arr = val.components(separatedBy: ",")
-       // return QRCodeParser(name: arr[0], email: arr[1], id: arr[2], adults: Int(arr[3]), kids: Int(arr[4]))
+        // return QRCodeParser(name: arr[0], email: arr[1], id: arr[2], adults: Int(arr[3]), kids: Int(arr[4]))
+        if arr.count < 5{
+            throw QRCodeParseError.notAValidTicket
+        }
+
         let name = arr[0]
         let email = arr[1]
         let id = arr[2]

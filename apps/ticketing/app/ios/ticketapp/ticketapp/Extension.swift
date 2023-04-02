@@ -33,3 +33,22 @@ extension UIColor {
     }
     
 }
+
+enum QRCodeParseError: Error {
+    // Not a valid ticket
+    case notAValidTicket
+    
+    // Throw in all other cases
+    case unexpected(code: Int)
+}
+
+extension QRCodeParseError: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .notAValidTicket:
+            return "The provided password is not valid."
+        case .unexpected(_):
+            return "An unexpected error occurred while parsing QR code."
+        }
+    }
+}

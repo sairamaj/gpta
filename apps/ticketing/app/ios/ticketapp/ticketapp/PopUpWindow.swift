@@ -19,7 +19,7 @@ class PopUpWindow: UIViewController {
     private var ticketHolder:TicketHolder!
     var updatedOnScanDelegate:UpdatedOnScanDelegate? = nil
     
-    init(title: String, text: String, ticketHolder: TicketHolder, buttontext: String) {
+    init(title: String, text: String, ticketHolder: TicketHolder!, buttontext: String) {
         super.init(nibName: nil, bundle: nil)
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
@@ -38,7 +38,9 @@ class PopUpWindow: UIViewController {
     
     
     @objc func dismissView(){
-        self.updatedOnScanDelegate?.TaskChanged(self.ticketHolder)
+        if self.ticketHolder != nil {
+            self.updatedOnScanDelegate?.TaskChanged(self.ticketHolder)
+        }
 
         self.dismiss(animated: true, completion: nil)
     }

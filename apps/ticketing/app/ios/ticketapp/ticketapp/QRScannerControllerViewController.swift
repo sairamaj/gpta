@@ -104,7 +104,7 @@ class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutp
              // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
              let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
              qrCodeFrameView?.frame = barCodeObject!.bounds
-
+/*
              if metadataObj.stringValue != nil {
                 //qrCodeInfo.text = metadataObj.stringValue
                 let text = metadataObj.stringValue
@@ -122,7 +122,9 @@ class QRScannerControllerViewController: UIViewController, AVCaptureMetadataOutp
                  // Move the message label and top bar to the front
                  //view.bringSubview(toFront: qrCodeInfo)
                  //view.bringSubview(toFront: topbar)
+
              }
+ */
          }
      }
      

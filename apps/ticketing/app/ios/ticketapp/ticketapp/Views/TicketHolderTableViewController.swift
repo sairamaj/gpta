@@ -378,19 +378,35 @@ class TicketHolderTableViewController:
 
              if metadataObj.stringValue != nil {
                 //qrCodeInfo.text = metadataObj.stringValue
-                let text = metadataObj.stringValue
-                let ticketHolder = QRCodeParser.parse(val: metadataObj.stringValue!)
-                var popUpWindow: PopUpWindow!
+                let text = metadataObj.stringValue!
+                 do{
+                     
+                     
+                     let ticketHolder = try QRCodeParser.parse(val: text)
+                     var popUpWindow: PopUpWindow!
+                     
+                     ticketHolder.AdultsArrived = ticketHolder.AdultCount
+                     ticketHolder.KidsArrived = ticketHolder.KidCount
+                     popUpWindow = PopUpWindow(title: "GPTA Ticket",
+                                               text: text,
+                                               ticketHolder : ticketHolder,
+                                               buttontext: "Check In")
+                     popUpWindow.updatedOnScanDelegate = self
+                     self.present(popUpWindow, animated: true, completion: nil)
+                 }
+                 catch QRCodeParseError.notAValidTicket
+                {
+                    var popUpWindow: PopUpWindow!
+                    popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, ticketHolder: nil, buttontext: "OK")
+                    self.present(popUpWindow, animated: true, completion: nil)
+                }
+                catch
+                {
+                     var popUpWindow: PopUpWindow!
+                     popUpWindow = PopUpWindow(title: "Error Not a valid ticket", text:text, ticketHolder: nil, buttontext: "OK")
+                     self.present(popUpWindow, animated: true, completion: nil)
+                 }
                  
-                ticketHolder.AdultsArrived = ticketHolder.AdultCount
-                ticketHolder.KidsArrived = ticketHolder.KidCount
-                popUpWindow = PopUpWindow(title: "GPTA Ticket",
-                                           text: text!,
-                                           ticketHolder : ticketHolder,
-                                           buttontext: "Check In")
-                popUpWindow.updatedOnScanDelegate = self
-                self.present(popUpWindow, animated: true, completion: nil)
-                
                  self.captureSession.stopRunning()
                  qrCodeFrameView?.removeFromSuperview()
                  self.videoPreviewLayer?.removeFromSuperlayer()
@@ -403,6 +419,7 @@ class TicketHolderTableViewController:
      }
     
     func TaskChanged(_ ticketHolder:TicketHolder){
+
         Slim.info("checkin: \(ticketHolder.Name)")
         
         // move this to repository (updating this memory)
@@ -415,6 +432,7 @@ class TicketHolderTableViewController:
         
         Repository.shared.updateTicketHolder( ticketHolder ,callback: {
             (ticket) -> Void in
+         
             DispatchQueue.main.async {
                 print("done updating: \(ticketHolder.Name)")
                 self.tableView.reloadData()
