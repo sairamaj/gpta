@@ -7,14 +7,17 @@ namespace ExtractProgramSchedule
 	{
 		static void Main(string[] args)
 		{
-			if (args.Length < 1)
+			if (args.Length < 2)
 			{
-				System.Console.WriteLine("{0} programsheetfilename", Assembly.GetExecutingAssembly().GetName().Name);
+				System.Console.WriteLine("{0} programsheetfilename sheetName", Assembly.GetExecutingAssembly().GetName().Name);
 				System.Environment.Exit(-2);
 			}
 			ServiceLocator.Initialize();
+			var excelFileName = args[0];
+			var sheetName = args[1];
+
 			var repository = ServiceLocator.Resolve<IDataRepository>();
-			foreach (var program in repository.Load(args[0]))
+			foreach (var program in repository.Load(excelFileName, sheetName))
 			{
 				System.Console.WriteLine("#program|{0}|{1}|{2}|{3}|{4}|{5}|{6}",
 					program.Name, 
@@ -27,7 +30,7 @@ namespace ExtractProgramSchedule
 				System.Console.WriteLine("");
 				foreach (var p in program.Participants)
 				{
-					System.Console.WriteLine("     {0}", p.Name);
+					System.Console.WriteLine($"{p.Name}");
 				}
 				System.Console.WriteLine("");
 			}

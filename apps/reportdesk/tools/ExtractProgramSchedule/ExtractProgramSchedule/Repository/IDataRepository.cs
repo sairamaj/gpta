@@ -5,6 +5,6 @@ namespace ExtractProgramSchedule.Repository
 {
 	internal interface IDataRepository
 	{
-		IEnumerable<Program> Load(string file);
+		IEnumerable<Program> Load(string excelFile, string programSheetName);
 	}
 }
