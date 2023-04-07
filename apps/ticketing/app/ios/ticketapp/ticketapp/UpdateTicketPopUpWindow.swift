@@ -90,6 +90,14 @@ class UpdateTicketPopUpWindow: UIViewController {
         popUpWindowView.popupText.textColor = UIColor.black
         popUpWindowView.popupText.text = text
         
+        if self.ticketHolder == nil{
+            popUpWindowView.popupText2.isHidden = true
+        }else{
+            popUpWindowView.popupText2.backgroundColor = UIColor.systemRed
+            popUpWindowView.popupText2.textColor = UIColor.black
+            popUpWindowView.popupText2.text = "Adult:\(self.ticketHolder.AdultCount) Kids:\(self.ticketHolder.KidCount)"
+        }
+        
         // button
         popUpWindowView.popupButton.backgroundColor = UIColor.colorFromHex("#BC214B")
         popUpWindowView.popupButton.setTitleColor(UIColor.white, for: .normal)
@@ -115,6 +123,15 @@ class UpdateTicketPopUpWindow: UIViewController {
         popUpWindowView.popupText.textColor = UIColor.black
         popUpWindowView.popupText.text = text
         
+        if self.ticketHolder == nil{
+            popUpWindowView.popupText2.isHidden = true
+        }else{
+            popUpWindowView.popupText2.backgroundColor = UIColor.green
+            popUpWindowView.popupText2.textColor = UIColor.black
+            
+            popUpWindowView.popupText2.text = "Adult:\(self.ticketHolder.AdultCount) Kids:\(self.ticketHolder.KidCount)"
+        }
+        
         // button
         popUpWindowView.popupButton.backgroundColor = UIColor.systemGreen
         popUpWindowView.popupButton.setTitleColor(UIColor.white, for: .normal)
@@ -136,6 +153,14 @@ class UpdateTicketPopUpWindow: UIViewController {
         popUpWindowView.popupText.backgroundColor = UIColor.gray
         popUpWindowView.popupText.textColor = UIColor.black
         popUpWindowView.popupText.text = text
+   
+        if self.ticketHolder == nil{
+            popUpWindowView.popupText2.isHidden = true
+        }else{
+            popUpWindowView.popupText2.backgroundColor = UIColor.gray
+            popUpWindowView.popupText2.textColor = UIColor.green
+            popUpWindowView.popupText2.text = "Adult:\(self.ticketHolder.AdultCount) Kids:\(self.ticketHolder.KidCount)"
+        }
         
         // button
         popUpWindowView.popupButton.backgroundColor = UIColor.black
@@ -153,6 +178,7 @@ private class UpdateTicketPopUpWindowView: UIView {
     let popupView = UIView(frame: CGRect.zero)
     let popupTitle = UILabel(frame: CGRect.zero)
     let popupText = UILabel(frame: CGRect.zero)
+    let popupText2 = UILabel(frame: CGRect.zero)
     let popupButton = UIButton(frame: CGRect.zero)
     let popupCancelButton = UIButton(frame: CGRect.zero)
     
@@ -187,6 +213,11 @@ private class UpdateTicketPopUpWindowView: UIView {
         popupText.numberOfLines = 0
         popupText.textAlignment = .center
         
+        popupText2.textColor = UIColor.black
+        popupText2.font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        popupText2.numberOfLines = 0
+        popupText2.textAlignment = .center
+        
         // Popup Button
         popupButton.setTitleColor(UIColor.white, for: .normal)
         popupButton.titleLabel?.font = UIFont.systemFont(ofSize: 23.0, weight: .bold)
@@ -198,8 +229,11 @@ private class UpdateTicketPopUpWindowView: UIView {
         
         popupView.addSubview(popupTitle)
         popupView.addSubview(popupText)
+        popupView.addSubview(popupText2)
         popupView.addSubview(popupButton)
         popupView.addSubview(popupCancelButton)
+        
+        //popupText.isHidden = true
         
         // Add the popupView(box) in the PopUpWindowView (semi-transparent background)
         addSubview(popupView)
@@ -209,6 +243,7 @@ private class UpdateTicketPopUpWindowView: UIView {
         popupView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             popupView.widthAnchor.constraint(equalToConstant: 293),
+            popupView.heightAnchor.constraint(equalToConstant: 250),
             popupView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             popupView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             ])
@@ -233,6 +268,14 @@ private class UpdateTicketPopUpWindowView: UIView {
             popupText.bottomAnchor.constraint(equalTo: popupButton.topAnchor, constant: -8)
             ])
 
+        popupText2.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            popupText2.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            popupText2.topAnchor.constraint(equalTo: popupText.bottomAnchor, constant: 58),
+            popupText2.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: 15),
+            popupText2.trailingAnchor.constraint(equalTo: popupView.trailingAnchor, constant: -15),
+            popupText2.bottomAnchor.constraint(equalTo: popupButton.topAnchor, constant: -8)
+            ])
         
         // PopupButton constraints
         popupButton.translatesAutoresizingMaskIntoConstraints = false

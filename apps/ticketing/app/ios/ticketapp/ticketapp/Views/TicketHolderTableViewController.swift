@@ -229,7 +229,7 @@ class TicketHolderTableViewController:
         
         // Use below lines to test the Parsing and Popup without going through entire process of scanning
         // Speed dev and can be tested on simulator
-            //processScanCode(text: "sai,sai@gmail.com,xxx5LC33117KA234292E,2,5")
+            //processScanCode(text: "sai,sai@gmail.com,5LC33117KA234292E 5LC33117KA234292E 5LC33117KA234292E 5LC33117KA234292E 5LC33117KA234292E 5LC33117KA234292E,2,5")
             // processScanCode(text: "sai,sai@gmail.com")
             // processScanCode(text: "sai,sai@gmail.com,xxx5LC33117KA234292E,notaint,notint")
             //processScanCode(text: "sai,sai@gmail.com,6SW64429E6173130K 3JR01788PK839950G 2R543605L2110010F 6XH68052019113833,notaint,notint")
