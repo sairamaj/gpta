@@ -11,14 +11,14 @@ var csvFile = process.argv[2]
 var mkdirp = require('mkdirp');
 const { cwd } = require('process');
 
-mkdirp('images', function (err) {
+mkdirp('../output/images', function (err) {
 });
 
 function generate(info){
     var parts = info.split(',')
     var email = parts[1]
 
-    var imageName =  path.join('images',email + '.png')
+    var imageName =  path.join('../output/images',email + '.png')
     var imageData = qr.imageSync(info, { type: 'png' });
     fs.writeFileSync(imageName, imageData)   
 }

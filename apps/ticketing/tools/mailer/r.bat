@@ -1,0 +1,1 @@
+c:\Python38\python mail.py suryapv@gmail.com ..\qrcode\images\suryapv@gmail.com

@@ -1,5 +1,5 @@
 # https://mailtrap.io/blog/send-emails-with-gmail-api/
-#https://developers.google.com/gmail/api/quickstart/python
+# https://developers.google.com/gmail/api/quickstart/python
 # https://cppsecrets.com/users/16949711010510710111649539864103109971051084699111109/Python-Create-Gmail-drafts-from-Gmail-account-using-Gmail-API.php
 
 
@@ -30,6 +30,8 @@ from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
+from os import listdir
+from os.path import isfile, join
 
 import google.auth
 from google.auth.transport.requests import Request
@@ -38,18 +40,34 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-if(len(sys.argv) < 3):
-    print('emailid imagename required')
+if(len(sys.argv) < 2):
+    print('directory (directory containing images)')
     sys.exit(1)
+create_draft = False
+send_draft = False
 
-to_email = sys.argv[1]
-image_name = sys.argv[2]
+imagePath = sys.argv[1]
+if(len(sys.argv) > 2):
+    print(sys.argv[2])
+    create_draft = sys.argv[2].lower() == "true"
+if(len(sys.argv) > 3):
+    send_draft = sys.argv[3].lower() == "true"
+
+if send_draft == True and create_draft == False:
+    print('If send_draft is True, create_draft should be True')
+    sys.exit(2)
+
+from_email = 'gptainfo@gmail.com'
+subject = 'Your GPTA ticket QR code'
+body = f = open("body.txt", "r").read()
+
 
 # If modifying these scopes, delete the file token.json.
 #SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 SCOPES = ['https://www.googleapis.com/auth/gmail.compose']
 
-def gmail_create_draft_with_attachment(service):
+
+def gmail_create_draft_send_with_attachment(service, to_email, attachment_filename, create_draft, send_draft):
     """Create and insert a draft email with attachment.
        Print the returned draft's message and id.
       Returns: Draft object, including draft id and message meta data.
@@ -67,45 +85,65 @@ def gmail_create_draft_with_attachment(service):
 
         # headers
         mime_message['To'] = to_email
-        mime_message['From'] = 'sairamaj@gmail.com'
-        mime_message['Subject'] = 'Your GPTA ticket QR code image'
+        mime_message['From'] = from_email
+        mime_message['Subject'] = subject
 
         # text
-        mime_message.set_content(
-            'Hi Please bring this GPTA QR code for faster check-in.'
-            'Please do not reply.'
-        )
+        mime_message.set_content(body)
 
         # attachment
-        attachment_filename = image_name
         # guessing the MIME type
         type_subtype, _ = mimetypes.guess_type(attachment_filename)
         maintype, subtype = type_subtype.split('/')
 
         with open(attachment_filename, 'rb') as fp:
             attachment_data = fp.read()
-        mime_message.add_attachment(attachment_data, maintype, subtype,filename=attachment_filename)
+        mime_message.add_attachment(
+            attachment_data, maintype, subtype, filename=attachment_filename)
 
-        encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode()
+        encoded_message = base64.urlsafe_b64encode(
+            mime_message.as_bytes()).decode()
 
         create_draft_request_body = {
             'message': {
                 'raw': encoded_message
             }
         }
-        # pylint: disable=E1101
-        draft = service.users().drafts().create(userId="me",
-                                                body=create_draft_request_body)\
-            .execute()
-        print(F'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
-        drafts = service.users().drafts()
-        draft_id = draft["id"]
-        drafts.send(userId='me', body={ 'id': str(draft_id) }).execute()
-        print(F'sending draft')
+
+        print(F"To:{to_email} Attachment:{attachment_filename}...")
+        draft = None
+        if create_draft is True:
+            print("Creating real draft")
+            # pylint: disable=E1101
+            draft = service.users().drafts().create(userId="me",
+                                                    body=create_draft_request_body)\
+                .execute()
+            print(
+                F'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
+
+            if send_draft is True:
+                print("Sending real mail")
+                drafts = service.users().drafts()
+                draft_id = draft["id"]
+                drafts.send(userId='me', body={'id': str(draft_id)}).execute()
+                print(F'sending draft')
     except HttpError as error:
         print(F'An error occurred: {error}')
         draft = None
     return draft
+
+# enumerates emails and image names from the image path
+
+
+def getEmails(imagePath):
+    pngFiles = [f for f in listdir(imagePath) if isfile(join(imagePath, f))]
+
+    list = []
+    for pngFile in pngFiles:
+        if pngFile.endswith('.png'):
+            email = pngFile[:-len(".png")]
+            list.append((email, os.path.join(imagePath, pngFile)))
+    return list
 
 
 def main():
@@ -134,7 +172,13 @@ def main():
         # Call the Gmail API
         # create gmail api client
         service = build('gmail', 'v1', credentials=creds)
-        gmail_create_draft_with_attachment(service)
+
+        print(f"processing {imagePath} create_draft:{create_draft} send_draft:{send_draft}")
+        email_pngfiles = getEmails(imagePath)
+        for email_pngfile in email_pngfiles:
+            print(email_pngfile)
+            gmail_create_draft_send_with_attachment(
+                service, email_pngfile[0], email_pngfile[1], create_draft, send_draft)
 
     except HttpError as error:
         # TODO(developer) - Handle errors from gmail API.

@@ -174,3 +174,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+output
+credentials.json
+token.json
