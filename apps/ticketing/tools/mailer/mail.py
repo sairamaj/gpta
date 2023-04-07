@@ -24,6 +24,7 @@ import base64
 import mimetypes
 import os
 import sys
+import shutil
 
 from email.message import EmailMessage
 from email.mime.audio import MIMEAudio
@@ -142,9 +143,40 @@ def getEmails(imagePath):
     for pngFile in pngFiles:
         if pngFile.endswith('.png'):
             email = pngFile[:-len(".png")]
-            list.append((email, os.path.join(imagePath, pngFile)))
+            list.append((email, pngFile))
     return list
 
+def cleanStaging(imagePath):
+    print(f"cleaning staging: {imagePath}")
+    for file in os.listdir(imagePath):
+        batch_path = os.path.join(imagePath, file)
+        if os.path.isdir(batch_path):
+            print(f"cleaning batch path: {batch_path}")
+            shutil.rmtree(batch_path)
+
+def moveToStaging(imagePath):
+    batch = 1
+    batch_count = 10
+    count = 0
+    batch_path_list = []
+    batch_path = os.path.join(imagePath, f"batch_{batch}")
+    os.mkdir(batch_path)
+    batch_path_list.append(batch_path)
+    pngFiles = [f for f in listdir(imagePath) if isfile(join(imagePath, f))]
+    for file in pngFiles:
+        if count == batch_count:
+            batch = batch+1
+            count = 0
+            batch_path = os.path.join(imagePath, f"batch_{batch}")
+            os.mkdir(batch_path)
+            batch_path_list.append(batch_path)
+
+        src = os.path.join(imagePath, file)
+        dst = os.path.join(batch_path, file)
+        print(f"copying {src} to {dst}")
+        shutil.copyfile(src, dst)
+        count = count + 1
+    return batch_path_list
 
 def main():
     """Shows basic usage of the Gmail API.
@@ -173,12 +205,27 @@ def main():
         # create gmail api client
         service = build('gmail', 'v1', credentials=creds)
 
-        print(f"processing {imagePath} create_draft:{create_draft} send_draft:{send_draft}")
-        email_pngfiles = getEmails(imagePath)
-        for email_pngfile in email_pngfiles:
-            print(email_pngfile)
-            gmail_create_draft_send_with_attachment(
-                service, email_pngfile[0], email_pngfile[1], create_draft, send_draft)
+        print(
+            f"processing {imagePath} create_draft:{create_draft} send_draft:{send_draft}")
+        
+        cleanStaging(imagePath)
+        batch_path_list = moveToStaging(imagePath)
+        total_sends = 0
+        mails_send = []
+        for batch_path in batch_path_list:
+            email_pngfiles = getEmails(batch_path)
+            for email_pngfile in email_pngfiles:
+                print(email_pngfile)
+                mails_send.append(email_pngfile)
+                # gmail_create_draft_send_with_attachment(
+                #     service, email_pngfile[0], email_pngfile[1], create_draft, send_draft)
+                total_sends = total_sends+1
+        
+        print(f"total mails send:{total_sends}")
+        print('________________________')
+        for email_pngfile in mails_send:
+            print(f"{email_pngfile[1]} sent to {email_pngfile[0]}")
+        print('________________________')
 
     except HttpError as error:
         # TODO(developer) - Handle errors from gmail API.
