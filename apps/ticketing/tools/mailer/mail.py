@@ -42,10 +42,11 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 if(len(sys.argv) < 2):
-    print('directory (directory containing images)')
+    print('directory (directory containing images) [boolean for create_draft] [boolean for send_draft] [boolean for auto]')
     sys.exit(1)
 create_draft = False
 send_draft = False
+auto = False
 
 imagePath = sys.argv[1]
 if(len(sys.argv) > 2):
@@ -53,6 +54,8 @@ if(len(sys.argv) > 2):
     create_draft = sys.argv[2].lower() == "true"
 if(len(sys.argv) > 3):
     send_draft = sys.argv[3].lower() == "true"
+if(len(sys.argv) > 4):
+    auto = sys.argv[4].lower() == "true"
 
 if send_draft == True and create_draft == False:
     print('If send_draft is True, create_draft should be True')
@@ -143,7 +146,7 @@ def getEmails(imagePath):
     for pngFile in pngFiles:
         if pngFile.endswith('.png'):
             email = pngFile[:-len(".png")]
-            list.append((email, pngFile))
+            list.append((email, os.path.join(imagePath, pngFile)))
     return list
 
 def cleanStaging(imagePath):
@@ -213,19 +216,26 @@ def main():
         total_sends = 0
         mails_send = []
         for batch_path in batch_path_list:
+            print(f"batch {batch_path}")
+            proceed = False
+            if auto == False:
+                proceed = input("Press Y to proceed:") == "Y"
+            else:
+                proceed = True
             email_pngfiles = getEmails(batch_path)
-            for email_pngfile in email_pngfiles:
-                print(email_pngfile)
-                mails_send.append(email_pngfile)
-                # gmail_create_draft_send_with_attachment(
-                #     service, email_pngfile[0], email_pngfile[1], create_draft, send_draft)
-                total_sends = total_sends+1
+            if proceed:
+                for email_pngfile in email_pngfiles:
+                    print(email_pngfile)
+                    mails_send.append(email_pngfile)
+                    gmail_create_draft_send_with_attachment(
+                        service, email_pngfile[0], email_pngfile[1], create_draft, send_draft)
+                    total_sends = total_sends+1
         
         print(f"total mails send:{total_sends}")
-        print('________________________')
-        for email_pngfile in mails_send:
-            print(f"{email_pngfile[1]} sent to {email_pngfile[0]}")
-        print('________________________')
+        # print('________________________')
+        # for email_pngfile in mails_send:
+        #     print(f"{email_pngfile[1]} sent to {email_pngfile[0]}")
+        # print('________________________')
 
     except HttpError as error:
         # TODO(developer) - Handle errors from gmail API.

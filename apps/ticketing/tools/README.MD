@@ -51,7 +51,10 @@ Send mail
     * Each image is in the format of <email>.png
 * Result
   * Mail sent with attachment
-  
+* Usage
+  ```cmd
+    c:\python38\python mail.py ..\output\images False False true
+  ```  
 _____
 
 
