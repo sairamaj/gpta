@@ -1,1 +1,0 @@
-java -Djava.library.path=C:\sai\dev\awslocal\DynamoDBLocal_lib -jar C:\sai\dev\awslocal\DynamoDBLocal.jar

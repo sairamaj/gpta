@@ -1,6 +1,0 @@
-node_modules
-packages
-obj
-bin
-.DS_Store
-*.db
