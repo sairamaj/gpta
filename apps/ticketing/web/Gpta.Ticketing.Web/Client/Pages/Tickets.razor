@@ -1,0 +1,67 @@
+﻿@page "/tickets"
+@using Gpta.Ticketing.Web.Shared
+@inject HttpClient Http
+
+<PageTitle>Tickets</PageTitle>
+
+<h1>Tickets</h1>
+
+
+@if (tickets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+       
+     <MatAccordion Multi="true">
+            @foreach(var @ticket in @tickets)
+            {
+                <MatExpansionPanel>
+                    <MatExpansionPanelSummary>
+                        <MatExpansionPanelHeader>
+                        <div class="mat-layout-grid mat-layout-grid-align-left" style="max-width: 800px;">
+                            <div class="mat-layout-grid-inner">
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-12>
+                                @if (@ticket.Member == 1){
+                                    <b>*</b>
+                                }
+                                @ticket.Name</div>
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-2>@ticket.Adults</div>
+                                <div class="mat-layout-grid-cell" mat-layout-grid-cell-span-2>/@ticket.Kids</div>
+                            </div>
+                        </div>
+                    </MatExpansionPanelHeader>                    </MatExpansionPanelSummary>
+                    <MatExpansionPanelDetails>
+                        <table align="center" border="2">
+                            <tr>
+                            <td>Id</td>
+                            <td>@ticket.Id</td>
+                            </tr>
+                            <tr>
+                            <td>Cost</td>
+                            <td>@ticket.Cost</td>
+                            </tr>
+                        </table>
+                        
+                    </MatExpansionPanelDetails>
+                </MatExpansionPanel>
+            }
+        </MatAccordion>}
+
+@code {
+    private Ticket[]? tickets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try{
+            System.Console.WriteLine("Fetching tickets");
+            tickets = await Http.GetFromJsonAsync<Ticket[]>("/api/tickets");
+            System.Console.WriteLine($"Count:{tickets?.Count()}");
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+            throw;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+@page "/administrator"
+@using Gpta.Ticketing.Web.Shared
+@inject HttpClient Http
+
+
+<div>
+<InputFileExtended OnUploadedFile="OnSelect" ButtonShow="false" />
+<button class="btn btn-primary" @onclick="Upload">Upload </button>
+</div>
+
+ <div>
+    <MatButton Label="Clear" OnClick="OnClear"/>
+</div>
+
+<div>@Messages</div>
+
+@code {
+    [Inject]
+    public HttpClient Client { get; set; }
+
+    InputFileHandler FileHandler;
+    string Messages;
+
+    protected override void OnInitialized()
+    {
+        FileHandler = new InputFileHandler(Client);
+    }
+
+    void OnError(Exception e)
+        => Messages = $"Exception: {e.Message}";
+
+    void OnSelect(FileUploadEventArgs e)
+    {
+        FileHandler.Add(e.File);
+        Messages = $"File {e.File.Name} chosen. Total size {e.File.Size}.";
+    }
+
+    async void Upload()
+    {
+        Messages = $"Start upload ...";
+        try{
+            var result = await FileHandler.UploadAsync("/admin/tickets/upload");
+            var content = await result.Content.ReadAsStringAsync();
+            Console.WriteLine($"result.Content: |{content}|");
+            Messages = content;
+            Console.WriteLine(Messages);
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+            Messages = e.ToString();
+        }
+    }
+
+    async void OnClear()
+    {
+        System.Console.WriteLine("On Clear");
+        try{
+            await this.Client.DeleteAsync("/admin/tickets");
+        }
+        catch(Exception e){
+            System.Console.WriteLine(e);
+        }
+    }
+}

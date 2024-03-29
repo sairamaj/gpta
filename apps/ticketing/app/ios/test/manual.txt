@@ -1,0 +1,18 @@
+Test case: Auto update should work
+GIVEN:
+    Auto refresh set YES
+    Auto refresh interval: 5mins
+WHEN:
+    Device 1 check-in 
+    Device 2 waits for 5min
+THEN: 
+    Device 2 should get update automatically
+______________________________________________________
+Test case: Same check-in is updated from 2 devices will update to the last one (we don't have merge)
+GIVEN:
+WHEN:
+    Device-1 updates user1 
+    Device-2 updates user2
+THEN:
+    Last update will do 
+    

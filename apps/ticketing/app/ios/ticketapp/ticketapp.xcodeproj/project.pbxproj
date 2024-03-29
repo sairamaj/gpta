@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F36761529D94D1000391648 /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F36761429D94D1000391648 /* PopUpWindow.swift */; };
+		0F6FEAA929D89A59005F1B9D /* QRScannerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */; };
+		0F6FEAB129D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB029D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift */; };
+		0F6FEAB429D8B2E6005F1B9D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB329D8B2E6005F1B9D /* Extension.swift */; };
+		0F6FEABA29D8C8F1005F1B9D /* QRCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */; };
+		C82B753A1E98A11900D76C0C /* LogViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */; };
+		C82B753C1E98A14700D76C0C /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */; };
+		C82B753E1E98A27900D76C0C /* MessageCollectorLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */; };
+		C82B75401E98A29E00D76C0C /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B753F1E98A29E00D76C0C /* LogMessage.swift */; };
+		C82B75421E98A76100D76C0C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C82B75411E98A76100D76C0C /* Settings.bundle */; };
+		C82B75451E98A91000D76C0C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82B75441E98A91000D76C0C /* Settings.swift */; };
+		C85F7C17224B3C4700DD1003 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85F7C16224B3C4700DD1003 /* ReportViewController.swift */; };
+		C87C92D61E95A1910084F61D /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C92D51E95A1910084F61D /* SlimLogger.swift */; };
+		C87C92D81E95A1B40084F61D /* SlimLoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C92D71E95A1B40084F61D /* SlimLoggerConfig.swift */; };
+		C8C356B41E91C8B4009EEDD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356B31E91C8B4009EEDD8 /* AppDelegate.swift */; };
+		C8C356B61E91C8B4009EEDD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356B51E91C8B4009EEDD8 /* ViewController.swift */; };
+		C8C356B91E91C8B4009EEDD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C356B71E91C8B4009EEDD8 /* Main.storyboard */; };
+		C8C356BB1E91C8B4009EEDD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8C356BA1E91C8B4009EEDD8 /* Assets.xcassets */; };
+		C8C356BE1E91C8B4009EEDD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C356BC1E91C8B4009EEDD8 /* LaunchScreen.storyboard */; };
+		C8C356C91E91C9CE009EEDD8 /* TicketHolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356C81E91C9CE009EEDD8 /* TicketHolderTableViewController.swift */; };
+		C8C356CB1E91CA83009EEDD8 /* TicketHolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356CA1E91CA83009EEDD8 /* TicketHolderCell.swift */; };
+		C8C356CE1E91CC29009EEDD8 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356CD1E91CC29009EEDD8 /* Repository.swift */; };
+		C8C356D11E91CCC1009EEDD8 /* TicketHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356D01E91CCC1009EEDD8 /* TicketHolder.swift */; };
+		C8C356D31E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356D21E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift */; };
+		C8C356D51E91CFEF009EEDD8 /* TicketHolderData.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8C356D41E91CFEF009EEDD8 /* TicketHolderData.txt */; };
+		C8C356D81E91D45B009EEDD8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C356D71E91D45B009EEDD8 /* StringExtension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F36761429D94D1000391648 /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
+		0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerControllerViewController.swift; sourceTree = "<group>"; };
+		0F6FEAB029D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTicketPopUpWindow.swift; sourceTree = "<group>"; };
+		0F6FEAB329D8B2E6005F1B9D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeParser.swift; sourceTree = "<group>"; };
+		C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewTableViewController.swift; sourceTree = "<group>"; };
+		C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogTableViewCell.swift; path = Views/LogTableViewCell.swift; sourceTree = "<group>"; };
+		C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCollectorLogDestination.swift; path = Logging/MessageCollectorLogDestination.swift; sourceTree = "<group>"; };
+		C82B753F1E98A29E00D76C0C /* LogMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogMessage.swift; path = Model/LogMessage.swift; sourceTree = "<group>"; };
+		C82B75411E98A76100D76C0C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		C82B75441E98A91000D76C0C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Configuration/Settings.swift; sourceTree = "<group>"; };
+		C85F7C16224B3C4700DD1003 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportViewController.swift; path = Views/ReportViewController.swift; sourceTree = "<group>"; };
+		C87C92D51E95A1910084F61D /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlimLogger.swift; path = Logging/SlimLogger.swift; sourceTree = "<group>"; };
+		C87C92D71E95A1B40084F61D /* SlimLoggerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLoggerConfig.swift; sourceTree = "<group>"; };
+		C8C356B01E91C8B4009EEDD8 /* ticketapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ticketapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8C356B31E91C8B4009EEDD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C8C356B51E91C8B4009EEDD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C8C356B81E91C8B4009EEDD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C8C356BA1E91C8B4009EEDD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C8C356BD1E91C8B4009EEDD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C8C356BF1E91C8B4009EEDD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8C356C81E91C9CE009EEDD8 /* TicketHolderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketHolderTableViewController.swift; path = Views/TicketHolderTableViewController.swift; sourceTree = "<group>"; };
+		C8C356CA1E91CA83009EEDD8 /* TicketHolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketHolderCell.swift; path = Views/TicketHolderCell.swift; sourceTree = "<group>"; };
+		C8C356CD1E91CC29009EEDD8 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		C8C356D01E91CCC1009EEDD8 /* TicketHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketHolder.swift; path = Model/TicketHolder.swift; sourceTree = "<group>"; };
+		C8C356D21E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketHolderArrivalStatus.swift; path = Model/TicketHolderArrivalStatus.swift; sourceTree = "<group>"; };
+		C8C356D41E91CFEF009EEDD8 /* TicketHolderData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TicketHolderData.txt; sourceTree = "<group>"; };
+		C8C356D71E91D45B009EEDD8 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extensions/StringExtension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C8C356AD1E91C8B4009EEDD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C82B75431E98A8E200D76C0C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C82B75441E98A91000D76C0C /* Settings.swift */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		C87C92D41E95A1670084F61D /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				C87C92D51E95A1910084F61D /* SlimLogger.swift */,
+				C87C92D71E95A1B40084F61D /* SlimLoggerConfig.swift */,
+				C82B753D1E98A27900D76C0C /* MessageCollectorLogDestination.swift */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		C8C356A71E91C8B4009EEDD8 = {
+			isa = PBXGroup;
+			children = (
+				C8C356B21E91C8B4009EEDD8 /* ticketapp */,
+				C8C356B11E91C8B4009EEDD8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C8C356B11E91C8B4009EEDD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C8C356B01E91C8B4009EEDD8 /* ticketapp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C8C356B21E91C8B4009EEDD8 /* ticketapp */ = {
+			isa = PBXGroup;
+			children = (
+				C82B75431E98A8E200D76C0C /* Configuration */,
+				C87C92D41E95A1670084F61D /* Logging */,
+				C8C356D61E91D444009EEDD8 /* Extensions */,
+				C8C356D41E91CFEF009EEDD8 /* TicketHolderData.txt */,
+				C8C356CF1E91CC95009EEDD8 /* Model */,
+				C8C356CC1E91CC15009EEDD8 /* Repository */,
+				C8C356C71E91C998009EEDD8 /* Views */,
+				C8C356B31E91C8B4009EEDD8 /* AppDelegate.swift */,
+				C8C356B51E91C8B4009EEDD8 /* ViewController.swift */,
+				C8C356B71E91C8B4009EEDD8 /* Main.storyboard */,
+				C8C356BA1E91C8B4009EEDD8 /* Assets.xcassets */,
+				C8C356BC1E91C8B4009EEDD8 /* LaunchScreen.storyboard */,
+				C8C356BF1E91C8B4009EEDD8 /* Info.plist */,
+				C82B75411E98A76100D76C0C /* Settings.bundle */,
+				0F6FEAB929D8C8F1005F1B9D /* QRCodeParser.swift */,
+			);
+			path = ticketapp;
+			sourceTree = "<group>";
+		};
+		C8C356C71E91C998009EEDD8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F6FEAA829D89A59005F1B9D /* QRScannerControllerViewController.swift */,
+				0F6FEAB029D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift */,
+				C8C356C81E91C9CE009EEDD8 /* TicketHolderTableViewController.swift */,
+				0F36761429D94D1000391648 /* PopUpWindow.swift */,
+				C8C356CA1E91CA83009EEDD8 /* TicketHolderCell.swift */,
+				C82B75391E98A11900D76C0C /* LogViewTableViewController.swift */,
+				C82B753B1E98A14700D76C0C /* LogTableViewCell.swift */,
+				C85F7C16224B3C4700DD1003 /* ReportViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C8C356CC1E91CC15009EEDD8 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C8C356CD1E91CC29009EEDD8 /* Repository.swift */,
+			);
+			name = Repository;
+			sourceTree = "<group>";
+		};
+		C8C356CF1E91CC95009EEDD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8C356D01E91CCC1009EEDD8 /* TicketHolder.swift */,
+				C8C356D21E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift */,
+				C82B753F1E98A29E00D76C0C /* LogMessage.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C8C356D61E91D444009EEDD8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C8C356D71E91D45B009EEDD8 /* StringExtension.swift */,
+				0F6FEAB329D8B2E6005F1B9D /* Extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C8C356AF1E91C8B4009EEDD8 /* ticketapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8C356C21E91C8B4009EEDD8 /* Build configuration list for PBXNativeTarget "ticketapp" */;
+			buildPhases = (
+				C8C356AC1E91C8B4009EEDD8 /* Sources */,
+				C8C356AD1E91C8B4009EEDD8 /* Frameworks */,
+				C8C356AE1E91C8B4009EEDD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ticketapp;
+			productName = ticketapp;
+			productReference = C8C356B01E91C8B4009EEDD8 /* ticketapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C8C356A81E91C8B4009EEDD8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = gpta;
+				TargetAttributes = {
+					C8C356AF1E91C8B4009EEDD8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Q6F64ULW6Q;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C8C356AB1E91C8B4009EEDD8 /* Build configuration list for PBXProject "ticketapp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = C8C356A71E91C8B4009EEDD8;
+			productRefGroup = C8C356B11E91C8B4009EEDD8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C8C356AF1E91C8B4009EEDD8 /* ticketapp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C8C356AE1E91C8B4009EEDD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C356BE1E91C8B4009EEDD8 /* LaunchScreen.storyboard in Resources */,
+				C8C356BB1E91C8B4009EEDD8 /* Assets.xcassets in Resources */,
+				C82B75421E98A76100D76C0C /* Settings.bundle in Resources */,
+				C8C356D51E91CFEF009EEDD8 /* TicketHolderData.txt in Resources */,
+				C8C356B91E91C8B4009EEDD8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C8C356AC1E91C8B4009EEDD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C85F7C17224B3C4700DD1003 /* ReportViewController.swift in Sources */,
+				C8C356B61E91C8B4009EEDD8 /* ViewController.swift in Sources */,
+				C8C356B41E91C8B4009EEDD8 /* AppDelegate.swift in Sources */,
+				C8C356CE1E91CC29009EEDD8 /* Repository.swift in Sources */,
+				C87C92D61E95A1910084F61D /* SlimLogger.swift in Sources */,
+				0F36761529D94D1000391648 /* PopUpWindow.swift in Sources */,
+				C8C356D11E91CCC1009EEDD8 /* TicketHolder.swift in Sources */,
+				C8C356D81E91D45B009EEDD8 /* StringExtension.swift in Sources */,
+				C82B75401E98A29E00D76C0C /* LogMessage.swift in Sources */,
+				0F6FEABA29D8C8F1005F1B9D /* QRCodeParser.swift in Sources */,
+				0F6FEAB129D8B2AD005F1B9D /* UpdateTicketPopUpWindow.swift in Sources */,
+				C82B753C1E98A14700D76C0C /* LogTableViewCell.swift in Sources */,
+				C8C356C91E91C9CE009EEDD8 /* TicketHolderTableViewController.swift in Sources */,
+				C82B75451E98A91000D76C0C /* Settings.swift in Sources */,
+				C8C356D31E91CD27009EEDD8 /* TicketHolderArrivalStatus.swift in Sources */,
+				0F6FEAB429D8B2E6005F1B9D /* Extension.swift in Sources */,
+				C82B753A1E98A11900D76C0C /* LogViewTableViewController.swift in Sources */,
+				0F6FEAA929D89A59005F1B9D /* QRScannerControllerViewController.swift in Sources */,
+				C87C92D81E95A1B40084F61D /* SlimLoggerConfig.swift in Sources */,
+				C8C356CB1E91CA83009EEDD8 /* TicketHolderCell.swift in Sources */,
+				C82B753E1E98A27900D76C0C /* MessageCollectorLogDestination.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C8C356B71E91C8B4009EEDD8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8C356B81E91C8B4009EEDD8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C8C356BC1E91C8B4009EEDD8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8C356BD1E91C8B4009EEDD8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C8C356C01E91C8B4009EEDD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C8C356C11E91C8B4009EEDD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C8C356C31E91C8B4009EEDD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q6F64ULW6Q;
+				INFOPLIST_FILE = ticketapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamalapuram.ticketapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		C8C356C41E91C8B4009EEDD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q6F64ULW6Q;
+				INFOPLIST_FILE = ticketapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamalapuram.ticketapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C8C356AB1E91C8B4009EEDD8 /* Build configuration list for PBXProject "ticketapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8C356C01E91C8B4009EEDD8 /* Debug */,
+				C8C356C11E91C8B4009EEDD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8C356C21E91C8B4009EEDD8 /* Build configuration list for PBXNativeTarget "ticketapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8C356C31E91C8B4009EEDD8 /* Debug */,
+				C8C356C41E91C8B4009EEDD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C8C356A81E91C8B4009EEDD8 /* Project object */;
+}
