@@ -49,6 +49,7 @@ ____
 
 ## FAQ
 **Q**:What is the star(*) next to ticket
+
 **Ans**: Indicates that GPTA membership.
 
 **Q**: Ticket report does not match with other device

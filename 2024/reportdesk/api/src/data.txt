@@ -1,0 +1,250 @@
+#program|Happy Feet(Folk medley) Bhavana's group|1|Bhavana Jaiswal Eachambadi|02:00:00|00:00:00|01:30:00|00:04:00
+
+Aarnav	Buchapudi
+Akshay	Periakaruppnan
+Shrestav Ram	Routhu
+Kushi	Palla
+Yukta	Gade
+Arshika	Pragya
+
+#program|90s vs Current Kids|2|Rupa Kota|02:06:00|00:00:00|01:30:00|00:05:00
+
+Nainalalitha	Chinni
+Vaishnavi	Kotturi
+Advaith	Buduku
+Yuktha	Annam
+Upeksha	Karimikonda
+Dhanvin	Naviri
+
+#program|Team Siragugal|3|Yashodha Duraisamy|02:13:00|00:00:00|01:30:00|00:04:00
+
+Aadhav	Aravind
+Nivaan	Maniar
+Pranil	Adhvaryu
+Vishnu	LakshmiNarayanan
+Ajay	Barath
+Dhruvan	Muppalla
+
+#program|Samajavaragamana|4|Madhuri Dokuparthi|02:19:00|00:00:00|01:30:00|00:04:00
+
+Shreenika	Sadineni
+Akshaya	Guntuku
+Saanvi	Chilukuri
+Akshaya	Cheemalapati
+Keyura	Kona
+Aadya B	Kadali
+Ved	Nalam
+Vaishnavi	Avunuri
+Mahimanvita	Pulleti
+Yuvan	Vutukuri
+Pranavi	Munagala
+
+#program|Dancing Dolls|5|Madhuri Dokuparthi|02:25:00|00:00:00|01:30:00|00:04:00
+
+Srihitha Sheni	Shetti
+Rishitha	Myadarapu
+Hoshitha	Gangula
+Sameeksha	Boggarapu
+Saanvi	Swargam
+Aaradhya	Mogallapu
+Dhanvi	Naidu
+Shanvi Teja	Chittineni
+
+#program|Ugadi Taralu|6|Lalitha Byraju|02:31:00|00:00:00|01:30:00|00:04:00
+
+Sonakshi	Juturu
+Subaharini	RavindhiraKumar
+Krishna Jeevani	Mavireddy 
+Kanishkaa	Prasath
+Keerthana	Shravanaboyina Besta
+Saathvika	Jagabathula
+Harshini	Gatla
+Srigowri	Kulkarni
+
+#program|Rhythmic Stars|7|Swathi|02:37:00|00:00:00|01:30:00|00:05:00
+
+Sreehita	Konduru
+Anshu	Kalidindi
+Sahasra	Gaddam
+Thanvi	Chintalapati
+
+#program|Dazzling Stars - Madhuri group|8|Madhuri Dokuparthi|02:44:00|00:00:00|01:30:00|00:05:00
+
+Amartya B	Kadali
+AdithNandan	Segu
+Yuvanraju	Muppalla
+Jaanvi	Vuradi
+Charan	Bapanapalli
+Surya	Bapanapalli
+Sri Sai Vidisha	Vanjarapu
+Reva	Bheemireddy
+Aadhyareddy	Adevelly
+Mahitha	Dokuparthi
+
+#program|Dasavataram - Kuchipudi dance, classical|9|Anupama Yerrawar|02:51:00|00:00:00|01:30:00|00:10:00
+
+Siri Mallika	Yerrawar
+Pawani	Dongre
+Asmi	Jain
+Chandsi	Golani
+
+
+#program|Folk - by Kirtana's group|10|Kirthana Chamarthi|03:07:00|00:00:00|02:15:00|00:06:00
+
+Kashvi	Sudhireddy
+Leisha	Kamidi
+Advaitha	Anakaraju
+Shloka	Battu
+Saanvi	Nangunoori
+Manya	Balasubramanian
+Ira	Mohan
+
+
+#program|Manabadi Skit|11|Jyothi Vemuri|03:15:00|00:00:00|02:15:00|00:10:00
+
+Raaga	Mandala
+Anisha	Oruganty
+Navya	Kolavennu
+Parnitha	Mudunuri
+Krishiv	Routhu
+Charith	Nimmagadda
+Vibha	Sukka
+Bbhuvan	Peddireddy
+Akshaj	Palamasi
+Anusri	Posam
+Saketh	Vasala
+Yuvan	Karanam
+Yashvi	Aleti
+Anvi	Vysyaraju
+Adi Aishani	Nudagala
+Saadhana	Sistla
+Shanmukhapriya	Mamidala
+Taara	Mandala
+Sriya	Tallapragada
+
+#program|JATHISWARAM|12|Shivy Vanka|03:27:00|00:00:00|02:15:00|00:10:00
+
+STUTI	ATREYA
+INCHARA	SHREE
+DHRITHIKA	GANNAMANENI
+ISHA	MARLA
+HASSINI	PRABHURAM
+KEYA	KOTHARI
+ADITI	RAGURAMAN
+MALAVI	BHARADWAJ
+ESHA	VIJAY
+AKSHITHA	SENTHILKUMAR
+NEHA	GOPALSWAMY
+SHIVAANI	SELVAPRABA
+RESHMA	JEYAKUMAR
+SHREYA	BALA
+NIKITA	JOTHIKUMAR
+AARNA	SHAH
+
+#program|Dazzling Stars - Samhita group|13|Samhitha/Sirisha Kale|03:39:00|00:00:00|02:15:00|00:05:00
+
+Sri Prathiksha	
+Sreeprada	Konduru
+Thanishka	Kale
+Abinaya	Sathyanath
+Sahasra	Swargam
+Sruti	Sathyanath
+
+#program|Fast number - Kirtana's group|14|Kirthana|03:46:00|00:00:00|02:15:00|00:06:00
+
+Viti	Eachambadi
+Arshia	Rajeshnarayan
+Raajitha	Dasari
+Kirthana	Chamarthi
+Yasodha	Duraisamy
+Gauri	Nagul
+Ramya	Bhat
+Pratyusha	Upadhyayula
+
+#program|SADHGURU|15|Shivy Vanka|03:54:00|00:00:00|02:15:00|00:10:00
+
+AANANDI	SOHAL
+ARSHIA	SOHAL
+HASVI	PATEL
+MEGHA	CHANDER
+ADITI	ATREYA
+NISHTHA	PATEL
+SHRIYA	MARLA
+HIMANVITHA	KAYAM
+ANUSHA	JEYAKUMAR
+ANJALI	SANJEEPAN
+NIVEDHA	SATHISHKUMAR
+YALINI	GOPALSWAMY
+JOSHITHA	VELMURUGAN
+
+#program|Elite Emeralds|16|Madhuri Dokuparthi|04:06:00|00:00:00|03:15:00|00:04:00
+
+Babita	Yellamilli
+Madhuri	Dokuparthi
+Divyaja	Vanjarapu
+Sangeetha	Rajiv
+Bhargavi	Bompelly
+Swathi	Dampanaboyina
+Pavana	Anur
+
+#program|Bollywood Medley|17|Srinija Mudiganti|04:12:00|00:00:00|03:15:00|00:05:00
+
+Sindhuja	Muduganti
+Bhavika	Buddi
+Shruthi	Prudvi
+Anvitha	Mahankali
+Shrika	Ganta
+
+
+#program|Vote of Thanks|18|Sridhar|04:19:00|00:00:00|03:15:00|00:08:00
+#program|Kuchipudi|19|Prashanthi Harathi|04:29:00|00:00:00|03:15:00|00:10:00
+
+Tanya Krishna	Harathi
+Vedika Sunehari	Sheth
+Devika Nirali	Sheth
+Dharshni	Arunachalam
+Soumya	Salapati
+Deesha	Naidu
+Nihitha	Valeti
+Lasya	Singaraju
+Mahika	Pulla
+Vihaan Krishna	Harathi
+Nysha	Jhaveri
+Parnika	Gubbala
+Nitya Naviri
+
+#program|Dappulu (Kulu)|20|Sylace|04:41:00|00:00:00|03:15:00|00:10:00
+
+Kumaran	A.E
+Lavanya	Mohan Raj
+Adhithi Shree	Kumaran
+Gobhika Shree	Kumaran
+Romero	Emmanuel Santiago
+Pranav	Sathish Kumar
+Pranesh Raghav	Ganesh
+Tejasree Harini	Ganesh
+Sylace	Srinivasan
+Shruthi	Sylace
+Preetham Krishnaa	Suresh Kumar
+Priya	Ganesh
+Ponmuhilan	Subramanian
+Lingesh	Hariharan
+Pradeesh	Thindumal Korath
+Chitralakshmi	Narayanan
+Sahana	Muthaiya
+Saravanakumar 	Sevugapandian
+Rudran	Saravana
+
+#program|Fusion Divas - Kirtan's group|21|Gauri/Kirtana Chamarthi|04:53:00|00:00:00|03:15:00|00:08:00
+
+Laasya Kanamatha
+Tejju Bethaputi
+Shreeya	Bukka
+Eisha	Paruvada
+
+#program|Classical Folk - Deepa Barve group|22|Deepa|05:03:00|00:00:00|03:15:00|00:04:00
+
+Priyanka Chaturvedi
+Deepti	Joshi
+Deepa	Barve
+Rupali	Kadgi
