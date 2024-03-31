@@ -87,5 +87,18 @@ _____
 
 _____
 
+## Generating QRCode and Sending Mail
+* [Generating QrCode](https://github.com/sairamaj/gpta/tree/2024/apps/ticketing/tools#qrcode)
+* [Sending Email](https://github.com/sairamaj/gpta/tree/2024/apps/ticketing/tools#mailer)
+  * Edit body.txt appropriately to change the message and event date
+  * Create credentials.json in tools/mailer directory
+  ```json
+  {"installed":{"client_id":"clientidhere","project_id":"gpta-ugadi","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"clientsecrethere","redirect_uris":["http://localhost"]}}
+  ```
+  * Follow innstructions to run mailer program
+    * Use one test mail to yourself and see things are working ok or not before sending in bulk.
+    
+
+
 
 
